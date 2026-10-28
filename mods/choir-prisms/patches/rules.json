@@ -1,0 +1,17 @@
+{
+  "$schema": "carina-patch/1",
+  "patches": [
+    {
+      "op": "append",
+      "catalog": "start-state",
+      "key": "classic",
+      "path": "levels.average.alsoKnown",
+      "value": {
+        "field": "carina_team.prism_optics.refractive_optics",
+        "when": {
+          "picks": ["carina_team.hollow_choir.resonance"]
+        }
+      }
+    }
+  ]
+}

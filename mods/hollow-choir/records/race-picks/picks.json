@@ -1,0 +1,37 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "race-picks",
+  "records": [
+    {
+      "key": "carina_team.hollow_choir.resonance",
+      "group": "special",
+      "trait": null,
+      "level": null,
+      "cost": 3,
+      "value": null,
+      "valueUnit": null,
+      "government": null,
+      "exclusiveWith": [],
+      "nameKey": "pick.carina_team.hollow_choir.resonance.name",
+      "descKey": "pick.carina_team.hollow_choir.resonance.effect",
+      "effects": [{ "k": "empire.acceptance", "points": 25 }]
+    },
+    {
+      "key": "carina_team.hollow_choir.pipe_bones",
+      "group": "special",
+      "trait": null,
+      "level": null,
+      "cost": 1,
+      "value": null,
+      "valueUnit": null,
+      "government": null,
+      "exclusiveWith": [],
+      "nameKey": "pick.carina_team.hollow_choir.pipe_bones.name",
+      "descKey": "pick.carina_team.hollow_choir.pipe_bones.effect",
+      "effects": [
+        { "k": "home.size", "size": "large" },
+        { "k": "empire.troopPoints", "points": -5 }
+      ]
+    }
+  ]
+}

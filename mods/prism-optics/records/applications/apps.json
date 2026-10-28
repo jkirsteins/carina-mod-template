@@ -1,0 +1,30 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "applications",
+  "records": [
+    {
+      "key": "carina_team.prism_optics.prism_beam",
+      "field": "carina_team.prism_optics.refractive_optics",
+      "aiGroup": 26,
+      "inStrategic": true,
+      "nameKey": "tech.app.carina_team.prism_optics.prism_beam.name",
+      "descKey": "tech.app.carina_team.prism_optics.prism_beam.desc"
+    },
+    {
+      "key": "carina_team.prism_optics.prism_lattice",
+      "field": "carina_team.prism_optics.refractive_optics",
+      "aiGroup": 2,
+      "inStrategic": true,
+      "nameKey": "tech.app.carina_team.prism_optics.prism_lattice.name",
+      "descKey": "tech.app.carina_team.prism_optics.prism_lattice.desc"
+    },
+    {
+      "key": "carina_team.prism_optics.prism_targeting",
+      "field": "carina_team.prism_optics.coherent_prisms",
+      "aiGroup": 25,
+      "inStrategic": true,
+      "nameKey": "tech.app.carina_team.prism_optics.prism_targeting.name",
+      "descKey": "tech.app.carina_team.prism_optics.prism_targeting.desc"
+    }
+  ]
+}

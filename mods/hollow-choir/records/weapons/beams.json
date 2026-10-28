@@ -1,0 +1,20 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "weapons",
+  "records": [
+    {
+      "key": "carina_team.hollow_choir.resonance_lance",
+      "application": "carina_team.hollow_choir.resonance_lance",
+      "class": "beam",
+      "ammo": null,
+      "space": 12,
+      "cost": 9,
+      "damage": [3, 9],
+      "strategicDamage": [3, 9],
+      "mods": ["hv", "pd", "ap", "af"],
+      "inherentBits": 0,
+      "monster": false,
+      "nameKey": "wpn.carina_team.hollow_choir.resonance_lance.name"
+    }
+  ]
+}

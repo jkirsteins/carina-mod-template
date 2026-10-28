@@ -1,0 +1,1853 @@
+{
+  "$schema": "carina-roles/1",
+  "roles": [
+    {
+      "role": "ambassadors.scene.carina_team.hollow_choir.choir",
+      "file": "assets/ambassadors/hall.png"
+    },
+    {
+      "role": "colony.pop.carina_team.hollow_choir.choir",
+      "file": "assets/colony/pop.png"
+    },
+    {
+      "role": "colonyai.pop.carina_team.hollow_choir.choir.farmer",
+      "file": "assets/colony/farmer.png"
+    },
+    {
+      "role": "colonyai.pop.carina_team.hollow_choir.choir.scientist",
+      "file": "assets/colony/scientist.png"
+    },
+    {
+      "role": "colonyai.pop.carina_team.hollow_choir.choir.soldier",
+      "file": "assets/colony/soldier.png"
+    },
+    {
+      "role": "colonyai.pop.carina_team.hollow_choir.choir.spy",
+      "file": "assets/colony/spy.png"
+    },
+    {
+      "role": "colonyai.pop.carina_team.hollow_choir.choir.worker",
+      "file": "assets/colony/worker.png"
+    },
+    {
+      "role": "colonyai.trooper.carina_team.hollow_choir.choir",
+      "file": "assets/colony/trooper.png"
+    },
+    {
+      "role": "council.medallion.carina_team.hollow_choir.choir.l.grey",
+      "file": "assets/council/l-grey.png"
+    },
+    {
+      "role": "council.medallion.carina_team.hollow_choir.choir.l.lit",
+      "file": "assets/council/l-lit.png"
+    },
+    {
+      "role": "council.medallion.carina_team.hollow_choir.choir.m.grey",
+      "file": "assets/council/m-grey.png"
+    },
+    {
+      "role": "council.medallion.carina_team.hollow_choir.choir.m.lit",
+      "file": "assets/council/m-lit.png"
+    },
+    {
+      "role": "council.medallion.carina_team.hollow_choir.choir.s.grey",
+      "file": "assets/council/s-grey.png"
+    },
+    {
+      "role": "council.medallion.carina_team.hollow_choir.choir.s.lit",
+      "file": "assets/council/s-lit.png"
+    },
+    {
+      "role": "music.race.carina_team.hollow_choir.choir",
+      "file": "assets/audio/theme.ogg"
+    },
+    {
+      "role": "music.race.carina_team.hollow_choir.choir.m4a",
+      "file": "assets/audio/theme.m4a"
+    },
+    {
+      "role": "races.ambassador.carina_team.hollow_choir.choir",
+      "file": "assets/races/ambassador.png"
+    },
+    {
+      "role": "races.ambassador.carina_team.hollow_choir.choir-female",
+      "file": "assets/races/ambassador-female.png"
+    },
+    {
+      "role": "races.emblem.banner.carina_team.hollow_choir.choir",
+      "file": "assets/races/emblem-banner.png"
+    },
+    {
+      "role": "races.emblem.large.carina_team.hollow_choir.choir",
+      "file": "assets/races/emblem-large.png"
+    },
+    {
+      "role": "races.portrait.diplomacy.carina_team.hollow_choir.choir",
+      "file": "assets/races/diplomacy.png"
+    },
+    {
+      "role": "races.portrait.diplomacy.carina_team.hollow_choir.choir-female",
+      "file": "assets/races/diplomacy-female.png"
+    },
+    {
+      "role": "races.portrait.select.carina_team.hollow_choir.choir",
+      "file": "assets/races/select.png"
+    },
+    {
+      "role": "races.portrait.select.carina_team.hollow_choir.choir-female",
+      "file": "assets/races/select-female.png"
+    },
+    {
+      "role": "races.selectbg.carina_team.hollow_choir.choir",
+      "file": "assets/races/selectbg.png"
+    },
+    {
+      "role": "research.director.carina_team.hollow_choir.choir",
+      "file": "assets/research/director.png"
+    },
+    {
+      "role": "research.director.carina_team.hollow_choir.choir-female",
+      "file": "assets/research/director-female.png"
+    },
+    {
+      "role": "shipsai.combat.carina_team.hollow_choir.choir.battleship",
+      "file": "assets/ships/combat-battleship.png",
+      "frames": [
+        {
+          "name": "red.h0.f0.x8.y15",
+          "x": 0,
+          "y": 0,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "red.h1.f0.x9.y15",
+          "x": 44,
+          "y": 0,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "red.h2.f0.x11.y13",
+          "x": 88,
+          "y": 0,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "red.h3.f0.x12.y9",
+          "x": 132,
+          "y": 0,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "red.h4.f0.x15.y8",
+          "x": 176,
+          "y": 0,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "yellow.h0.f0.x8.y15",
+          "x": 0,
+          "y": 45,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "yellow.h1.f0.x9.y15",
+          "x": 44,
+          "y": 45,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "yellow.h2.f0.x11.y13",
+          "x": 88,
+          "y": 45,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "yellow.h3.f0.x12.y9",
+          "x": 132,
+          "y": 45,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "yellow.h4.f0.x15.y8",
+          "x": 176,
+          "y": 45,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "green.h0.f0.x8.y15",
+          "x": 0,
+          "y": 90,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "green.h1.f0.x9.y15",
+          "x": 44,
+          "y": 90,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "green.h2.f0.x11.y13",
+          "x": 88,
+          "y": 90,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "green.h3.f0.x12.y9",
+          "x": 132,
+          "y": 90,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "green.h4.f0.x15.y8",
+          "x": 176,
+          "y": 90,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "silver.h0.f0.x8.y15",
+          "x": 0,
+          "y": 135,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "silver.h1.f0.x9.y15",
+          "x": 44,
+          "y": 135,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "silver.h2.f0.x11.y13",
+          "x": 88,
+          "y": 135,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "silver.h3.f0.x12.y9",
+          "x": 132,
+          "y": 135,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "silver.h4.f0.x15.y8",
+          "x": 176,
+          "y": 135,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "blue.h0.f0.x8.y15",
+          "x": 0,
+          "y": 180,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "blue.h1.f0.x9.y15",
+          "x": 44,
+          "y": 180,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "blue.h2.f0.x11.y13",
+          "x": 88,
+          "y": 180,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "blue.h3.f0.x12.y9",
+          "x": 132,
+          "y": 180,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "blue.h4.f0.x15.y8",
+          "x": 176,
+          "y": 180,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "brown.h0.f0.x8.y15",
+          "x": 0,
+          "y": 225,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "brown.h1.f0.x9.y15",
+          "x": 44,
+          "y": 225,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "brown.h2.f0.x11.y13",
+          "x": 88,
+          "y": 225,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "brown.h3.f0.x12.y9",
+          "x": 132,
+          "y": 225,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "brown.h4.f0.x15.y8",
+          "x": 176,
+          "y": 225,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "purple.h0.f0.x8.y15",
+          "x": 0,
+          "y": 270,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "purple.h1.f0.x9.y15",
+          "x": 44,
+          "y": 270,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "purple.h2.f0.x11.y13",
+          "x": 88,
+          "y": 270,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "purple.h3.f0.x12.y9",
+          "x": 132,
+          "y": 270,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "purple.h4.f0.x15.y8",
+          "x": 176,
+          "y": 270,
+          "w": 29,
+          "h": 44
+        },
+        {
+          "name": "orange.h0.f0.x8.y15",
+          "x": 0,
+          "y": 315,
+          "w": 43,
+          "h": 30
+        },
+        {
+          "name": "orange.h1.f0.x9.y15",
+          "x": 44,
+          "y": 315,
+          "w": 41,
+          "h": 32
+        },
+        {
+          "name": "orange.h2.f0.x11.y13",
+          "x": 88,
+          "y": 315,
+          "w": 36,
+          "h": 36
+        },
+        {
+          "name": "orange.h3.f0.x12.y9",
+          "x": 132,
+          "y": 315,
+          "w": 33,
+          "h": 42
+        },
+        {
+          "name": "orange.h4.f0.x15.y8",
+          "x": 176,
+          "y": 315,
+          "w": 29,
+          "h": 44
+        }
+      ]
+    },
+    {
+      "role": "shipsai.combat.carina_team.hollow_choir.choir.colossus",
+      "file": "assets/ships/combat-colossus.png",
+      "frames": [
+        {
+          "name": "red.h0.f0.x1.y7",
+          "x": 0,
+          "y": 0,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "red.h1.f0.x1.y9",
+          "x": 57,
+          "y": 0,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "red.h2.f0.x3.y9",
+          "x": 114,
+          "y": 0,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "red.h3.f0.x5.y4",
+          "x": 171,
+          "y": 0,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "red.h4.f0.x6.y3",
+          "x": 228,
+          "y": 0,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "yellow.h0.f0.x1.y7",
+          "x": 0,
+          "y": 57,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "yellow.h1.f0.x1.y9",
+          "x": 57,
+          "y": 57,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "yellow.h2.f0.x3.y9",
+          "x": 114,
+          "y": 57,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "yellow.h3.f0.x5.y4",
+          "x": 171,
+          "y": 57,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "yellow.h4.f0.x6.y3",
+          "x": 228,
+          "y": 57,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "green.h0.f0.x1.y7",
+          "x": 0,
+          "y": 114,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "green.h1.f0.x1.y9",
+          "x": 57,
+          "y": 114,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "green.h2.f0.x3.y9",
+          "x": 114,
+          "y": 114,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "green.h3.f0.x5.y4",
+          "x": 171,
+          "y": 114,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "green.h4.f0.x6.y3",
+          "x": 228,
+          "y": 114,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "silver.h0.f0.x1.y7",
+          "x": 0,
+          "y": 171,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "silver.h1.f0.x1.y9",
+          "x": 57,
+          "y": 171,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "silver.h2.f0.x3.y9",
+          "x": 114,
+          "y": 171,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "silver.h3.f0.x5.y4",
+          "x": 171,
+          "y": 171,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "silver.h4.f0.x6.y3",
+          "x": 228,
+          "y": 171,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "blue.h0.f0.x1.y7",
+          "x": 0,
+          "y": 228,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "blue.h1.f0.x1.y9",
+          "x": 57,
+          "y": 228,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "blue.h2.f0.x3.y9",
+          "x": 114,
+          "y": 228,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "blue.h3.f0.x5.y4",
+          "x": 171,
+          "y": 228,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "blue.h4.f0.x6.y3",
+          "x": 228,
+          "y": 228,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "brown.h0.f0.x1.y7",
+          "x": 0,
+          "y": 285,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "brown.h1.f0.x1.y9",
+          "x": 57,
+          "y": 285,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "brown.h2.f0.x3.y9",
+          "x": 114,
+          "y": 285,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "brown.h3.f0.x5.y4",
+          "x": 171,
+          "y": 285,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "brown.h4.f0.x6.y3",
+          "x": 228,
+          "y": 285,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "purple.h0.f0.x1.y7",
+          "x": 0,
+          "y": 342,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "purple.h1.f0.x1.y9",
+          "x": 57,
+          "y": 342,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "purple.h2.f0.x3.y9",
+          "x": 114,
+          "y": 342,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "purple.h3.f0.x5.y4",
+          "x": 171,
+          "y": 342,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "purple.h4.f0.x6.y3",
+          "x": 228,
+          "y": 342,
+          "w": 47,
+          "h": 56
+        },
+        {
+          "name": "orange.h0.f0.x1.y7",
+          "x": 0,
+          "y": 399,
+          "w": 56,
+          "h": 46
+        },
+        {
+          "name": "orange.h1.f0.x1.y9",
+          "x": 57,
+          "y": 399,
+          "w": 54,
+          "h": 46
+        },
+        {
+          "name": "orange.h2.f0.x3.y9",
+          "x": 114,
+          "y": 399,
+          "w": 47,
+          "h": 47
+        },
+        {
+          "name": "orange.h3.f0.x5.y4",
+          "x": 171,
+          "y": 399,
+          "w": 45,
+          "h": 54
+        },
+        {
+          "name": "orange.h4.f0.x6.y3",
+          "x": 228,
+          "y": 399,
+          "w": 47,
+          "h": 56
+        }
+      ]
+    },
+    {
+      "role": "shipsai.combat.carina_team.hollow_choir.choir.cruiser",
+      "file": "assets/ships/combat-cruiser.png",
+      "frames": [
+        {
+          "name": "red.h0.f0.x13.y19",
+          "x": 0,
+          "y": 0,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "red.h1.f0.x14.y20",
+          "x": 35,
+          "y": 0,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "red.h2.f0.x15.y17",
+          "x": 70,
+          "y": 0,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "red.h3.f0.x17.y14",
+          "x": 105,
+          "y": 0,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "red.h4.f0.x18.y13",
+          "x": 140,
+          "y": 0,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "yellow.h0.f0.x13.y19",
+          "x": 0,
+          "y": 35,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "yellow.h1.f0.x14.y20",
+          "x": 35,
+          "y": 35,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "yellow.h2.f0.x15.y17",
+          "x": 70,
+          "y": 35,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "yellow.h3.f0.x17.y14",
+          "x": 105,
+          "y": 35,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "yellow.h4.f0.x18.y13",
+          "x": 140,
+          "y": 35,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "green.h0.f0.x13.y19",
+          "x": 0,
+          "y": 70,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "green.h1.f0.x14.y20",
+          "x": 35,
+          "y": 70,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "green.h2.f0.x15.y17",
+          "x": 70,
+          "y": 70,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "green.h3.f0.x17.y14",
+          "x": 105,
+          "y": 70,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "green.h4.f0.x18.y13",
+          "x": 140,
+          "y": 70,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "silver.h0.f0.x13.y19",
+          "x": 0,
+          "y": 105,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "silver.h1.f0.x14.y20",
+          "x": 35,
+          "y": 105,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "silver.h2.f0.x15.y17",
+          "x": 70,
+          "y": 105,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "silver.h3.f0.x17.y14",
+          "x": 105,
+          "y": 105,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "silver.h4.f0.x18.y13",
+          "x": 140,
+          "y": 105,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "blue.h0.f0.x13.y19",
+          "x": 0,
+          "y": 140,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "blue.h1.f0.x14.y20",
+          "x": 35,
+          "y": 140,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "blue.h2.f0.x15.y17",
+          "x": 70,
+          "y": 140,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "blue.h3.f0.x17.y14",
+          "x": 105,
+          "y": 140,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "blue.h4.f0.x18.y13",
+          "x": 140,
+          "y": 140,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "brown.h0.f0.x13.y19",
+          "x": 0,
+          "y": 175,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "brown.h1.f0.x14.y20",
+          "x": 35,
+          "y": 175,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "brown.h2.f0.x15.y17",
+          "x": 70,
+          "y": 175,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "brown.h3.f0.x17.y14",
+          "x": 105,
+          "y": 175,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "brown.h4.f0.x18.y13",
+          "x": 140,
+          "y": 175,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "purple.h0.f0.x13.y19",
+          "x": 0,
+          "y": 210,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "purple.h1.f0.x14.y20",
+          "x": 35,
+          "y": 210,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "purple.h2.f0.x15.y17",
+          "x": 70,
+          "y": 210,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "purple.h3.f0.x17.y14",
+          "x": 105,
+          "y": 210,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "purple.h4.f0.x18.y13",
+          "x": 140,
+          "y": 210,
+          "w": 23,
+          "h": 34
+        },
+        {
+          "name": "orange.h0.f0.x13.y19",
+          "x": 0,
+          "y": 245,
+          "w": 34,
+          "h": 22
+        },
+        {
+          "name": "orange.h1.f0.x14.y20",
+          "x": 35,
+          "y": 245,
+          "w": 32,
+          "h": 23
+        },
+        {
+          "name": "orange.h2.f0.x15.y17",
+          "x": 70,
+          "y": 245,
+          "w": 28,
+          "h": 27
+        },
+        {
+          "name": "orange.h3.f0.x17.y14",
+          "x": 105,
+          "y": 245,
+          "w": 23,
+          "h": 32
+        },
+        {
+          "name": "orange.h4.f0.x18.y13",
+          "x": 140,
+          "y": 245,
+          "w": 23,
+          "h": 34
+        }
+      ]
+    },
+    {
+      "role": "shipsai.combat.carina_team.hollow_choir.choir.destroyer",
+      "file": "assets/ships/combat-destroyer.png",
+      "frames": [
+        {
+          "name": "red.h0.f0.x15.y21",
+          "x": 0,
+          "y": 0,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "red.h1.f0.x16.y20",
+          "x": 28,
+          "y": 0,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "red.h2.f0.x18.y18",
+          "x": 56,
+          "y": 0,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "red.h3.f0.x20.y17",
+          "x": 84,
+          "y": 0,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "red.h4.f0.x21.y17",
+          "x": 112,
+          "y": 0,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "yellow.h0.f0.x15.y21",
+          "x": 0,
+          "y": 28,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "yellow.h1.f0.x16.y20",
+          "x": 28,
+          "y": 28,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "yellow.h2.f0.x18.y18",
+          "x": 56,
+          "y": 28,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "yellow.h3.f0.x20.y17",
+          "x": 84,
+          "y": 28,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "yellow.h4.f0.x21.y17",
+          "x": 112,
+          "y": 28,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "green.h0.f0.x15.y21",
+          "x": 0,
+          "y": 56,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "green.h1.f0.x16.y20",
+          "x": 28,
+          "y": 56,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "green.h2.f0.x18.y18",
+          "x": 56,
+          "y": 56,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "green.h3.f0.x20.y17",
+          "x": 84,
+          "y": 56,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "green.h4.f0.x21.y17",
+          "x": 112,
+          "y": 56,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "silver.h0.f0.x15.y21",
+          "x": 0,
+          "y": 84,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "silver.h1.f0.x16.y20",
+          "x": 28,
+          "y": 84,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "silver.h2.f0.x18.y18",
+          "x": 56,
+          "y": 84,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "silver.h3.f0.x20.y17",
+          "x": 84,
+          "y": 84,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "silver.h4.f0.x21.y17",
+          "x": 112,
+          "y": 84,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "blue.h0.f0.x15.y21",
+          "x": 0,
+          "y": 112,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "blue.h1.f0.x16.y20",
+          "x": 28,
+          "y": 112,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "blue.h2.f0.x18.y18",
+          "x": 56,
+          "y": 112,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "blue.h3.f0.x20.y17",
+          "x": 84,
+          "y": 112,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "blue.h4.f0.x21.y17",
+          "x": 112,
+          "y": 112,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "brown.h0.f0.x15.y21",
+          "x": 0,
+          "y": 140,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "brown.h1.f0.x16.y20",
+          "x": 28,
+          "y": 140,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "brown.h2.f0.x18.y18",
+          "x": 56,
+          "y": 140,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "brown.h3.f0.x20.y17",
+          "x": 84,
+          "y": 140,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "brown.h4.f0.x21.y17",
+          "x": 112,
+          "y": 140,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "purple.h0.f0.x15.y21",
+          "x": 0,
+          "y": 168,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "purple.h1.f0.x16.y20",
+          "x": 28,
+          "y": 168,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "purple.h2.f0.x18.y18",
+          "x": 56,
+          "y": 168,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "purple.h3.f0.x20.y17",
+          "x": 84,
+          "y": 168,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "purple.h4.f0.x21.y17",
+          "x": 112,
+          "y": 168,
+          "w": 17,
+          "h": 27
+        },
+        {
+          "name": "orange.h0.f0.x15.y21",
+          "x": 0,
+          "y": 196,
+          "w": 27,
+          "h": 18
+        },
+        {
+          "name": "orange.h1.f0.x16.y20",
+          "x": 28,
+          "y": 196,
+          "w": 27,
+          "h": 20
+        },
+        {
+          "name": "orange.h2.f0.x18.y18",
+          "x": 56,
+          "y": 196,
+          "w": 24,
+          "h": 23
+        },
+        {
+          "name": "orange.h3.f0.x20.y17",
+          "x": 84,
+          "y": 196,
+          "w": 19,
+          "h": 26
+        },
+        {
+          "name": "orange.h4.f0.x21.y17",
+          "x": 112,
+          "y": 196,
+          "w": 17,
+          "h": 27
+        }
+      ]
+    },
+    {
+      "role": "shipsai.combat.carina_team.hollow_choir.choir.frigate",
+      "file": "assets/ships/combat-frigate.png",
+      "frames": [
+        {
+          "name": "red.h0.f0.x19.y24",
+          "x": 0,
+          "y": 0,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "red.h1.f0.x19.y25",
+          "x": 21,
+          "y": 0,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "red.h2.f0.x21.y22",
+          "x": 42,
+          "y": 0,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "red.h3.f0.x22.y21",
+          "x": 63,
+          "y": 0,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "red.h4.f0.x23.y20",
+          "x": 84,
+          "y": 0,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "yellow.h0.f0.x19.y24",
+          "x": 0,
+          "y": 22,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "yellow.h1.f0.x19.y25",
+          "x": 21,
+          "y": 22,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "yellow.h2.f0.x21.y22",
+          "x": 42,
+          "y": 22,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "yellow.h3.f0.x22.y21",
+          "x": 63,
+          "y": 22,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "yellow.h4.f0.x23.y20",
+          "x": 84,
+          "y": 22,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "green.h0.f0.x19.y24",
+          "x": 0,
+          "y": 44,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "green.h1.f0.x19.y25",
+          "x": 21,
+          "y": 44,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "green.h2.f0.x21.y22",
+          "x": 42,
+          "y": 44,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "green.h3.f0.x22.y21",
+          "x": 63,
+          "y": 44,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "green.h4.f0.x23.y20",
+          "x": 84,
+          "y": 44,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "silver.h0.f0.x19.y24",
+          "x": 0,
+          "y": 66,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "silver.h1.f0.x19.y25",
+          "x": 21,
+          "y": 66,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "silver.h2.f0.x21.y22",
+          "x": 42,
+          "y": 66,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "silver.h3.f0.x22.y21",
+          "x": 63,
+          "y": 66,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "silver.h4.f0.x23.y20",
+          "x": 84,
+          "y": 66,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "blue.h0.f0.x19.y24",
+          "x": 0,
+          "y": 88,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "blue.h1.f0.x19.y25",
+          "x": 21,
+          "y": 88,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "blue.h2.f0.x21.y22",
+          "x": 42,
+          "y": 88,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "blue.h3.f0.x22.y21",
+          "x": 63,
+          "y": 88,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "blue.h4.f0.x23.y20",
+          "x": 84,
+          "y": 88,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "brown.h0.f0.x19.y24",
+          "x": 0,
+          "y": 110,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "brown.h1.f0.x19.y25",
+          "x": 21,
+          "y": 110,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "brown.h2.f0.x21.y22",
+          "x": 42,
+          "y": 110,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "brown.h3.f0.x22.y21",
+          "x": 63,
+          "y": 110,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "brown.h4.f0.x23.y20",
+          "x": 84,
+          "y": 110,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "purple.h0.f0.x19.y24",
+          "x": 0,
+          "y": 132,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "purple.h1.f0.x19.y25",
+          "x": 21,
+          "y": 132,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "purple.h2.f0.x21.y22",
+          "x": 42,
+          "y": 132,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "purple.h3.f0.x22.y21",
+          "x": 63,
+          "y": 132,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "purple.h4.f0.x23.y20",
+          "x": 84,
+          "y": 132,
+          "w": 13,
+          "h": 21
+        },
+        {
+          "name": "orange.h0.f0.x19.y24",
+          "x": 0,
+          "y": 154,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "orange.h1.f0.x19.y25",
+          "x": 21,
+          "y": 154,
+          "w": 20,
+          "h": 12
+        },
+        {
+          "name": "orange.h2.f0.x21.y22",
+          "x": 42,
+          "y": 154,
+          "w": 16,
+          "h": 17
+        },
+        {
+          "name": "orange.h3.f0.x22.y21",
+          "x": 63,
+          "y": 154,
+          "w": 13,
+          "h": 19
+        },
+        {
+          "name": "orange.h4.f0.x23.y20",
+          "x": 84,
+          "y": 154,
+          "w": 13,
+          "h": 21
+        }
+      ]
+    },
+    {
+      "role": "shipsai.combat.carina_team.hollow_choir.choir.titan",
+      "file": "assets/ships/combat-titan.png",
+      "frames": [
+        {
+          "name": "red.h0.f0.x4.y11",
+          "x": 0,
+          "y": 0,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "red.h1.f0.x5.y11",
+          "x": 51,
+          "y": 0,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "red.h2.f0.x7.y11",
+          "x": 102,
+          "y": 0,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "red.h3.f0.x9.y7",
+          "x": 153,
+          "y": 0,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "red.h4.f0.x10.y5",
+          "x": 204,
+          "y": 0,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "yellow.h0.f0.x4.y11",
+          "x": 0,
+          "y": 51,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "yellow.h1.f0.x5.y11",
+          "x": 51,
+          "y": 51,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "yellow.h2.f0.x7.y11",
+          "x": 102,
+          "y": 51,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "yellow.h3.f0.x9.y7",
+          "x": 153,
+          "y": 51,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "yellow.h4.f0.x10.y5",
+          "x": 204,
+          "y": 51,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "green.h0.f0.x4.y11",
+          "x": 0,
+          "y": 102,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "green.h1.f0.x5.y11",
+          "x": 51,
+          "y": 102,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "green.h2.f0.x7.y11",
+          "x": 102,
+          "y": 102,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "green.h3.f0.x9.y7",
+          "x": 153,
+          "y": 102,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "green.h4.f0.x10.y5",
+          "x": 204,
+          "y": 102,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "silver.h0.f0.x4.y11",
+          "x": 0,
+          "y": 153,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "silver.h1.f0.x5.y11",
+          "x": 51,
+          "y": 153,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "silver.h2.f0.x7.y11",
+          "x": 102,
+          "y": 153,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "silver.h3.f0.x9.y7",
+          "x": 153,
+          "y": 153,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "silver.h4.f0.x10.y5",
+          "x": 204,
+          "y": 153,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "blue.h0.f0.x4.y11",
+          "x": 0,
+          "y": 204,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "blue.h1.f0.x5.y11",
+          "x": 51,
+          "y": 204,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "blue.h2.f0.x7.y11",
+          "x": 102,
+          "y": 204,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "blue.h3.f0.x9.y7",
+          "x": 153,
+          "y": 204,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "blue.h4.f0.x10.y5",
+          "x": 204,
+          "y": 204,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "brown.h0.f0.x4.y11",
+          "x": 0,
+          "y": 255,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "brown.h1.f0.x5.y11",
+          "x": 51,
+          "y": 255,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "brown.h2.f0.x7.y11",
+          "x": 102,
+          "y": 255,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "brown.h3.f0.x9.y7",
+          "x": 153,
+          "y": 255,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "brown.h4.f0.x10.y5",
+          "x": 204,
+          "y": 255,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "purple.h0.f0.x4.y11",
+          "x": 0,
+          "y": 306,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "purple.h1.f0.x5.y11",
+          "x": 51,
+          "y": 306,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "purple.h2.f0.x7.y11",
+          "x": 102,
+          "y": 306,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "purple.h3.f0.x9.y7",
+          "x": 153,
+          "y": 306,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "purple.h4.f0.x10.y5",
+          "x": 204,
+          "y": 306,
+          "w": 39,
+          "h": 50
+        },
+        {
+          "name": "orange.h0.f0.x4.y11",
+          "x": 0,
+          "y": 357,
+          "w": 50,
+          "h": 38
+        },
+        {
+          "name": "orange.h1.f0.x5.y11",
+          "x": 51,
+          "y": 357,
+          "w": 48,
+          "h": 39
+        },
+        {
+          "name": "orange.h2.f0.x7.y11",
+          "x": 102,
+          "y": 357,
+          "w": 42,
+          "h": 42
+        },
+        {
+          "name": "orange.h3.f0.x9.y7",
+          "x": 153,
+          "y": 357,
+          "w": 39,
+          "h": 48
+        },
+        {
+          "name": "orange.h4.f0.x10.y5",
+          "x": 204,
+          "y": 357,
+          "w": 39,
+          "h": 50
+        }
+      ]
+    },
+    {
+      "role": "shipsai.picture.carina_team.hollow_choir.choir.battleship",
+      "file": "assets/ships/picture-battleship.png"
+    },
+    {
+      "role": "shipsai.picture.carina_team.hollow_choir.choir.colossus",
+      "file": "assets/ships/picture-colossus.png"
+    },
+    {
+      "role": "shipsai.picture.carina_team.hollow_choir.choir.cruiser",
+      "file": "assets/ships/picture-cruiser.png"
+    },
+    {
+      "role": "shipsai.picture.carina_team.hollow_choir.choir.destroyer",
+      "file": "assets/ships/picture-destroyer.png"
+    },
+    {
+      "role": "shipsai.picture.carina_team.hollow_choir.choir.frigate",
+      "file": "assets/ships/picture-frigate.png"
+    },
+    {
+      "role": "shipsai.picture.carina_team.hollow_choir.choir.titan",
+      "file": "assets/ships/picture-titan.png"
+    }
+  ]
+}

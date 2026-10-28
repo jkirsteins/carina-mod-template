@@ -1,0 +1,1670 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Records added to race-picks (carina-records/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalog",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-records/1"
+    },
+    "catalog": {
+      "const": "race-picks"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+            "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+          },
+          "group": {
+            "enum": [
+              "trait",
+              "government",
+              "special"
+            ]
+          },
+          "trait": {
+            "anyOf": [
+              {
+                "enum": [
+                  "population",
+                  "farming",
+                  "industry",
+                  "science",
+                  "money",
+                  "shipDefense",
+                  "shipAttack",
+                  "groundCombat",
+                  "spying"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "level": {
+            "anyOf": [
+              {
+                "enum": [
+                  "penalty",
+                  "bonus",
+                  "bigBonus"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cost": {
+            "type": "integer"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "valueUnit": {
+            "anyOf": [
+              {
+                "enum": [
+                  "pct",
+                  "halfFood",
+                  "halfBc",
+                  "perWorker",
+                  "points"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "government": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                "description": "snake_case key"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "exclusiveWith": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "snake_case key"
+            },
+            "uniqueItems": true
+          },
+          "nameKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "descKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "effects": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/effect"
+            }
+          }
+        },
+        "required": [
+          "key",
+          "group",
+          "trait",
+          "level",
+          "cost",
+          "value",
+          "valueUnit",
+          "government",
+          "exclusiveWith",
+          "nameKey",
+          "descKey"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "definitions": {
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.missileBase"
+            },
+            "space": {
+              "type": "integer"
+            },
+            "rack": {
+              "type": "integer"
+            },
+            "slots": {
+              "type": "integer"
+            },
+            "ammo": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "space",
+            "rack",
+            "slots",
+            "ammo"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.freeMod"
+            },
+            "mod": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "mod"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.groundBatteries"
+            },
+            "heavySpace": {
+              "type": "integer"
+            },
+            "pdSpace": {
+              "type": "integer"
+            },
+            "arcPremiumPct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "heavySpace",
+            "pdSpace",
+            "arcPremiumPct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.fighterGarrison"
+            },
+            "banks": {
+              "type": "integer"
+            },
+            "refillRounds": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "banks",
+            "refillRounds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.garrisonCraft"
+            },
+            "weapon": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "flights": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "weapon",
+            "flights"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.planetWeapon"
+            },
+            "weapon": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "weapon",
+            "count"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.planetShield"
+            },
+            "reduction": {
+              "type": "integer"
+            },
+            "strategicMe": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "reduction",
+            "strategicMe"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.orbitalBase"
+            },
+            "fleetBa": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "fleetBa"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.farmerFood"
+            },
+            "foodHalf": {
+              "type": "integer"
+            },
+            "needsClimateBase": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "foodHalf",
+            "needsClimateBase"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.flatFood"
+            },
+            "food": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "food"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.deadWorldFarming"
+            },
+            "foodHalf": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "foodHalf"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.workerPp"
+            },
+            "pp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.flatPp"
+            },
+            "pp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.ppPerPop"
+            },
+            "pp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.mineralsPp"
+            },
+            "ultraPoor": {
+              "type": "integer"
+            },
+            "poor": {
+              "type": "integer"
+            },
+            "abundant": {
+              "type": "integer"
+            },
+            "rich": {
+              "type": "integer"
+            },
+            "ultraRich": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "ultraPoor",
+            "poor",
+            "abundant",
+            "rich",
+            "ultraRich"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.ownRaceOnly"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.colonyBc"
+            },
+            "bc": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "bc"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.incomePct"
+            },
+            "pct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.moralePct"
+            },
+            "pct": {
+              "type": "integer"
+            },
+            "governmentGated": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "pct",
+            "governmentGated"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.barracks"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.capitol"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.mixedRaceShield"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.pollutionDivisor"
+            },
+            "div": {
+              "type": "integer"
+            },
+            "step": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "div",
+            "step"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.noPollution"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.toleranceMultiplier"
+            },
+            "mult": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "mult"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.gravityImmune"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.foodReplication"
+            },
+            "ppPerFood": {
+              "type": "integer"
+            },
+            "bcPerFood": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "ppPerFood",
+            "bcPerFood"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.spyKill"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.groundTroops"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "invadeNum": {
+              "type": "integer"
+            },
+            "invadeDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "invadeNum",
+            "invadeDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.diplomacy"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.hireDiscount"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.offerPoints"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.income"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.commandPoints"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.research"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.spyOffense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.spyDefense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.mindControlBlock"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.treatyIncomePct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.repairPct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "fullRepairAfterWin": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "fullRepairAfterWin"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.fighters"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.planetReveal"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.monsterAttack"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.beamDefense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "missileEvasionNum": {
+              "type": "integer"
+            },
+            "missileEvasionDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "missileEvasionNum",
+            "missileEvasionDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.speed"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "ignoresNebulae": {
+              "type": "boolean"
+            },
+            "nearBlackHoles": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "ignoresNebulae",
+            "nearBlackHoles"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.damagePct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.boardingDefense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.beamAttack"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "fighters": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "fighters"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.colonyOutput"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "output": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "output"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.growthPct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.crewXp"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.gravity"
+            },
+            "gravity": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "gravity"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.aquatic"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.capacityPerSize"
+            },
+            "pop": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pop"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.upkeepHalf"
+            },
+            "foodHalf": {
+              "type": "integer"
+            },
+            "prodHalf": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "foodHalf",
+            "prodHalf"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.tolerant"
+            },
+            "points": {
+              "type": "integer"
+            },
+            "capPct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points",
+            "capPct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.noPollution"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.firstColonistWorker"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.size"
+            },
+            "size": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "size"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.minerals"
+            },
+            "minerals": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "minerals"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.climate"
+            },
+            "climate": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "climate"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.gravity"
+            },
+            "gravity": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "gravity"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.artifacts"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.troopPoints"
+            },
+            "points": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.troopHits"
+            },
+            "hits": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "hits"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.troopDefendPoints"
+            },
+            "points": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.shipRepair"
+            },
+            "armorPct": {
+              "type": "integer"
+            },
+            "systemsPct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "armorPct",
+            "systemsPct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.acceptance"
+            },
+            "points": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.relationScale"
+            },
+            "gainNum": {
+              "type": "integer"
+            },
+            "gainDen": {
+              "type": "integer"
+            },
+            "lossNum": {
+              "type": "integer"
+            },
+            "lossDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "gainNum",
+            "gainDen",
+            "lossNum",
+            "lossDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.assimilationScale"
+            },
+            "num": {
+              "type": "integer"
+            },
+            "den": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "num",
+            "den"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.leaderOffers"
+            },
+            "points": {
+              "type": "integer"
+            },
+            "poolAdd": {
+              "type": "integer"
+            },
+            "poolNum": {
+              "type": "integer"
+            },
+            "poolDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points",
+            "poolAdd",
+            "poolNum",
+            "poolDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.restrictedDiplomacy"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.applications"
+            },
+            "mode": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.fantasticTraders"
+            },
+            "tradeGoodsPct": {
+              "type": "integer"
+            },
+            "foodSaleHalfBc": {
+              "type": "integer"
+            },
+            "treatyPoints": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "tradeGoodsPct",
+            "foodSaleHalfBc",
+            "treatyPoints"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.spyBonus"
+            },
+            "offense": {
+              "type": "integer"
+            },
+            "defense": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "offense",
+            "defense"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.mindControl"
+            },
+            "minHull": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "minHull"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.instantAssimilation"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.captureControl"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.lucky"
+            },
+            "vaeloriWeightDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "vaeloriWeightDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.omniscient"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.stealthyShips"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.transDimensional"
+            },
+            "ftlBonus": {
+              "type": "integer"
+            },
+            "drivelessSpeed": {
+              "type": "integer"
+            },
+            "combatSpeed": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "ftlBonus",
+            "drivelessSpeed",
+            "combatSpeed"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.warlord"
+            },
+            "cpPerColony": {
+              "type": "integer"
+            },
+            "crewBonus": {
+              "type": "integer"
+            },
+            "leaderMaxLevel": {
+              "type": "integer"
+            },
+            "barracksFull": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "cpPerColony",
+            "crewBonus",
+            "leaderMaxLevel",
+            "barracksFull"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "colony.flatResearch"
+            },
+            "rp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "rp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "colony.perScientistHalfRp"
+            },
+            "halfRp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "halfRp"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

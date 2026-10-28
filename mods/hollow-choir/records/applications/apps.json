@@ -1,0 +1,14 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "applications",
+  "records": [
+    {
+      "key": "carina_team.hollow_choir.resonance_lance",
+      "field": "carina_team.hollow_choir.harmonic_resonance",
+      "aiGroup": 26,
+      "inStrategic": true,
+      "nameKey": "tech.app.carina_team.hollow_choir.resonance_lance.name",
+      "descKey": "tech.app.carina_team.hollow_choir.resonance_lance.desc"
+    }
+  ]
+}

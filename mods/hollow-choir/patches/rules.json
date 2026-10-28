@@ -1,0 +1,30 @@
+{
+  "$schema": "carina-patch/1",
+  "patches": [
+    {
+      "op": "append",
+      "catalog": "profile",
+      "key": "steam-dos-140b23",
+      "path": "availableRaces",
+      "value": "carina_team.hollow_choir.choir"
+    },
+    {
+      "op": "splice",
+      "catalog": "tech-fields",
+      "key": "carina_team.hollow_choir.harmonic_resonance",
+      "after": "physics"
+    },
+    {
+      "op": "append",
+      "catalog": "start-state",
+      "key": "classic",
+      "path": "tree.removals",
+      "value": {
+        "unless": {
+          "picks": ["carina_team.hollow_choir.resonance"]
+        },
+        "apps": ["carina_team.hollow_choir.resonance_lance"]
+      }
+    }
+  ]
+}

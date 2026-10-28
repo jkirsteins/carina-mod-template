@@ -1,0 +1,15 @@
+{
+  "$schema": "carina-mod/1",
+  "id": "carina-team.hollow-choir",
+  "version": "1.0.0",
+  "format": 1,
+  "rulesVersion": 1,
+  "phase": "content",
+  "title": "Hollow Choir",
+  "summary": "A new race of hollow-headed singers with its own pictures, ships and theme, and a signature pick, Resonance.",
+  "authors": [{ "name": "Throne of Carina team" }],
+  "license": "CC-BY-4.0",
+  "allowEmbed": true,
+  "allowFeature": true,
+  "aiUse": ["graphics"]
+}

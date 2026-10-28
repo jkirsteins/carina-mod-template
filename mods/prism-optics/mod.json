@@ -1,0 +1,14 @@
+{
+  "$schema": "carina-mod/1",
+  "id": "carina-team.prism-optics",
+  "version": "1.0.1",
+  "format": 1,
+  "rulesVersion": 1,
+  "phase": "content",
+  "title": "Prism Optics",
+  "summary": "A prism research line: a beam weapon, a targeting computer and a research lattice, with a balance tweak.",
+  "authors": [{ "name": "Throne of Carina team" }],
+  "license": "CC-BY-4.0",
+  "allowEmbed": true,
+  "allowFeature": true
+}

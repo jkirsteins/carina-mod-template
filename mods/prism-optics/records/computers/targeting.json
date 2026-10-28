@@ -1,0 +1,13 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "computers",
+  "records": [
+    {
+      "key": "carina_team.prism_optics.prism_targeting",
+      "app": "carina_team.prism_optics.prism_targeting",
+      "beamAttack": 60,
+      "cost": [5, 15, 50, 125, 300, 800],
+      "nameKey": "computer.carina_team.prism_optics.prism_targeting.name"
+    }
+  ]
+}

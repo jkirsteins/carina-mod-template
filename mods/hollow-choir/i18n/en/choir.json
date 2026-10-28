@@ -1,0 +1,21 @@
+{
+  "race.carina_team.hollow_choir.choir.name": "Hollow Choir",
+  "race.carina_team.hollow_choir.choir.singular": "Chorister",
+  "race.carina_team.hollow_choir.choir.flavour": "Hollow-headed singers who speak in chords and think in rings.",
+  "race.carina_team.hollow_choir.choir.homeStar": "Canticle",
+  "names.rulers.carina_team.hollow_choir.choir": "{sex, select, female {{i, plural, =0 {Aria} =1 {Cadence} other {Madrigal}}} other {{i, plural, =0 {Basso} =1 {Cantor} other {Drone}}}}",
+  "pick.carina_team.hollow_choir.resonance.name": "Resonance",
+  "pick.carina_team.hollow_choir.resonance.effect": "Rulers are easier to talk round (+25 acceptance). Only Resonance empires can research the Resonance Lance.",
+  "ui.raceCustom.option.carina_team.hollow_choir.resonance": "Resonance",
+  "ui.raceSelect.pick.carina_team.hollow_choir.resonance": "Resonance",
+  "pick.carina_team.hollow_choir.pipe_bones.name": "Pipe Bones",
+  "pick.carina_team.hollow_choir.pipe_bones.effect": "A large home world, but ground troops are 5 points weaker.",
+  "ui.raceCustom.option.carina_team.hollow_choir.pipe_bones": "Pipe Bones",
+  "ui.raceSelect.pick.carina_team.hollow_choir.pipe_bones": "Pipe Bones",
+  "tech.field.carina_team.hollow_choir.harmonic_resonance.name": "Harmonic Resonance",
+  "tech.app.carina_team.hollow_choir.resonance_lance.name": "Resonance Lance",
+  "tech.app.carina_team.hollow_choir.resonance_lance.desc": "A beam tuned to the hum of the target's hull. Only peoples with Resonance can sing it.",
+  "wpn.carina_team.hollow_choir.resonance_lance.name": "Resonance Lance",
+  "wpn.carina_team.hollow_choir.resonance_lance.plural": "Resonance Lances",
+  "wpn.carina_team.hollow_choir.resonance_lance.note": "Tuned beam; Resonance peoples only."
+}

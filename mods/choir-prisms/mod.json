@@ -1,0 +1,18 @@
+{
+  "$schema": "carina-mod/1",
+  "id": "carina-team.choir-prisms",
+  "version": "1.0.0",
+  "format": 1,
+  "rulesVersion": 1,
+  "phase": "patch",
+  "title": "Choir Prisms",
+  "summary": "A compatibility add-on for Prism Optics and Hollow Choir: empires with the Resonance pick start knowing Refractive Optics at the Average start.",
+  "authors": [{ "name": "Throne of Carina team" }],
+  "license": "CC-BY-4.0",
+  "allowEmbed": true,
+  "allowFeature": true,
+  "dependencies": [
+    { "id": "carina-team.prism-optics", "range": "^1.0.0", "kind": "required" },
+    { "id": "carina-team.hollow-choir", "range": "^1.0.0", "kind": "required" }
+  ]
+}

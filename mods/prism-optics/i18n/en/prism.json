@@ -1,0 +1,15 @@
+{
+  "tech.field.carina_team.prism_optics.refractive_optics.name": "Refractive Optics",
+  "tech.field.carina_team.prism_optics.coherent_prisms.name": "Coherent Prisms",
+  "tech.app.carina_team.prism_optics.prism_beam.name": "Prism Beam",
+  "tech.app.carina_team.prism_optics.prism_beam.desc": "A beam split and refocused through a cut crystal. Cheap to mount, and it hits harder than a laser.",
+  "tech.app.carina_team.prism_optics.prism_lattice.name": "Prism Lattice",
+  "tech.app.carina_team.prism_optics.prism_lattice.desc": "A lattice of prisms that sorts starlight for the laboratories: +15 research.",
+  "tech.app.carina_team.prism_optics.prism_targeting.name": "Prism Targeting",
+  "tech.app.carina_team.prism_optics.prism_targeting.desc": "A ship computer that tracks targets through coherent prisms: +60 beam attack.",
+  "wpn.carina_team.prism_optics.prism_beam.name": "Prism Beam",
+  "wpn.carina_team.prism_optics.prism_beam.plural": "Prism Beams",
+  "wpn.carina_team.prism_optics.prism_beam.note": "Between a laser and a fusion beam.",
+  "bld.carina_team.prism_optics.prism_lattice.name": "Prism Lattice",
+  "computer.carina_team.prism_optics.prism_targeting.name": "Prism Targeting"
+}

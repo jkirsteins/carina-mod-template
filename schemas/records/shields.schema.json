@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Records added to shields (carina-records/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalog",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-records/1"
+    },
+    "catalog": {
+      "const": "shields"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+            "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+          },
+          "app": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "description": "snake_case key"
+          },
+          "reduction": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "space": {
+            "type": "array",
+            "items": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "minItems": 6,
+            "maxItems": 6
+          },
+          "cost": {
+            "type": "array",
+            "items": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "minItems": 6,
+            "maxItems": 6
+          },
+          "nameKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          }
+        },
+        "required": [
+          "key",
+          "app",
+          "reduction",
+          "space",
+          "cost",
+          "nameKey"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

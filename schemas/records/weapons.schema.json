@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Records added to weapons (carina-records/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalog",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-records/1"
+    },
+    "catalog": {
+      "const": "weapons"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+            "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+          },
+          "application": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                "description": "the key of a record in applications (never its id)"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "class": {
+            "enum": [
+              "beam",
+              "missile",
+              "torpedo",
+              "bomb",
+              "fighter",
+              "special"
+            ]
+          },
+          "ammo": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "space": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "cost": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "damage": {
+            "type": "array",
+            "items": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "strategicDamage": {
+            "type": "array",
+            "items": [
+              {
+                "type": "integer",
+                "minimum": 0
+              },
+              {
+                "type": "integer",
+                "minimum": 0
+              }
+            ],
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "mods": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "snake_case key"
+            },
+            "uniqueItems": true
+          },
+          "inherentBits": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 65535
+          },
+          "monster": {
+            "type": "boolean"
+          },
+          "nameKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          }
+        },
+        "required": [
+          "key",
+          "application",
+          "class",
+          "ammo",
+          "space",
+          "cost",
+          "damage",
+          "strategicDamage",
+          "mods",
+          "inherentBits",
+          "monster",
+          "nameKey"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

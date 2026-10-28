@@ -1,0 +1,16 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "tech-fields",
+  "records": [
+    {
+      "key": "carina_team.hollow_choir.harmonic_resonance",
+      "kind": "normal",
+      "area": "physics",
+      "prev": null,
+      "next": null,
+      "cost": 60,
+      "level": 3,
+      "nameKey": "tech.field.carina_team.hollow_choir.harmonic_resonance.name"
+    }
+  ]
+}

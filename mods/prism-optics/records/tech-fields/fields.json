@@ -1,0 +1,26 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "tech-fields",
+  "records": [
+    {
+      "key": "carina_team.prism_optics.refractive_optics",
+      "kind": "normal",
+      "area": "physics",
+      "prev": null,
+      "next": null,
+      "cost": 40,
+      "level": 2,
+      "nameKey": "tech.field.carina_team.prism_optics.refractive_optics.name"
+    },
+    {
+      "key": "carina_team.prism_optics.coherent_prisms",
+      "kind": "normal",
+      "area": "physics",
+      "prev": null,
+      "next": null,
+      "cost": 600,
+      "level": 5,
+      "nameKey": "tech.field.carina_team.prism_optics.coherent_prisms.name"
+    }
+  ]
+}

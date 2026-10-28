@@ -1,0 +1,25 @@
+# Checks every mod on each push and pull request: the same checks the game runs on import, a short
+# AI game with the mod, and a deterministic package uploaded as a build artifact. A mod that requires
+# other mods is checked with the ones it finds in the other folders of mods/.
+name: check
+on: [push, pull_request]
+jobs:
+  mods:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: check, run and pack every mod
+        run: |
+          for m in mods/*/; do
+            [ -f "$m/mod.json" ] || continue
+            npx --yes carina-modkit check "$m"
+            npx --yes carina-modkit run "$m" --turns 20
+            npx --yes carina-modkit pack "$m"
+          done
+      - uses: actions/upload-artifact@v7
+        with:
+          name: packages
+          path: dist/*.carinamod

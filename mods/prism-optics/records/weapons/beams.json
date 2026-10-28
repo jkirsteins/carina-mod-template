@@ -1,0 +1,20 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "weapons",
+  "records": [
+    {
+      "key": "carina_team.prism_optics.prism_beam",
+      "application": "carina_team.prism_optics.prism_beam",
+      "class": "beam",
+      "ammo": null,
+      "space": 10,
+      "cost": 7,
+      "damage": [2, 7],
+      "strategicDamage": [2, 7],
+      "mods": ["hv", "pd", "co"],
+      "inherentBits": 0,
+      "monster": false,
+      "nameKey": "wpn.carina_team.prism_optics.prism_beam.name"
+    }
+  ]
+}

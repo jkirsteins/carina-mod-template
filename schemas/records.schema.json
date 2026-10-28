@@ -1,0 +1,3371 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Records a mod adds (carina-records/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalog",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-records/1"
+    },
+    "catalog": {
+      "enum": [
+        "applications",
+        "armor",
+        "buildings",
+        "computers",
+        "race-picks",
+        "races",
+        "shields",
+        "specials",
+        "tech-fields",
+        "weapons"
+      ],
+      "description": "the open catalog the records join (the folder name)"
+    },
+    "records": {
+      "type": "array"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "applications"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/applications"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "armor"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/armor"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "buildings"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/buildings"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "computers"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/computers"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "race-picks"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/race-picks"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "races"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/races"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "shields"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/shields"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "specials"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/specials"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "tech-fields"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/tech-fields"
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "catalog": {
+            "const": "weapons"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "records": {
+            "items": {
+              "$ref": "#/definitions/weapons"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.missileBase"
+            },
+            "space": {
+              "type": "integer"
+            },
+            "rack": {
+              "type": "integer"
+            },
+            "slots": {
+              "type": "integer"
+            },
+            "ammo": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "space",
+            "rack",
+            "slots",
+            "ammo"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.freeMod"
+            },
+            "mod": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "mod"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.groundBatteries"
+            },
+            "heavySpace": {
+              "type": "integer"
+            },
+            "pdSpace": {
+              "type": "integer"
+            },
+            "arcPremiumPct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "heavySpace",
+            "pdSpace",
+            "arcPremiumPct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.fighterGarrison"
+            },
+            "banks": {
+              "type": "integer"
+            },
+            "refillRounds": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "banks",
+            "refillRounds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.garrisonCraft"
+            },
+            "weapon": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "flights": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "weapon",
+            "flights"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.planetWeapon"
+            },
+            "weapon": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "count": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "weapon",
+            "count"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.planetShield"
+            },
+            "reduction": {
+              "type": "integer"
+            },
+            "strategicMe": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "reduction",
+            "strategicMe"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "defense.orbitalBase"
+            },
+            "fleetBa": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "fleetBa"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.farmerFood"
+            },
+            "foodHalf": {
+              "type": "integer"
+            },
+            "needsClimateBase": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "foodHalf",
+            "needsClimateBase"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.flatFood"
+            },
+            "food": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "food"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.deadWorldFarming"
+            },
+            "foodHalf": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "foodHalf"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.workerPp"
+            },
+            "pp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.flatPp"
+            },
+            "pp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.ppPerPop"
+            },
+            "pp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.mineralsPp"
+            },
+            "ultraPoor": {
+              "type": "integer"
+            },
+            "poor": {
+              "type": "integer"
+            },
+            "abundant": {
+              "type": "integer"
+            },
+            "rich": {
+              "type": "integer"
+            },
+            "ultraRich": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "ultraPoor",
+            "poor",
+            "abundant",
+            "rich",
+            "ultraRich"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.ownRaceOnly"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.colonyBc"
+            },
+            "bc": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "bc"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.incomePct"
+            },
+            "pct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.moralePct"
+            },
+            "pct": {
+              "type": "integer"
+            },
+            "governmentGated": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "pct",
+            "governmentGated"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.barracks"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.capitol"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.mixedRaceShield"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.pollutionDivisor"
+            },
+            "div": {
+              "type": "integer"
+            },
+            "step": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "div",
+            "step"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.noPollution"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.toleranceMultiplier"
+            },
+            "mult": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "mult"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.gravityImmune"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "economy.foodReplication"
+            },
+            "ppPerFood": {
+              "type": "integer"
+            },
+            "bcPerFood": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "ppPerFood",
+            "bcPerFood"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.spyKill"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.groundTroops"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "invadeNum": {
+              "type": "integer"
+            },
+            "invadeDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "invadeNum",
+            "invadeDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.diplomacy"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.hireDiscount"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.offerPoints"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.income"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.commandPoints"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.research"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.spyOffense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.spyDefense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.mindControlBlock"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.treatyIncomePct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.repairPct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "fullRepairAfterWin": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "fullRepairAfterWin"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.fighters"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.planetReveal"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.monsterAttack"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.beamDefense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "missileEvasionNum": {
+              "type": "integer"
+            },
+            "missileEvasionDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "missileEvasionNum",
+            "missileEvasionDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.speed"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "ignoresNebulae": {
+              "type": "boolean"
+            },
+            "nearBlackHoles": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "ignoresNebulae",
+            "nearBlackHoles"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.damagePct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.boardingDefense"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.beamAttack"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "fighters": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "fighters"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.colonyOutput"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            },
+            "output": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope",
+            "output"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.growthPct"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "leader.crewXp"
+            },
+            "scope": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "scope"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.gravity"
+            },
+            "gravity": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "gravity"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.aquatic"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.capacityPerSize"
+            },
+            "pop": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "pop"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.upkeepHalf"
+            },
+            "foodHalf": {
+              "type": "integer"
+            },
+            "prodHalf": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "foodHalf",
+            "prodHalf"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.tolerant"
+            },
+            "points": {
+              "type": "integer"
+            },
+            "capPct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points",
+            "capPct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.noPollution"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "pop.firstColonistWorker"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.size"
+            },
+            "size": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "size"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.minerals"
+            },
+            "minerals": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "minerals"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.climate"
+            },
+            "climate": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "climate"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.gravity"
+            },
+            "gravity": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "gravity"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "home.artifacts"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.troopPoints"
+            },
+            "points": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.troopHits"
+            },
+            "hits": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "hits"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.troopDefendPoints"
+            },
+            "points": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.shipRepair"
+            },
+            "armorPct": {
+              "type": "integer"
+            },
+            "systemsPct": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "armorPct",
+            "systemsPct"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.acceptance"
+            },
+            "points": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.relationScale"
+            },
+            "gainNum": {
+              "type": "integer"
+            },
+            "gainDen": {
+              "type": "integer"
+            },
+            "lossNum": {
+              "type": "integer"
+            },
+            "lossDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "gainNum",
+            "gainDen",
+            "lossNum",
+            "lossDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.assimilationScale"
+            },
+            "num": {
+              "type": "integer"
+            },
+            "den": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "num",
+            "den"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.leaderOffers"
+            },
+            "points": {
+              "type": "integer"
+            },
+            "poolAdd": {
+              "type": "integer"
+            },
+            "poolNum": {
+              "type": "integer"
+            },
+            "poolDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "points",
+            "poolAdd",
+            "poolNum",
+            "poolDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.restrictedDiplomacy"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.applications"
+            },
+            "mode": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "mode"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.fantasticTraders"
+            },
+            "tradeGoodsPct": {
+              "type": "integer"
+            },
+            "foodSaleHalfBc": {
+              "type": "integer"
+            },
+            "treatyPoints": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "tradeGoodsPct",
+            "foodSaleHalfBc",
+            "treatyPoints"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.spyBonus"
+            },
+            "offense": {
+              "type": "integer"
+            },
+            "defense": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "offense",
+            "defense"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.mindControl"
+            },
+            "minHull": {
+              "type": "string",
+              "description": "a record key"
+            }
+          },
+          "required": [
+            "k",
+            "minHull"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.instantAssimilation"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.captureControl"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.lucky"
+            },
+            "vaeloriWeightDen": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "vaeloriWeightDen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.omniscient"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.stealthyShips"
+            }
+          },
+          "required": [
+            "k"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.transDimensional"
+            },
+            "ftlBonus": {
+              "type": "integer"
+            },
+            "drivelessSpeed": {
+              "type": "integer"
+            },
+            "combatSpeed": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "ftlBonus",
+            "drivelessSpeed",
+            "combatSpeed"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "empire.warlord"
+            },
+            "cpPerColony": {
+              "type": "integer"
+            },
+            "crewBonus": {
+              "type": "integer"
+            },
+            "leaderMaxLevel": {
+              "type": "integer"
+            },
+            "barracksFull": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "k",
+            "cpPerColony",
+            "crewBonus",
+            "leaderMaxLevel",
+            "barracksFull"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "colony.flatResearch"
+            },
+            "rp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "rp"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "k": {
+              "const": "colony.perScientistHalfRp"
+            },
+            "halfRp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "k",
+            "halfRp"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "applications": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "the key of a record in tech-fields (never its id)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "aiGroup": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 41
+        },
+        "inStrategic": {
+          "type": "boolean"
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "descKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "relayRangePc": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "key",
+        "field",
+        "aiGroup",
+        "inStrategic",
+        "nameKey",
+        "descKey"
+      ],
+      "additionalProperties": false
+    },
+    "armor": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "app": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "description": "snake_case key"
+        },
+        "mult": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "troopBonus": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strategicHp": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "negatesAp": {
+          "type": "boolean"
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        }
+      },
+      "required": [
+        "key",
+        "app",
+        "mult",
+        "troopBonus",
+        "strategicHp",
+        "negatesAp",
+        "nameKey"
+      ],
+      "additionalProperties": false
+    },
+    "buildings": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "application": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "description": "the key of a record in applications (never its id)"
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "upkeep": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "buildable": {
+          "type": "boolean"
+        },
+        "hull": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "the key of a record in hulls (never its id)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "autobuild": {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "enum": [
+                "flat",
+                "capitol",
+                "research",
+                "industry",
+                "pollution",
+                "cloning",
+                "ecology",
+                "foodBoost",
+                "farm",
+                "city",
+                "gravity",
+                "trade",
+                "salvage",
+                "academy",
+                "terraform",
+                "garrison",
+                "defence"
+              ]
+            }
+          },
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "flat"
+                },
+                "w": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000
+                }
+              },
+              "required": [
+                "kind",
+                "w"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "capitol"
+                },
+                "w": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000
+                }
+              },
+              "required": [
+                "kind",
+                "w"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "research"
+                },
+                "base": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "tech": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "base",
+                "tech"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "industry"
+                },
+                "base": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "pop": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "ind": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "base",
+                "pop",
+                "ind"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "pollution"
+                },
+                "skipFocus": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "kind",
+                "skipFocus"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "cloning"
+                },
+                "treasuryDiv": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "kind",
+                "treasuryDiv"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "ecology"
+                },
+                "base": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "eco": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "treasuryDiv": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skipFocus": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "kind",
+                "base",
+                "eco",
+                "treasuryDiv",
+                "skipFocus"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "foodBoost"
+                },
+                "surplus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "deficit": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "eco": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "needsFarming": {
+                  "type": "boolean"
+                },
+                "skipFocus": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "kind",
+                "surplus",
+                "deficit",
+                "eco",
+                "needsFarming",
+                "skipFocus"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "farm"
+                },
+                "byFood": {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  ],
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "eco": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skipFocus": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "kind",
+                "byFood",
+                "eco",
+                "skipFocus"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "city"
+                },
+                "w": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000
+                }
+              },
+              "required": [
+                "kind",
+                "w"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "gravity"
+                },
+                "rows": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "race": {
+                        "enum": [
+                          "low",
+                          "normal",
+                          "heavy"
+                        ]
+                      },
+                      "planet": {
+                        "enum": [
+                          "low",
+                          "normal",
+                          "heavy"
+                        ]
+                      },
+                      "w": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "race",
+                      "planet",
+                      "w"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "eco": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "rows",
+                "eco"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "trade"
+                },
+                "popAbove": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "div": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "kind",
+                "popAbove",
+                "div"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "salvage"
+                },
+                "div": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "pop": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "bonus": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "div",
+                "pop",
+                "bonus"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "academy"
+                },
+                "prodAbove": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "popAbove": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "prodAbove",
+                "popAbove",
+                "offset"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "terraform"
+                },
+                "climates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "climate": {
+                        "type": "string",
+                        "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                        "description": "snake_case key"
+                      },
+                      "w": {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      "aquaticW": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "climate",
+                      "w",
+                      "aquaticW"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "eco": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "kind",
+                "climates",
+                "eco"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "garrison"
+                },
+                "neighbours": {
+                  "type": "object",
+                  "properties": {
+                    "w": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "p": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "n": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "x": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "th": {
+                      "type": "integer",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "w",
+                    "p",
+                    "n",
+                    "x",
+                    "th"
+                  ],
+                  "additionalProperties": false
+                },
+                "popAbove": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "unlessHas": {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                  "description": "snake_case key"
+                },
+                "govBonus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "conqueredBonus": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "treasuryDiv": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "kind",
+                "neighbours",
+                "popAbove",
+                "unlessHas",
+                "govBonus",
+                "conqueredBonus",
+                "treasuryDiv"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "defence"
+                },
+                "neighbours": {
+                  "type": "object",
+                  "properties": {
+                    "w": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "p": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "n": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "x": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "th": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "cp": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "w",
+                    "p",
+                    "n",
+                    "x",
+                    "th",
+                    "cp"
+                  ],
+                  "additionalProperties": false
+                },
+                "interdictorBlocks": {
+                  "type": "boolean"
+                },
+                "radiatedEco": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "treasuryDiv": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              },
+              "required": [
+                "kind",
+                "neighbours",
+                "interdictorBlocks",
+                "radiatedEco",
+                "treasuryDiv"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        }
+      },
+      "required": [
+        "key",
+        "application",
+        "cost",
+        "upkeep",
+        "buildable",
+        "hull",
+        "nameKey",
+        "autobuild"
+      ],
+      "additionalProperties": false
+    },
+    "computers": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "app": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "description": "snake_case key"
+        },
+        "beamAttack": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cost": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        }
+      },
+      "required": [
+        "key",
+        "app",
+        "beamAttack",
+        "cost",
+        "nameKey"
+      ],
+      "additionalProperties": false
+    },
+    "race-picks": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "group": {
+          "enum": [
+            "trait",
+            "government",
+            "special"
+          ]
+        },
+        "trait": {
+          "anyOf": [
+            {
+              "enum": [
+                "population",
+                "farming",
+                "industry",
+                "science",
+                "money",
+                "shipDefense",
+                "shipAttack",
+                "groundCombat",
+                "spying"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "level": {
+          "anyOf": [
+            {
+              "enum": [
+                "penalty",
+                "bonus",
+                "bigBonus"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cost": {
+          "type": "integer"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "valueUnit": {
+          "anyOf": [
+            {
+              "enum": [
+                "pct",
+                "halfFood",
+                "halfBc",
+                "perWorker",
+                "points"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "government": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "snake_case key"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exclusiveWith": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "description": "snake_case key"
+          },
+          "uniqueItems": true
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "descKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/effect"
+          }
+        }
+      },
+      "required": [
+        "key",
+        "group",
+        "trait",
+        "level",
+        "cost",
+        "value",
+        "valueUnit",
+        "government",
+        "exclusiveWith",
+        "nameKey",
+        "descKey"
+      ],
+      "additionalProperties": false
+    },
+    "races": {
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "enum": [
+            "carina-race/1"
+          ]
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "stock": {
+          "type": "boolean"
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "singularKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "flavourKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "homeStarKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "rulerNamesKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        },
+        "government": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "description": "snake_case key"
+        },
+        "picks": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "description": "snake_case key"
+          },
+          "uniqueItems": true
+        },
+        "homeworld": {
+          "type": "object",
+          "properties": {
+            "size": {
+              "enum": [
+                "medium",
+                "large"
+              ]
+            },
+            "climate": {
+              "enum": [
+                "terran",
+                "ocean"
+              ]
+            },
+            "minerals": {
+              "enum": [
+                "abundant",
+                "rich"
+              ]
+            },
+            "gravity": {
+              "enum": [
+                "normal",
+                "low",
+                "heavy"
+              ]
+            },
+            "artifacts": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "size",
+            "climate",
+            "minerals",
+            "gravity",
+            "artifacts"
+          ],
+          "additionalProperties": false
+        },
+        "aiPersonality": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "xenophobic",
+              "ruthless",
+              "aggressive",
+              "erratic",
+              "honorable",
+              "pacifist"
+            ]
+          },
+          "minItems": 10,
+          "maxItems": 10
+        },
+        "variants": {
+          "type": "object",
+          "properties": {
+            "hard": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "n": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                  },
+                  "start": {
+                    "type": "array",
+                    "items": {
+                      "$comment": "checked by the game's compiler"
+                    }
+                  },
+                  "mutation": {
+                    "type": "array",
+                    "items": {
+                      "$comment": "checked by the game's compiler"
+                    }
+                  }
+                },
+                "required": [
+                  "n",
+                  "start",
+                  "mutation"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 3,
+              "maxItems": 3
+            },
+            "impossible": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "n": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 3
+                  },
+                  "start": {
+                    "type": "array",
+                    "items": {
+                      "$comment": "checked by the game's compiler"
+                    }
+                  },
+                  "mutation": {
+                    "type": "array",
+                    "items": {
+                      "$comment": "checked by the game's compiler"
+                    }
+                  }
+                },
+                "required": [
+                  "n",
+                  "start",
+                  "mutation"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 3,
+              "maxItems": 3
+            }
+          },
+          "required": [
+            "hard",
+            "impossible"
+          ],
+          "additionalProperties": false
+        },
+        "roles": {
+          "type": "object",
+          "properties": {
+            "portrait": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+              "description": "asset role id"
+            },
+            "selection": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+              "description": "asset role id"
+            },
+            "ambassadorPortrait": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+              "description": "asset role id"
+            },
+            "emblem": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+              "description": "asset role id"
+            },
+            "ambassadorRoom": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+              "description": "asset role id"
+            },
+            "musicCue": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+              "description": "asset role id"
+            }
+          },
+          "required": [
+            "portrait",
+            "selection",
+            "ambassadorPortrait",
+            "emblem",
+            "ambassadorRoom",
+            "musicCue"
+          ],
+          "additionalProperties": false
+        },
+        "relationsAs": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "snake_case key"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "defaultRulerSex": {
+          "enum": [
+            "male",
+            "female"
+          ]
+        }
+      },
+      "required": [
+        "$schema",
+        "key",
+        "stock",
+        "nameKey",
+        "singularKey",
+        "flavourKey",
+        "homeStarKey",
+        "rulerNamesKey",
+        "government",
+        "picks",
+        "homeworld",
+        "aiPersonality",
+        "variants"
+      ],
+      "additionalProperties": false
+    },
+    "shields": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "app": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "description": "snake_case key"
+        },
+        "reduction": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "space": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "cost": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        }
+      },
+      "required": [
+        "key",
+        "app",
+        "reduction",
+        "space",
+        "cost",
+        "nameKey"
+      ],
+      "additionalProperties": false
+    },
+    "specials": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "app": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+          "description": "snake_case key"
+        },
+        "space": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "integer"
+            }
+          ],
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "cost": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "minItems": 6,
+          "maxItems": 6
+        },
+        "excludes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "description": "snake_case key"
+          },
+          "uniqueItems": true
+        },
+        "indestructible": {
+          "type": "boolean"
+        },
+        "playerAvailable": {
+          "type": "boolean"
+        },
+        "strategic": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "value": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "type",
+                "value"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        }
+      },
+      "required": [
+        "key",
+        "app",
+        "space",
+        "cost",
+        "excludes",
+        "indestructible",
+        "playerAvailable",
+        "strategic",
+        "nameKey"
+      ],
+      "additionalProperties": false
+    },
+    "tech-fields": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "kind": {
+          "enum": [
+            "starting",
+            "normal",
+            "xenon",
+            "hyperAdvanced"
+          ]
+        },
+        "area": {
+          "anyOf": [
+            {
+              "enum": [
+                "biology",
+                "chemistry",
+                "computers",
+                "construction",
+                "forceFields",
+                "physics",
+                "power",
+                "sociology"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "prev": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "the key of a record in tech-fields (never its id)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "next": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "the key of a record in tech-fields (never its id)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 22
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        }
+      },
+      "required": [
+        "key",
+        "kind",
+        "area",
+        "prev",
+        "next",
+        "cost",
+        "level",
+        "nameKey"
+      ],
+      "additionalProperties": false
+    },
+    "weapons": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+          "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+        },
+        "application": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "the key of a record in applications (never its id)"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "class": {
+          "enum": [
+            "beam",
+            "missile",
+            "torpedo",
+            "bomb",
+            "fighter",
+            "special"
+          ]
+        },
+        "ammo": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "space": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "damage": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "strategicDamage": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "integer",
+              "minimum": 0
+            }
+          ],
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "mods": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "description": "snake_case key"
+          },
+          "uniqueItems": true
+        },
+        "inherentBits": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 65535
+        },
+        "monster": {
+          "type": "boolean"
+        },
+        "nameKey": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+          "description": "text key"
+        }
+      },
+      "required": [
+        "key",
+        "application",
+        "class",
+        "ammo",
+        "space",
+        "cost",
+        "damage",
+        "strategicDamage",
+        "mods",
+        "inherentBits",
+        "monster",
+        "nameKey"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

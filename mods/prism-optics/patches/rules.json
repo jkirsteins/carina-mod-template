@@ -1,0 +1,50 @@
+{
+  "$schema": "carina-patch/1",
+  "patches": [
+    {
+      "op": "splice",
+      "catalog": "tech-fields",
+      "key": "carina_team.prism_optics.refractive_optics",
+      "after": "physics"
+    },
+    {
+      "op": "splice",
+      "catalog": "tech-fields",
+      "key": "carina_team.prism_optics.coherent_prisms",
+      "after": "tachyon_physics"
+    },
+    {
+      "op": "set",
+      "catalog": "weapons",
+      "key": "laser_cannon",
+      "path": "cost",
+      "value": 4,
+      "expect": {
+        "cost": 5
+      }
+    },
+    {
+      "op": "append",
+      "catalog": "start-state",
+      "key": "classic",
+      "path": "levels.advanced.alsoKnown",
+      "value": {
+        "field": "carina_team.prism_optics.refractive_optics"
+      }
+    },
+    {
+      "op": "append",
+      "catalog": "start-state",
+      "key": "classic",
+      "path": "levels.postWarp.allAppsExcluded",
+      "value": "carina_team.prism_optics.prism_beam"
+    },
+    {
+      "op": "append",
+      "catalog": "start-state",
+      "key": "classic",
+      "path": "levels.postWarp.allAppsExcluded",
+      "value": "carina_team.prism_optics.prism_lattice"
+    }
+  ]
+}

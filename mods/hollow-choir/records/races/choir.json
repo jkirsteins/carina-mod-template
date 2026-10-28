@@ -1,0 +1,126 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "races",
+  "records": [
+    {
+      "$schema": "carina-race/1",
+      "key": "carina_team.hollow_choir.choir",
+      "stock": false,
+      "nameKey": "race.carina_team.hollow_choir.choir.name",
+      "singularKey": "race.carina_team.hollow_choir.choir.singular",
+      "flavourKey": "race.carina_team.hollow_choir.choir.flavour",
+      "homeStarKey": "race.carina_team.hollow_choir.choir.homeStar",
+      "rulerNamesKey": "names.rulers.carina_team.hollow_choir.choir",
+      "government": "dictatorship",
+      "picks": [
+        "carina_team.hollow_choir.resonance",
+        "carina_team.hollow_choir.pipe_bones",
+        "science_bonus"
+      ],
+      "homeworld": {
+        "size": "medium",
+        "climate": "terran",
+        "minerals": "abundant",
+        "gravity": "normal",
+        "artifacts": false
+      },
+      "aiPersonality": [
+        "erratic",
+        "honorable",
+        "honorable",
+        "honorable",
+        "pacifist",
+        "pacifist",
+        "pacifist",
+        "pacifist",
+        "pacifist",
+        "pacifist"
+      ],
+      "variants": {
+        "hard": [
+          {
+            "n": 1,
+            "start": [
+              {
+                "add": "rich_home_world"
+              }
+            ],
+            "mutation": [
+              {
+                "add": "industry_bonus"
+              }
+            ]
+          },
+          {
+            "n": 2,
+            "start": [
+              {
+                "add": "rich_home_world"
+              }
+            ],
+            "mutation": [
+              {
+                "add": "industry_bonus"
+              }
+            ]
+          },
+          {
+            "n": 3,
+            "start": [
+              {
+                "add": "rich_home_world"
+              }
+            ],
+            "mutation": [
+              {
+                "add": "industry_bonus"
+              }
+            ]
+          }
+        ],
+        "impossible": [
+          {
+            "n": 1,
+            "start": [
+              {
+                "add": "rich_home_world"
+              }
+            ],
+            "mutation": [
+              {
+                "add": "industry_bonus"
+              }
+            ]
+          },
+          {
+            "n": 2,
+            "start": [
+              {
+                "add": "rich_home_world"
+              }
+            ],
+            "mutation": [
+              {
+                "add": "industry_bonus"
+              }
+            ]
+          },
+          {
+            "n": 3,
+            "start": [
+              {
+                "add": "rich_home_world"
+              }
+            ],
+            "mutation": [
+              {
+                "add": "industry_bonus"
+              }
+            ]
+          }
+        ]
+      },
+      "relationsAs": "cognars"
+    }
+  ]
+}

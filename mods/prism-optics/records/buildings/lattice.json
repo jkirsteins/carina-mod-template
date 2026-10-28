@@ -1,0 +1,17 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "buildings",
+  "records": [
+    {
+      "key": "carina_team.prism_optics.prism_lattice",
+      "application": "carina_team.prism_optics.prism_lattice",
+      "cost": 120,
+      "upkeep": 2,
+      "buildable": true,
+      "hull": null,
+      "nameKey": "bld.carina_team.prism_optics.prism_lattice.name",
+      "effects": [{ "k": "colony.flatResearch", "rp": 15 }],
+      "autobuild": { "kind": "research", "base": 11, "tech": 4 }
+    }
+  ]
+}

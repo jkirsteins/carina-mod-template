@@ -1,0 +1,30 @@
+{
+  "$schema": "carina-roles/1",
+  "roles": [
+    { "role": "galaxy.starfield.0", "file": "assets/art/starfield-0.png" },
+    { "role": "galaxy.starfield.1", "file": "assets/art/starfield-1.png" },
+    { "role": "galaxy.starfield.2", "file": "assets/art/starfield-2.png" },
+    { "role": "galaxy.starfield.3", "file": "assets/art/starfield-3.png" },
+    { "role": "galaxy.system.backdrop.0", "file": "assets/art/system-0.png" },
+    { "role": "galaxy.system.backdrop.1", "file": "assets/art/system-1.png" },
+    { "role": "galaxy.system.backdrop.2", "file": "assets/art/system-2.png" },
+    { "role": "galaxy.system.backdrop.3", "file": "assets/art/system-3.png" },
+    { "role": "menus.title.backdrop", "file": "assets/art/title.png" },
+    { "role": "music.cue.1", "file": "assets/audio/theme-title.ogg" },
+    { "role": "music.cue.1.m4a", "file": "assets/audio/theme-title.m4a" },
+    { "role": "music.cue.2", "file": "assets/audio/theme-title.ogg" },
+    { "role": "music.cue.2.m4a", "file": "assets/audio/theme-title.m4a" },
+    { "role": "music.cue.3", "file": "assets/audio/theme-title.ogg" },
+    { "role": "music.cue.3.m4a", "file": "assets/audio/theme-title.m4a" },
+    { "role": "music.cue.901", "file": "assets/audio/theme-galaxy.ogg" },
+    { "role": "music.cue.901.m4a", "file": "assets/audio/theme-galaxy.m4a" },
+    { "role": "music.cue.904", "file": "assets/audio/theme-galaxy.ogg" },
+    { "role": "music.cue.904.m4a", "file": "assets/audio/theme-galaxy.m4a" },
+    { "role": "music.cue.905", "file": "assets/audio/theme-galaxy.ogg" },
+    { "role": "music.cue.905.m4a", "file": "assets/audio/theme-galaxy.m4a" },
+    { "role": "sfx.040", "file": "assets/audio/button.ogg" },
+    { "role": "sfx.040.m4a", "file": "assets/audio/button.m4a" },
+    { "role": "sfx.041", "file": "assets/audio/confirm.ogg" },
+    { "role": "sfx.041.m4a", "file": "assets/audio/confirm.m4a" }
+  ]
+}
