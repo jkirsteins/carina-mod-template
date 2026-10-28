@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Records added to tech-fields (carina-records/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalog",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-records/1"
+    },
+    "catalog": {
+      "const": "tech-fields"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+            "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+          },
+          "kind": {
+            "enum": [
+              "starting",
+              "normal",
+              "xenon",
+              "hyperAdvanced"
+            ]
+          },
+          "area": {
+            "anyOf": [
+              {
+                "enum": [
+                  "biology",
+                  "chemistry",
+                  "computers",
+                  "construction",
+                  "forceFields",
+                  "physics",
+                  "power",
+                  "sociology"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "prev": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                "description": "the key of a record in tech-fields (never its id)"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "next": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                "description": "the key of a record in tech-fields (never its id)"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "cost": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "level": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 22
+          },
+          "nameKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          }
+        },
+        "required": [
+          "key",
+          "kind",
+          "area",
+          "prev",
+          "next",
+          "cost",
+          "level",
+          "nameKey"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

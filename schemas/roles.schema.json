@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Mod art and audio (assets/roles.json)",
+  "description": "Roles the package replaces or adds, the stock race each new race takes its pictures from, and base buildings new buildings are drawn as.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-roles/1"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "file"
+        ],
+        "properties": {
+          "role": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9._-]*$"
+          },
+          "file": {
+            "type": "string",
+            "pattern": "^assets/[A-Za-z0-9._/-]+\\.(png|webp|ogg|m4a)$"
+          },
+          "frames": {
+            "description": "combat ship atlases (<key>.h<0-4>.f<0-3>.x<X>.y<Y>) and building lot atlases (r<0-5>c<0-5>_x<X>_y<Y>) only",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "x",
+                "y",
+                "w",
+                "h"
+              ],
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "pattern": "^([a-z0-9-]+)\\.h([0-4])\\.f([0-3])\\.x(\\d{1,2})\\.y(\\d{1,2})$|^r([0-5])c([0-5])_x(-?\\d+)_y(-?\\d+)$"
+                },
+                "x": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "y": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "w": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "h": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "races": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "race",
+          "artBase"
+        ],
+        "properties": {
+          "race": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*$"
+          },
+          "artBase": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*$"
+          }
+        }
+      }
+    },
+    "artFrom": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "catalog",
+          "key",
+          "from"
+        ],
+        "properties": {
+          "catalog": {
+            "enum": [
+              "buildings"
+            ]
+          },
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*$"
+          },
+          "from": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(\\.[a-z][a-z0-9_]*)*$"
+          }
+        }
+      }
+    }
+  }
+}

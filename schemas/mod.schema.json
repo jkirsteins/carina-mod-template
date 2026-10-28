@@ -1,0 +1,221 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Throne of Carina mod manifest (carina-mod/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "id",
+    "version",
+    "format",
+    "rulesVersion",
+    "phase",
+    "title",
+    "authors",
+    "license"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-mod/1"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 4,
+      "maxLength": 64,
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)+$",
+      "not": {
+        "pattern": "^carina\\."
+      },
+      "description": "author.slug: lowercase letters and digits, inner hyphens; the carina. prefix is reserved"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
+      "description": "semver: bump it with every release"
+    },
+    "format": {
+      "const": 1,
+      "description": "package format; this game reads 1"
+    },
+    "rulesVersion": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "bump when saves made with an older version need a migration"
+    },
+    "phase": {
+      "enum": [
+        "content",
+        "patch",
+        "final"
+      ],
+      "description": "content (adds things), patch (changes things), final (last word)"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 40,
+      "pattern": "^[!-~\\u00a1-\\u00ff](?:[ -~\\u00a0-\\u00ff]*[!-~\\u00a1-\\u00ff])?$",
+      "description": "1-40 printable Latin-1 characters"
+    },
+    "summary": {
+      "type": "string",
+      "maxLength": 200,
+      "description": "up to 200 printable Latin-1 characters"
+    },
+    "authors": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "pattern": "^[!-~\\u00a1-\\u00ff](?:[ -~\\u00a0-\\u00ff]*[!-~\\u00a1-\\u00ff])?$",
+            "description": "author name"
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https:\\/\\/[\\x21-\\x7e]{1,192}$"
+          }
+        }
+      }
+    },
+    "license": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9.+() -]{1,64}$",
+      "description": "an SPDX licence expression, for example CC-BY-4.0"
+    },
+    "sources": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "files",
+          "author",
+          "license"
+        ],
+        "properties": {
+          "files": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._*/-]{1,200}$"
+          },
+          "author": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 40,
+            "pattern": "^[!-~\\u00a1-\\u00ff](?:[ -~\\u00a0-\\u00ff]*[!-~\\u00a1-\\u00ff])?$",
+            "description": "the source's author"
+          },
+          "license": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9.+() -]{1,64}$",
+            "description": "an SPDX licence expression, for example CC-BY-4.0"
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https:\\/\\/[\\x21-\\x7e]{1,192}$"
+          }
+        }
+      }
+    },
+    "aiUse": {
+      "type": "array",
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "graphics",
+          "sound",
+          "text"
+        ]
+      },
+      "description": "what in this mod was made with generative AI"
+    },
+    "allowFeature": {
+      "type": "boolean",
+      "description": "the project may feature this mod in marketing, with credit"
+    },
+    "allowEmbed": {
+      "type": "boolean",
+      "description": "shared saves may embed this mod's rules and text"
+    },
+    "basedOn": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "description": "package hashes of the mods this one remixes"
+    },
+    "game": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kernel": {
+          "type": "string",
+          "minLength": 1,
+          "description": "a version range: *, 1.2.3, ^1.2.0, ~1.2.0, >=1.0.0 <2.0.0"
+        },
+        "base": {
+          "type": "string",
+          "minLength": 1,
+          "description": "a version range: *, 1.2.3, ^1.2.0, ~1.2.0, >=1.0.0 <2.0.0"
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 64,
+            "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)+$"
+          },
+          "range": {
+            "type": "string",
+            "minLength": 1,
+            "description": "a version range: *, 1.2.3, ^1.2.0, ~1.2.0, >=1.0.0 <2.0.0"
+          },
+          "kind": {
+            "enum": [
+              "required",
+              "optional",
+              "incompatible"
+            ]
+          }
+        }
+      }
+    },
+    "loadAfter": {
+      "type": "array",
+      "maxItems": 32,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 4,
+        "maxLength": 64,
+        "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*(?:\\.[a-z][a-z0-9]*(?:-[a-z0-9]+)*)+$"
+      }
+    }
+  }
+}

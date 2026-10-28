@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Mod text (i18n/<locale>/<namespace>.json)",
+  "description": "Flat text keys to ICU message strings. The game's bitmap fonts cover printable Latin-1 without the soft hyphen (MOD1c text policy: docs/modding/reference/limits.md).",
+  "type": "object",
+  "propertyNames": {
+    "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$"
+  },
+  "additionalProperties": {
+    "type": "string",
+    "maxLength": 2000,
+    "pattern": "^[ -~\\u00a0-\\u00ac\\u00ae-\\u00ff]*$"
+  }
+}

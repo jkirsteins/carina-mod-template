@@ -1,0 +1,289 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Records added to races (carina-records/1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalog",
+    "records"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "carina-records/1"
+    },
+    "catalog": {
+      "const": "races"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "$schema": {
+            "enum": [
+              "carina-race/1"
+            ]
+          },
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*){2,}$",
+            "description": "<namespace>.<snake_case>: the namespace is your package id with '-' read as '_'"
+          },
+          "stock": {
+            "type": "boolean"
+          },
+          "nameKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "singularKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "flavourKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "homeStarKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "rulerNamesKey": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*(\\.[A-Za-z0-9_]+)*$",
+            "description": "text key"
+          },
+          "government": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+            "description": "snake_case key"
+          },
+          "picks": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+              "description": "snake_case key"
+            },
+            "uniqueItems": true
+          },
+          "homeworld": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "enum": [
+                  "medium",
+                  "large"
+                ]
+              },
+              "climate": {
+                "enum": [
+                  "terran",
+                  "ocean"
+                ]
+              },
+              "minerals": {
+                "enum": [
+                  "abundant",
+                  "rich"
+                ]
+              },
+              "gravity": {
+                "enum": [
+                  "normal",
+                  "low",
+                  "heavy"
+                ]
+              },
+              "artifacts": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "size",
+              "climate",
+              "minerals",
+              "gravity",
+              "artifacts"
+            ],
+            "additionalProperties": false
+          },
+          "aiPersonality": {
+            "type": "array",
+            "items": {
+              "enum": [
+                "xenophobic",
+                "ruthless",
+                "aggressive",
+                "erratic",
+                "honorable",
+                "pacifist"
+              ]
+            },
+            "minItems": 10,
+            "maxItems": 10
+          },
+          "variants": {
+            "type": "object",
+            "properties": {
+              "hard": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "n": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 3
+                    },
+                    "start": {
+                      "type": "array",
+                      "items": {
+                        "$comment": "checked by the game's compiler"
+                      }
+                    },
+                    "mutation": {
+                      "type": "array",
+                      "items": {
+                        "$comment": "checked by the game's compiler"
+                      }
+                    }
+                  },
+                  "required": [
+                    "n",
+                    "start",
+                    "mutation"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 3,
+                "maxItems": 3
+              },
+              "impossible": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "n": {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 3
+                    },
+                    "start": {
+                      "type": "array",
+                      "items": {
+                        "$comment": "checked by the game's compiler"
+                      }
+                    },
+                    "mutation": {
+                      "type": "array",
+                      "items": {
+                        "$comment": "checked by the game's compiler"
+                      }
+                    }
+                  },
+                  "required": [
+                    "n",
+                    "start",
+                    "mutation"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 3,
+                "maxItems": 3
+              }
+            },
+            "required": [
+              "hard",
+              "impossible"
+            ],
+            "additionalProperties": false
+          },
+          "roles": {
+            "type": "object",
+            "properties": {
+              "portrait": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "asset role id"
+              },
+              "selection": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "asset role id"
+              },
+              "ambassadorPortrait": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "asset role id"
+              },
+              "emblem": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "asset role id"
+              },
+              "ambassadorRoom": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "asset role id"
+              },
+              "musicCue": {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(\\.[A-Za-z0-9_]+)+$",
+                "description": "asset role id"
+              }
+            },
+            "required": [
+              "portrait",
+              "selection",
+              "ambassadorPortrait",
+              "emblem",
+              "ambassadorRoom",
+              "musicCue"
+            ],
+            "additionalProperties": false
+          },
+          "relationsAs": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-z][a-z0-9_]*(?:\\.[a-z][a-z0-9_]*)*$",
+                "description": "snake_case key"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "defaultRulerSex": {
+            "enum": [
+              "male",
+              "female"
+            ]
+          }
+        },
+        "required": [
+          "$schema",
+          "key",
+          "stock",
+          "nameKey",
+          "singularKey",
+          "flavourKey",
+          "homeStarKey",
+          "rulerNamesKey",
+          "government",
+          "picks",
+          "homeworld",
+          "aiPersonality",
+          "variants"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}
