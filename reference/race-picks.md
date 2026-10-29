@@ -4,7 +4,7 @@
 
 A race pick: a trait level or a special ability, made of race effects.
 
-A mod adds records in `records/race-picks/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "race-picks", "records": [...] }`) and changes base records with patch rows on catalog `race-picks`. Schema: `schemas/records/race-picks.schema.json`.
+A mod adds records in `records/race-picks/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "race-picks", "records": [...] }`) and changes base records with patch rows on catalog `race-picks`. Schema: [race-picks records schema](../schemas/records/race-picks.schema.json).
 
 ## Fields
 
@@ -20,10 +20,10 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `value` | integer or null | yes |  |
 | `valueUnit` | one of `pct`, `halfFood`, `halfBc`, `perWorker`, `points` or null | yes |  |
 | `government` | snake_case key or null | yes |  |
-| `exclusiveWith` | list of snake_case key (no repeats) | yes |  |
+| `exclusiveWith` | list of snake_case keys (no repeats) | yes |  |
 | `nameKey` | text key | yes |  |
 | `descKey` | text key | yes |  |
-| `effects` | list of effects (see effects.md) | no |  |
+| `effects` | list of effects ([Effects](effects.md)) | no |  |
 
 ## Also register it in
 
@@ -37,7 +37,7 @@ Computer races use the picks of their race records; the AI's mutation order is t
 
 - Only special picks can be added: every trait level is taken, and governments are closed. Column three of the custom race screen pages when it holds more than 22 picks.
 - The screens label a pick `ui.raceCustom.option.<key>` and `ui.raceSelect.pick.<key>`: the mod's English text needs both.
-- Effects come from the race effect list (see effects.md).
+- Effects come from the race effect list ([Effects](effects.md)).
 - The pick's description (`descKey`) is plain text: a mod's own text keys take no ICU arguments (the base's pick texts do, read from the record), so write the numbers into the text and keep them equal to the record's `effects` when you change either. Give it no `Name:` prefix: the screens show the pick's name beside it.
 
 ## Patch paths

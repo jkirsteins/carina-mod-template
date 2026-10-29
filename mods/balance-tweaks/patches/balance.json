@@ -1,0 +1,29 @@
+{
+  "$schema": "carina-patch/1",
+  "patches": [
+    {
+      "op": "set",
+      "catalog": "combat-rules",
+      "key": "standard",
+      "path": "roundLimit",
+      "value": 75,
+      "expect": { "roundLimit": 50 }
+    },
+    {
+      "op": "set",
+      "catalog": "buildings",
+      "key": "colony_base",
+      "path": "cost",
+      "value": 150,
+      "expect": { "cost": 200 }
+    },
+    {
+      "op": "set",
+      "catalog": "start-state",
+      "key": "classic",
+      "path": "levels.average.treasuryBase",
+      "value": 150,
+      "expect": { "levels.average.treasuryBase": 50 }
+    }
+  ]
+}

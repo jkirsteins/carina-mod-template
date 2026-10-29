@@ -4,7 +4,7 @@
 
 A ship weapon. A beam is fully described by its record (damage pair, mods, space and cost). Missiles, torpedoes, fighters and special weapons also need rows in the combat rules.
 
-A mod adds records in `records/weapons/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "weapons", "records": [...] }`) and changes base records with patch rows on catalog `weapons`. Schema: `schemas/records/weapons.schema.json`.
+A mod adds records in `records/weapons/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "weapons", "records": [...] }`) and changes base records with patch rows on catalog `weapons`. Schema: [weapons records schema](../schemas/records/weapons.schema.json).
 
 ## Fields
 
@@ -20,7 +20,7 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `cost` | integer >= 0 | yes | production cost per mount |
 | `damage` | [integer >= 0, integer >= 0] | yes | [minimum, maximum] damage in tactical combat |
 | `strategicDamage` | [integer >= 0, integer >= 0] | yes | [minimum, maximum] damage in strategic (auto-resolve) combat |
-| `mods` | list of snake_case key (no repeats) | yes | weapon-mod keys the weapon may carry |
+| `mods` | list of snake_case keys (no repeats) | yes | weapon-mod keys the weapon may carry |
 | `inherentBits` | integer 0..65535 | yes |  |
 | `monster` | true or false | yes | false for every player weapon |
 | `nameKey` | text key | yes |  |
@@ -29,10 +29,10 @@ References to other records are written as keys; the game turns them into ids.
 
 ## Also register it in
 
-- missile: combat-rules `fliers.missile.types` (append `{ weapon, hp, bd }`)
-- torpedo: combat-rules `fliers.torpedo.types`
-- fighter: combat-rules `fliers.fighter.types` and ship-design `auto.fighters`
-- special weapon: combat-rules `specialWeapons.weapons` with one of the existing `kind`s, and ship-design `auto.specialWeapons`
+- missile: [combat-rules](rules-combat-rules.md) `fliers.missile.types` (append `{ weapon, hp, bd }`)
+- torpedo: [combat-rules](rules-combat-rules.md) `fliers.torpedo.types`
+- fighter: [combat-rules](rules-combat-rules.md) `fliers.fighter.types` and [ship-design](rules-ship-design.md) `auto.fighters`
+- special weapon: [combat-rules](rules-combat-rules.md) `specialWeapons.weapons` with one of the existing `kind`s, and [ship-design](rules-ship-design.md) `auto.specialWeapons`
 
 ## Computer players
 

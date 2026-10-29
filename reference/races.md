@@ -4,7 +4,7 @@
 
 A playable race: picks, government, homeworld, AI personality tables, text keys and art. A new race borrows a stock race's starting relations through `relationsAs`.
 
-A mod adds records in `records/races/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "races", "records": [...] }`) and changes base records with patch rows on catalog `races`. Schema: `schemas/records/races.schema.json`.
+A mod adds records in `records/races/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "races", "records": [...] }`) and changes base records with patch rows on catalog `races`. Schema: [races records schema](../schemas/records/races.schema.json).
 
 ## Fields
 
@@ -21,7 +21,7 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `homeStarKey` | text key | yes |  |
 | `rulerNamesKey` | text key | yes |  |
 | `government` | snake_case key | yes |  |
-| `picks` | list of snake_case key (no repeats) | yes |  |
+| `picks` | list of snake_case keys (no repeats) | yes |  |
 | `homeworld` | object (fields below) | yes |  |
 | `homeworld.size` | one of `medium`, `large` | yes |  |
 | `homeworld.climate` | one of `terran`, `ocean` | yes |  |
@@ -30,21 +30,27 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `homeworld.artifacts` | true or false | yes |  |
 | `aiPersonality` | list of exactly 10 one of `xenophobic`, `ruthless`, `aggressive`, `erratic`, `honorable`, `pacifist` | yes |  |
 | `variants` | object (fields below) | yes |  |
-| `variants.hard` | list of exactly 3 object (fields below) | yes |  |
-| `variants.impossible` | list of exactly 3 object (fields below) | yes |  |
+| `variants.hard` | list of exactly 3 objects (fields below) | yes |  |
+| `variants.hard[].n` | integer 1..3 | yes |  |
+| `variants.hard[].start` | list, checked by the game (see the base records) | yes |  |
+| `variants.hard[].mutation` | list, checked by the game (see the base records) | yes |  |
+| `variants.impossible` | list of exactly 3 objects (fields below) | yes |  |
+| `variants.impossible[].n` | integer 1..3 | yes |  |
+| `variants.impossible[].start` | list, checked by the game (see the base records) | yes |  |
+| `variants.impossible[].mutation` | list, checked by the game (see the base records) | yes |  |
 | `roles` | object (fields below) | no |  |
-| `roles.portrait` | asset role id | yes |  |
-| `roles.selection` | asset role id | yes |  |
-| `roles.ambassadorPortrait` | asset role id | yes |  |
-| `roles.emblem` | asset role id | yes |  |
-| `roles.ambassadorRoom` | asset role id | yes |  |
-| `roles.musicCue` | asset role id | yes |  |
+| `roles.portrait` | asset role id | yes (when `roles` is given) |  |
+| `roles.selection` | asset role id | yes (when `roles` is given) |  |
+| `roles.ambassadorPortrait` | asset role id | yes (when `roles` is given) |  |
+| `roles.emblem` | asset role id | yes (when `roles` is given) |  |
+| `roles.ambassadorRoom` | asset role id | yes (when `roles` is given) |  |
+| `roles.musicCue` | asset role id | yes (when `roles` is given) |  |
 | `relationsAs` | snake_case key or null | no |  |
 | `defaultRulerSex` | one of `male`, `female` | no |  |
 
 ## Also register it in
 
-- profile `availableRaces` (an `append` row on catalog `profile`, key `steam-dos-140b23`), so computer players can draw it at New Game
+- [profile](patch-ops.md#special-catalogs) `availableRaces` (an `append` row on catalog `profile`, key `steam-dos-140b23`), so computer players can draw it at New Game
 - `assets/roles.json` `races`: `{ "race": "<your race key>", "artBase": "<stock race key>" }`; every picture of the stock race stands in for one the mod does not bring
 
 ## Computer players

@@ -4,7 +4,7 @@
 
 An armour tier, unlocked by an application (`app`).
 
-A mod adds records in `records/armor/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "armor", "records": [...] }`) and changes base records with patch rows on catalog `armor`. Schema: `schemas/records/armor.schema.json`.
+A mod adds records in `records/armor/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "armor", "records": [...] }`) and changes base records with patch rows on catalog `armor`. Schema: [armor records schema](../schemas/records/armor.schema.json).
 
 ## Fields
 

@@ -2,92 +2,140 @@
 
 # Effects
 
-Records of `buildings`, `governments`, `race-picks` carry an `effects` list. Each effect is an object with `k` (its kind) and the parameters below; nothing else is allowed. The list is closed: a mod combines these effects but cannot add a kind. Parameters are integers, true or false, or record keys.
+Records of buildings, governments, race-picks carry an `effects` list. Each effect is an object with `k` (its kind) and the parameters below; nothing else is allowed. The list is closed: a mod combines these effects but cannot add a kind. Parameters are integers, true or false, or record keys.
 
-| Kind | Parameters |
-|---|---|
-| `colony.flatResearch` | `rp` (int) |
-| `colony.perScientistHalfRp` | `halfRp` (int) |
-| `defense.fighterGarrison` | `banks` (int), `refillRounds` (int) |
-| `defense.freeMod` | `mod` (key) |
-| `defense.garrisonCraft` | `weapon` (key), `flights` (int) |
-| `defense.groundBatteries` | `heavySpace` (int), `pdSpace` (int), `arcPremiumPct` (int) |
-| `defense.missileBase` | `space` (int), `rack` (int), `slots` (int), `ammo` (int) |
-| `defense.orbitalBase` | `fleetBa` (int) |
-| `defense.planetShield` | `reduction` (int), `strategicMe` (int) |
-| `defense.planetWeapon` | `weapon` (key), `count` (int) |
-| `economy.barracks` | none |
-| `economy.capitol` | none |
-| `economy.colonyBc` | `bc` (int) |
-| `economy.deadWorldFarming` | `foodHalf` (int) |
-| `economy.farmerFood` | `foodHalf` (int), `needsClimateBase` (bool) |
-| `economy.flatFood` | `food` (int) |
-| `economy.flatPp` | `pp` (int) |
-| `economy.foodReplication` | `ppPerFood` (int), `bcPerFood` (int) |
-| `economy.gravityImmune` | none |
-| `economy.incomePct` | `pct` (int) |
-| `economy.mineralsPp` | `ultraPoor` (int), `poor` (int), `abundant` (int), `rich` (int), `ultraRich` (int) |
-| `economy.mixedRaceShield` | none |
-| `economy.moralePct` | `pct` (int), `governmentGated` (bool) |
-| `economy.noPollution` | none |
-| `economy.ownRaceOnly` | none |
-| `economy.pollutionDivisor` | `div` (int), `step` (int) |
-| `economy.ppPerPop` | `pp` (int) |
-| `economy.toleranceMultiplier` | `mult` (int) |
-| `economy.workerPp` | `pp` (int) |
-| `empire.acceptance` | `points` (int) |
-| `empire.applications` | `mode` (key) |
-| `empire.assimilationScale` | `num` (int), `den` (int) |
-| `empire.captureControl` | none |
-| `empire.fantasticTraders` | `tradeGoodsPct` (int), `foodSaleHalfBc` (int), `treatyPoints` (int) |
-| `empire.instantAssimilation` | none |
-| `empire.leaderOffers` | `points` (int), `poolAdd` (int), `poolNum` (int), `poolDen` (int) |
-| `empire.lucky` | `vaeloriWeightDen` (int) |
-| `empire.mindControl` | `minHull` (key) |
-| `empire.omniscient` | none |
-| `empire.relationScale` | `gainNum` (int), `gainDen` (int), `lossNum` (int), `lossDen` (int) |
-| `empire.restrictedDiplomacy` | none |
-| `empire.shipRepair` | `armorPct` (int), `systemsPct` (int) |
-| `empire.spyBonus` | `offense` (int), `defense` (int) |
-| `empire.stealthyShips` | none |
-| `empire.transDimensional` | `ftlBonus` (int), `drivelessSpeed` (int), `combatSpeed` (int) |
-| `empire.troopDefendPoints` | `points` (int) |
-| `empire.troopHits` | `hits` (int) |
-| `empire.troopPoints` | `points` (int) |
-| `empire.warlord` | `cpPerColony` (int), `crewBonus` (int), `leaderMaxLevel` (int), `barracksFull` (bool) |
-| `home.artifacts` | none |
-| `home.climate` | `climate` (key) |
-| `home.gravity` | `gravity` (key) |
-| `home.minerals` | `minerals` (key) |
-| `home.size` | `size` (key) |
-| `leader.beamAttack` | `scope` (key), `fighters` (bool) |
-| `leader.beamDefense` | `scope` (key), `missileEvasionNum` (int), `missileEvasionDen` (int) |
-| `leader.boardingDefense` | `scope` (key) |
-| `leader.colonyOutput` | `scope` (key), `output` (key) |
-| `leader.commandPoints` | `scope` (key) |
-| `leader.crewXp` | `scope` (key) |
-| `leader.damagePct` | `scope` (key) |
-| `leader.diplomacy` | `scope` (key) |
-| `leader.fighters` | `scope` (key) |
-| `leader.groundTroops` | `scope` (key), `invadeNum` (int), `invadeDen` (int) |
-| `leader.growthPct` | `scope` (key) |
-| `leader.hireDiscount` | `scope` (key) |
-| `leader.income` | `scope` (key) |
-| `leader.mindControlBlock` | `scope` (key) |
-| `leader.monsterAttack` | `scope` (key) |
-| `leader.offerPoints` | `scope` (key) |
-| `leader.planetReveal` | `scope` (key) |
-| `leader.repairPct` | `scope` (key), `fullRepairAfterWin` (bool) |
-| `leader.research` | `scope` (key) |
-| `leader.speed` | `scope` (key), `ignoresNebulae` (bool), `nearBlackHoles` (bool) |
-| `leader.spyDefense` | `scope` (key) |
-| `leader.spyKill` | `scope` (key) |
-| `leader.spyOffense` | `scope` (key) |
-| `leader.treatyIncomePct` | `scope` (key) |
-| `pop.aquatic` | none |
-| `pop.capacityPerSize` | `pop` (int) |
-| `pop.firstColonistWorker` | none |
-| `pop.gravity` | `gravity` (key) |
-| `pop.noPollution` | none |
-| `pop.tolerant` | `points` (int), `capPct` (int) |
-| `pop.upkeepHalf` | `foodHalf` (int), `prodHalf` (int) |
+Validation accepts a kind on any of these catalogs. A kind does something only on the records its evaluator reads, named in the Read from column: a kind on any other record is ignored. Colony economy kinds can also be given through the `sources` rows of colony-economy, which is the only way for an application or a planet special; a building takes them in its own `effects` or in `sources`, never both. No kind is read from a government's `effects`.
+
+## colony
+
+Research output of one colony. Read from the same sources as the economy kinds.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `colony.flatResearch` | Adds a fixed amount of research to the colony each turn, after the percent terms. | `rp` (int): research points per turn | buildings | They add up. |
+| `colony.perScientistHalfRp` | Adds research per scientist on the colony. | `halfRp` (int): research points per scientist in half units (2 is one RP) | buildings; applications, through `sources`; planet specials, through `sources` | They add up. |
+
+## defense
+
+Planet defence in battle. Carried by buildings; the base buildings of the defence effects are the only ones the battle rules know.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `defense.fighterGarrison` | Makes the building the planet's Fighter Garrison: in battle it holds banks of fighters that refill between rounds. | `banks` (int): number of fighter banks, at least 1<br>`refillRounds` (int): battle rounds between refills, at least 1 | buildings | Only one building in the ruleset may carry it. The building also needs at least one `defense.garrisonCraft`. |
+| `defense.freeMod` | Gives the launchers of the building's Missile Base a weapon mod at no space cost. | `mod` (key): key of a record in weapon-mods | buildings; used on the building that carries `defense.missileBase` | Each one adds a mod. |
+| `defense.garrisonCraft` | One craft type the Fighter Garrison can hold. | `weapon` (key): key of a fighter record in weapons<br>`flights` (int): fighters (flights) in each bank of this craft | buildings; used on the building that carries `defense.fighterGarrison` | List the craft in order of advancement: the last one whose weapon's application the owner knows is used. |
+| `defense.groundBatteries` | Makes the building the planet's Ground Batteries: in battle it installs two beam emplacements, one with the heavy mod and one with the point-defence mod. | `heavySpace` (int): ship space of the heavy-mod emplacement<br>`pdSpace` (int): ship space of the point-defence emplacement<br>`arcPremiumPct` (int): percent added to the space an emplacement takes, for firing in all directions | buildings | Only one building in the ruleset may carry it; a second is refused. |
+| `defense.missileBase` | Makes the building the planet's Missile Base: in battle it installs missile launchers of the best missile the owner knows. | `space` (int): ship space the launchers share, split over the slots<br>`rack` (int): missiles per rack, used to work out the space one launcher takes<br>`slots` (int): number of weapon slots the space is split over<br>`ammo` (int): volleys each slot can fire | buildings | Only one building in the ruleset may carry it; a second is refused. |
+| `defense.orbitalBase` | Marks the building as an orbital base: the base fights beside the planet. | `fleetBa` (int): Beam Attack bonus the base gives to the whole defending side in tactical battle | buildings | A building with a `hull` must carry it, or the ruleset is refused. |
+| `defense.planetShield` | Gives the planet a shield while the building stands. | `reduction` (int): the shield's damage reduction in tactical battle<br>`strategicMe` (int): missile evasion the planet gets in strategic (auto-resolve) combat | buildings | In strategic combat the largest `strategicMe` of the standing shield buildings applies. |
+| `defense.planetWeapon` | Gives the planet a weapon mount while the building stands. | `weapon` (key): key of a record in weapons<br>`count` (int): number of mounts of that weapon | buildings | In tactical battles every one adds its mounts. Strategic (auto-resolve) combat uses only the first. |
+
+## economy
+
+Food, production, income, morale and pollution of one colony. Read from the sources of the colony-economy rules.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `economy.barracks` | Marks the building as the colony's barracks: the government's barracks morale percent is added. | none | buildings | One is enough. |
+| `economy.capitol` | Marks the building as the empire's capitol. Rules that ask whether the empire has a capitol (morale, bankruptcy, surrender, conquest, leaders, events) look for it. | none | buildings | One is enough. |
+| `economy.colonyBc` | Adds a fixed amount of income to a colony on a planet with this special. | `bc` (int): BC per turn | planet specials, through `sources` | They add up. |
+| `economy.deadWorldFarming` | Lets farmers on a planet whose climate gives no food produce the given amount, and lets the empire farm such worlds. | `foodHalf` (int): food per farmer in half-food units (2 is one food) | applications, through `sources` | One is enough: the value of the first known application (lowest id) is used. |
+| `economy.farmerFood` | Adds food per farmer on the colony. | `foodHalf` (int): food per farmer in half-food units (2 is one food)<br>`needsClimateBase` (bool): true: the bonus applies only on planets whose climate gives farmers food of their own | buildings | They add up. |
+| `economy.flatFood` | Adds a fixed amount of food to the colony each turn, after the percent terms. | `food` (int): food per turn | buildings | They add up. |
+| `economy.flatPp` | Adds a fixed amount of production to the colony each turn. It does not pollute. | `pp` (int): production points per turn | buildings | They add up. |
+| `economy.foodReplication` | Covers a food deficit with production: each food replaced costs production and gives income, up to the production available. | `ppPerFood` (int): production points spent per food replaced, at least 1<br>`bcPerFood` (int): BC gained per food replaced, 0 or more | buildings | Only the first one on the colony is used. |
+| `economy.gravityImmune` | Removes the gravity penalty from the colony's output. | none | buildings | One is enough. |
+| `economy.incomePct` | Adds a percent bonus to the colony's income. | `pct` (int): percent | buildings; applications, through `sources` | Each adds its percent of the same base, with the government's income percent. |
+| `economy.mineralsPp` | Adds flat production by the planet's mineral richness. The output pollutes. | `ultraPoor` (int): production points on an ultra poor planet<br>`poor` (int): production points on a poor planet<br>`abundant` (int): production points on an abundant planet<br>`rich` (int): production points on a rich planet<br>`ultraRich` (int): production points on an ultra rich planet | buildings | They add up. |
+| `economy.mixedRaceShield` | Removes the morale penalty of a colony with two or more races. | none | buildings | One is enough. |
+| `economy.moralePct` | Adds a morale percent to the colony. | `pct` (int): morale percent<br>`governmentGated` (bool): true: counts only under a government whose `psionicsMorale` is true | buildings; applications, through `sources` | They add up. A government without morale ignores all of them. |
+| `economy.noPollution` | Sets the colony's pollution to 0. | none | buildings | One is enough. |
+| `economy.ownRaceOnly` | Limits the `colony.perScientistHalfRp` of the same application to scientists of the owner's race. | none | applications, through `sources` | One is enough. |
+| `economy.pollutionDivisor` | Divides the colony's pollution input at its step. Steps apply in ascending order. | `div` (int): divisor, at least 1; the input is divided and rounded up<br>`step` (int): position in the order; every divisor in the ruleset needs its own step | buildings; applications, through `sources` | They apply one after the other. Two with the same step anywhere in the ruleset are refused. |
+| `economy.ppPerPop` | Adds production for each population unit of the colony. | `pp` (int): production points per population unit | buildings | They add up. |
+| `economy.toleranceMultiplier` | Multiplies the pollution the colony tolerates. | `mult` (int): factor, at least 1 | applications, through `sources` | The factors multiply. |
+| `economy.workerPp` | Adds production per worker on the colony. | `pp` (int): production points per worker | buildings; applications, through `sources` | They add up. |
+
+## empire
+
+Race rules that follow the owner empire. Carried by special race picks.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `empire.acceptance` | Changes the score of computer players deciding on the empire's proposals. | `points` (int): score points; negative lowers acceptance | special race picks | They add up. |
+| `empire.applications` | Validated and not read. Which empires choose one or all applications of a field follows the creative and uncreative picks named in start-state. | `mode` (key): `all` or `one`; not read | nothing | No effect. |
+| `empire.assimilationScale` | Scales the assimilation points per turn after the government's rate. | `num` (int): numerator<br>`den` (int): denominator | special race picks | Only the first (lowest pick id) is used. |
+| `empire.captureControl` | Captured ships can be controlled in the same battle. | none | special race picks | One is enough. |
+| `empire.fantasticTraders` | Trade goods convert at full value (from 100 percent), surplus food sells for the given price, and trade treaties get goal points. | `tradeGoodsPct` (int): trade goods conversion percent; 100 or more is full value<br>`foodSaleHalfBc` (int): BC per surplus food unit sold, in half BC<br>`treatyPoints` (int): points added to trade treaty income | special race picks | Only the first (lowest pick id) is used for the food price and treaty points. |
+| `empire.instantAssimilation` | Conquered populations assimilate at once. | none | special race picks | One is enough. |
+| `empire.leaderOffers` | Not read by any rule. Leader offers follow the picks named as `charismatic` and `repulsive` in leader-rules. | `points` (int): not read<br>`poolAdd` (int): not read<br>`poolNum` (int): not read<br>`poolDen` (int): not read | nothing | No effect. |
+| `empire.lucky` | Marks the empire as lucky: event selection draws from the good-event list for it, and monsters pick the colonies and fleets of other empires first. | `vaeloriWeightDen` (int): not read | special race picks | One is enough. |
+| `empire.mindControl` | The empire's ships may take control of a colony's population. The colony's owner must not have the effect, and no telepath leader may block it. | `minHull` (key): key of the smallest hull that may do it | special race picks | Only the first (lowest pick id) is used. |
+| `empire.omniscient` | Information rules: the empire's views of stars and other empires show everything, not only what it has met. | none | special race picks | One is enough. |
+| `empire.relationScale` | Scales the relation changes the empire causes: positive changes by the gain ratio, zero or negative by the loss ratio. | `gainNum` (int): numerator for positive changes<br>`gainDen` (int): denominator for positive changes<br>`lossNum` (int): numerator for zero or negative changes<br>`lossDen` (int): denominator for zero or negative changes | special race picks | Only the first (lowest pick id) is used. |
+| `empire.restrictedDiplomacy` | Restricts the empire's audience menu. | none | special race picks | One is enough. |
+| `empire.shipRepair` | Repairs the empire's ships' armour each combat turn. | `armorPct` (int): armour repaired per combat turn, in percent<br>`systemsPct` (int): not read: the systems repair percent is a combat-rules value | special race picks | Only the first (lowest pick id) is used. |
+| `empire.spyBonus` | Adds spy bonus points beyond the Spying trait. | `offense` (int): points added to spy offense<br>`defense` (int): points added to spy defense | special race picks | They add up. |
+| `empire.stealthyShips` | The empire's ships are concealed from other empires' scans. | none | special race picks | One is enough. |
+| `empire.transDimensional` | Adds to the empire's drive speed, gives a speed to ships without a drive, and adds to combat speed. | `ftlBonus` (int): parsecs per turn added to the best drive<br>`drivelessSpeed` (int): parsecs per turn of a fleet when the empire has no drive<br>`combatSpeed` (int): combat speed added to ship designs | special race picks | Only the first (lowest pick id) is used. |
+| `empire.troopDefendPoints` | Adds points to the strength of the empire's troops when they defend. | `points` (int): strength points | special race picks | They add up. |
+| `empire.troopHits` | Adds hits to the empire's troops. | `hits` (int): hits added to the empire's troops | special race picks | They add up. |
+| `empire.troopPoints` | Adds points to the strength of the empire's troops. | `points` (int): strength points | special race picks | They add up. |
+| `empire.warlord` | Command points per colony, a crew level shift, and doubled garrison limits. | `cpPerColony` (int): command points per colony, outposts excluded<br>`crewBonus` (int): levels every crew of the empire is moved up<br>`leaderMaxLevel` (int): not read: leader level rules follow the pick named as `warlord` in leader-rules<br>`barracksFull` (bool): true: marine and tank garrison limits are doubled | special race picks | Only the first (lowest pick id) is used. |
+
+## home
+
+The homeworld a race starts on. Carried by special race picks and read once, at game start.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `home.artifacts` | The homeworld holds artifacts. | none | special race picks | One is enough. |
+| `home.climate` | Sets the climate of the homeworld. | `climate` (key): key of a climate | special race picks | The last in pick id order wins. |
+| `home.gravity` | Sets the gravity of the homeworld. | `gravity` (key): one of `low`, `normal`, `heavy` | special race picks | The last in pick id order wins. |
+| `home.minerals` | Sets the mineral richness of the homeworld. | `minerals` (key): one of `ultra_poor`, `poor`, `abundant`, `rich`, `ultra_rich` | special race picks | The last in pick id order wins. |
+| `home.size` | Sets the size of the species' homeworld. | `size` (key): one of `tiny`, `small`, `medium`, `large`, `huge` | special race picks | The last in pick id order wins. |
+
+## leader
+
+What a leader skill does. Carried by the skills of leader-rules; the value is the skill's value at the leader's level.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `leader.beamAttack` | Weaponry: Beam Attack of the fleet. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire`<br>`fighters` (bool): true: the value also raises the Beam Attack of fighters | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.beamDefense` | Helmsman: beam defense, and missile evasion of the value times the ratio, rounded down. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire`<br>`missileEvasionNum` (int): numerator of the missile evasion ratio<br>`missileEvasionDen` (int): denominator of the missile evasion ratio, at least 1 | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.boardingDefense` | Security: boarding defense of the fleet. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.colonyOutput` | Colony leaders: the leader line of one colony output. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire`<br>`output` (key): one of `farming`, `labor`, `science`, `financial`, `environmentalist`, `spiritual`; no two skills may name the same output | leader skills (leader-rules `skills`) | The best value among the colony leaders at the star applies. |
+| `leader.commandPoints` | Operations: command points. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+| `leader.crewXp` | Instructor: extra crew experience per turn, empire-wide. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+| `leader.damagePct` | Ordnance: damage percent of the fleet's weapons. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.diplomacy` | Diplomat: points added to diplomacy. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+| `leader.fighters` | Fighter Pilot: beam defense and damage percent of the fleet's fighters. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.groundTroops` | Commando: defending troops for a colony leader; an officer's invading marines are the value times the ratio, rounded up. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire`<br>`invadeNum` (int): numerator of the invasion ratio<br>`invadeDen` (int): denominator of the invasion ratio, at least 1 | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.growthPct` | Medicine: population growth percent of the colony. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | The best value among the colony leaders at the star applies. |
+| `leader.hireDiscount` | Famous: the hire price discount. The skill named as the `famous` role in leader-rules must carry it; the game takes the discount from that skill's value. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`), the `famous` role skill | The best discount among the employed leaders applies. |
+| `leader.income` | Megawealth: income in BC. The `megawealth` role skill must carry it; the game takes the amount from that skill's value. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`), the `megawealth` role skill | They add up. |
+| `leader.mindControlBlock` | Telepath: blocks mind control of colonies at the leader's star. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | One is enough. |
+| `leader.monsterAttack` | Galactic Lore: attack bonus against monsters. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.offerPoints` | Famous: points toward the chance of a leader offer. The `famous` role skill must carry it. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`), the `famous` role skill | They add up. |
+| `leader.planetReveal` | Galactic Lore: charts the planets of unexplored stars each turn. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | One is enough. |
+| `leader.repairPct` | Engineer: ship repair percent per combat turn. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire`<br>`fullRepairAfterWin` (bool): true: the fleet is repaired fully after a win | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.research` | Researcher: research points per turn. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+| `leader.speed` | Navigator: extra fleet speed. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire`<br>`ignoresNebulae` (bool): true: the fleet is not slowed by nebulae<br>`nearBlackHoles` (bool): true: the fleet may move near black holes | leader skills (leader-rules `skills`) | The best value applies. A bonus acts only for the fleet that carries the officer, or for the colony leaders at the star. |
+| `leader.spyDefense` | Telepath: defensive spy bonus. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+| `leader.spyKill` | Assassin: the kill chance in percent. Each employed leader has its own. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Each employed leader acts on its own. |
+| `leader.spyOffense` | Spy Master: offensive spy bonus. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+| `leader.treatyIncomePct` | Trader: percent bonus to trade treaty income. | `scope` (key): where the leader must be for the effect to act: `pool` or `empire` (employed), `system` (colony leader at that star), `fleet` (officer aboard a ship, for that ship's fleet), `post` (`system` for a colony leader, `fleet` for an officer); a general skill takes `pool` or `post`, a ship skill `fleet` or `pool`, a colony skill `system` or `empire` | leader skills (leader-rules `skills`) | Per the skill's `stacking` decides: `best` takes the largest value, `sum` adds them. |
+
+## pop
+
+Race rules that travel with the population of the species. Carried by special race picks.
+
+| Kind | What it does | Parameters | Read from | Several |
+|---|---|---|---|---|
+| `pop.aquatic` | Population capacity reads each climate through the population rules' aquatic table, and farmers get the aquatic food value of the planet type. | none | special race picks | One is enough. |
+| `pop.capacityPerSize` | Adds population capacity for each planet size class. | `pop` (int): population units per size class | special race picks | They add up. |
+| `pop.firstColonistWorker` | The first colonist of a new colony on a farm world is a worker, not a farmer. | none | special race picks | One is enough. |
+| `pop.gravity` | Sets the species' native gravity; the gravity penalty table is read relative to it. | `gravity` (key): one of `low`, `normal`, `heavy` | special race picks | Give a race one. With several, the colony economy takes the last in pick id order. |
+| `pop.noPollution` | The species produces no pollution, weighted by its share of the colony's population. | none | special race picks | One is enough. |
+| `pop.tolerant` | Adds habitability points to every climate, up to a cap. | `points` (int): habitability percentage points added<br>`capPct` (int): highest habitability percent the points can reach | special race picks | Only the first (lowest pick id) is used. |
+| `pop.upkeepHalf` | Sets the food and production the species eats per population unit. Without it the population rules' normal values apply. | `foodHalf` (int): food per unit in half-food units; 0 is no food need<br>`prodHalf` (int): production per unit in half units | special race picks | Only the first (lowest pick id) is used. |

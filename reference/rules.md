@@ -4,6 +4,61 @@
 
 These catalogs hold the game's rules: one parameter record (key `standard` or the catalog's own key) or a fixed set of records. Mods change them with patch rows; they cannot add records to them. Values may change freely within the field's range; the length of a fixed table may not.
 
+## Catalogs
+
+Each catalog has a page with its records, the type of every field and the base value of each.
+
+| Catalog | Records | Fields |
+|---|---|---|
+| [ai-objectives](rules-ai-objectives.md) | 1 | 20 |
+| [ai-personality](rules-ai-personality.md) | 1 | 94 |
+| [ai-tuning](rules-ai-tuning.md) | 1 | 139 |
+| [assimilation-rules](rules-assimilation-rules.md) | 1 | 3 |
+| [audience-rules](rules-audience-rules.md) | 1 | 312 |
+| [build-lists](rules-build-lists.md) | 11 | 2 |
+| [cheat-codes](rules-cheat-codes.md) | 1 | 3 |
+| [colonize-rules](rules-colonize-rules.md) | 1 | 13 |
+| [colony-economy](rules-colony-economy.md) | 1 | 49 |
+| [combat-rules](rules-combat-rules.md) | 1 | 426 |
+| [council-rules](rules-council-rules.md) | 1 | 35 |
+| [difficulty](rules-difficulty.md) | 5 | 15 |
+| [diplomacy-rules](rules-diplomacy-rules.md) | 1 | 201 |
+| [drives](rules-drives.md) | 6 | 5 |
+| [espionage-rules](rules-espionage-rules.md) | 1 | 28 |
+| [event-rules](rules-event-rules.md) | 1 | 101 |
+| [events](rules-events.md) | 38 | 9 |
+| [finance-rules](rules-finance-rules.md) | 1 | 26 |
+| [fuel-cells](rules-fuel-cells.md) | 5 | 3 |
+| [galaxy-gen](rules-galaxy-gen.md) | 1 | 259 |
+| [governments](rules-governments.md) | 8 | 29 |
+| [governor-policies](rules-governor-policies.md) | 3 | 32 |
+| [history-rules](rules-history-rules.md) | 1 | 8 |
+| [hulls](rules-hulls.md) | 9 | 26 |
+| [leader-rules](rules-leader-rules.md) | 1 | 300 |
+| [leaders](rules-leaders.md) | 67 | 15 |
+| [message-rules](rules-message-rules.md) | 1 | 3 |
+| [monster-rules](rules-monster-rules.md) | 1 | 24 |
+| [monsters](rules-monsters.md) | 10 | 10 |
+| [movement](rules-movement.md) | 1 | 34 |
+| [planet-mod-rules](rules-planet-mod-rules.md) | 1 | 18 |
+| [planet-types](rules-planet-types.md) | 10 | 11 |
+| [population-rules](rules-population-rules.md) | 1 | 31 |
+| [production-rules](rules-production-rules.md) | 1 | 23 |
+| [race-rules](rules-race-rules.md) | 1 | 13 |
+| [relations-matrix](rules-relations-matrix.md) | 14 | 3 |
+| [research](rules-research.md) | 1 | 16 |
+| [score](rules-score.md) | 1 | 24 |
+| [settings](rules-settings.md) | 35 | 4 |
+| [ship-design](rules-ship-design.md) | 1 | 81 |
+| [ship-lifecycle](rules-ship-lifecycle.md) | 1 | 23 |
+| [star-types](rules-star-types.md) | 7 | 9 |
+| [start-state](rules-start-state.md) | 1 | 244 |
+| [transport-rules](rules-transport-rules.md) | 1 | 20 |
+| [troop-units](rules-troop-units.md) | 1 | 68 |
+| [vaelori-designs](rules-vaelori-designs.md) | 13 | 10 |
+| [vaelori-rules](rules-vaelori-rules.md) | 1 | 39 |
+| [weapon-mods](rules-weapon-mods.md) | 14 | 8 |
+
 ## Starting technology
 
 Each of the four `levels` (`preWarp`, `average`, `postWarp`, `advanced`) has an `alsoKnown` list: technology every empire starting at that level knows besides the level's own grant. An entry is `{ "field": <tech field key> }` (the field counts as researched and all its applications are known) or `{ "app": <application key> }` (that application alone; its field stays researchable for the others), and may carry `"when": { picks, governments, vaelori }`, the same condition the removal rows use, evaluated for the starting empire. The base game lists nothing.
@@ -14,293 +69,10 @@ Add to one level with a keyed path (below): `{ "op": "append", "catalog": "start
 
 ## Keyed arrays
 
-A path never takes a list index. A catalog may declare arrays of records with a unique key field as keyed: in a patch path the segment after the array selects the element whose key field equals it, so `levels.advanced.alsoKnown` is the Advanced level's list. It works in `set`, `append`, `insertAfter`, `removeValue` and in `expect`. An unknown element is `patch-no-match` (skipped with `optional`). Rows on different elements never conflict, two appends to the same list compose, and a row on the whole array conflicts with rows on its elements from another package. Only the arrays listed under each catalog below are keyed; the others are addressed as a whole.
+A path never takes a list index. A catalog may declare arrays of records with a unique key field as keyed: in a patch path the segment after the array selects the element whose key field equals it, so `levels.advanced.alsoKnown` is the Advanced level's list. It works in `set`, `append`, `insertAfter`, `removeValue` and in `expect`. An unknown element is `patch-no-match` (skipped with `optional`). Rows on different elements never conflict, two appends to the same list compose, and a row on the whole array conflicts with rows on its elements from another package. Only the arrays listed on a catalog's page are keyed; the others are addressed as a whole.
 
 ## Removal rows and exclusive technology
 
 A row `{ "when"?: <condition>, "unless"?: { "picks"?: [...], "races"?: [...] }, "apps": [...] }` (at least one of `when` and `unless`) removes its applications from the empires it applies to: the empire matches `when` (absent: every empire) and does not match `unless`. `unless.picks` spares an empire that has any listed race pick (pick-bound: a custom race that takes the pick qualifies, and the pick's price is the cost of the technology). `unless.races` spares an empire that plays the race record of any listed key (race-bound: a custom race keeps the record of its portrait race and qualifies only when that is the listed race). Appending `{ "unless": { "picks": ["yourname.my_mod.some_pick"] }, "apps": ["yourname.my_mod.some_app"] }` makes the application exclusive to empires with the pick.
 
 A row with `unless` is an exclusivity row: no route can bring its applications to an empire it applies to (research, start knowledge, trades and gifts, demands, theft, scrapping captured ships, ground conquest, finds, leaders, cheats). A field none of whose applications an empire can gain is passed over silently for it: never offered, never completed, never counted, and the computer players never value it. The base removals (Lithovore, Tolerant, Unification) keep the original game's behaviour on trades, theft and finds.
-
-## ai-objectives
-
-- `set`: `difficultyRows`, `halveAbove`, `measured`, `measured.ignoreRows`, `measured.rowAs`, `objectives`, `rows`, `selector`
-- `append`, `insertAfter`, `removeValue`: `difficultyRows`, `measured.ignoreRows`, `measured.rowAs`, `objectives`, `rows`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`objectives.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `objectives` by `key` (elements `diplomat`, `ecologist`, `expansionist`, `industrialist`, `militarist`, `technologist`): `base`, `code`
-
-## ai-personality
-
-- `set`: `cheatRules`, `cheatRules.freeFreighters`, `cheatRules.freeFreighters.amount`, `cheatRules.freeSpy`, `cheatRules.freeSpy.afterTurn`, `cheatRules.freighterA`, `cheatRules.freighterA.amount`, `cheatRules.freighterA.base`, `cheatRules.freighterA.die`, `cheatRules.freighterB`, `cheatRules.freighterB.amount`, `cheatRules.freighterB.die`, `cheatRules.refit`, `cheatRules.refit.afterTurn`, `cheatRules.refit.die`, `cheatRules.refit.humanEtaTurns`, `cheatRules.refit.minColonies`, `cheatRules.refit.mult`, `cheatRules.refit.popAbove`, `difficulty`, `refitDesirability`, `refitDesirability.armor`, `refitDesirability.beamTier`, `refitDesirability.computer`, `refitDesirability.missileTier`, `refitDesirability.shield`, `refitDesirability.tierCost`, `research`, `research.appOverrides`, `research.completedField`, `research.completedField.den`, `research.completedField.num`, `research.early`, `research.filters`, `research.greyBonus`, `research.groups`, `research.lastAppMult`, `research.levelValue`, `research.noFilterDifficulties`, `research.offSell`, `research.overrides`, `research.priorityApps`, `research.priorityFields`, `research.tierJump`, `research.tierJump.far`, `research.tierJump.farDiv`, `research.tierJump.nearAdd`, `research.tierJump.nearMult`, `research.turns`, `research.turns.den`, `research.turns.num`, `research.turns.start`, `research.vptScale`, `research.weightCap`, `research.zeroApps`, `roll`, `roll.add`, `roll.die`, `roll.max`, `roll.min`, `specialThemes`, `specialThemes.base`, `specialThemes.personalityRows`, `specialThemes.rows`, `spyRules`, `spyRules.sabotageDen`, `strategic`, `strategic.build`, `strategic.build.garrison`, `strategic.build.garrison.base`, `strategic.build.garrison.max`, `strategic.build.garrison.perColonyDen`, `strategic.build.garrison.perColonyNum`, `strategic.build.stickySettings`, `strategic.build.transports`, `strategic.build.transports.base`, `strategic.build.transports.max`, `strategic.build.transports.perColonyDen`, `strategic.build.transports.perColonyNum`, `strategic.colonize`, `strategic.colonize.colonyBases`, `strategic.colonize.lookBeforeLanding`, `strategic.colonize.maxProbeLegs`, `strategic.colonize.settleMin`, `strategic.fleet`, `strategic.fleet.returnHome`, `variantNumbers`
-- `append`, `insertAfter`, `removeValue`: `difficulty`, `research.appOverrides`, `research.early`, `research.filters`, `research.groups`, `research.levelValue`, `research.noFilterDifficulties`, `research.offSell`, `research.overrides`, `research.priorityApps`, `research.priorityFields`, `research.zeroApps`, `specialThemes.base`, `specialThemes.personalityRows`, `specialThemes.rows`, `variantNumbers`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`specialThemes.base.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `specialThemes.base` by `key` (any element key): `weight`
-
-## ai-tuning
-
-- `set`: `autobuild`, `autobuild.keepWeight`, `buy`, `buy.band`, `buy.band.den`, `buy.band.num`, `buy.reserve`, `buy.reserve.den`, `buy.reserve.max`, `buy.reserve.min`, `buy.reserve.num`, `buy.turnsCap`, `buy.weightScale`, `colonists`, `colonists.industrialistResearchAdd`, `colonists.industryMult`, `colonists.pollutionPreference`, `colonists.requiredWorker`, `colonists.requiredWorker.add`, `colonists.requiredWorker.div`, `colonists.researchMult`, `colonists.technologistIndustryMult`, `colonize`, `colonize.outpost`, `colonize.outpost.base`, `colonize.outpost.otherDiv`, `colonize.prefilterK`, `computeData`, `computeData.threatWindow`, `freighters`, `freighters.groupSize`, `leaders`, `leaders.hireMarginBc`, `leaders.hireSkills`, `military`, `military.attackEtaMax`, `military.colonyMissionGrace`, `military.declineCooldown`, `military.fast`, `military.fast.div`, `military.fast.eta`, `military.garrisonMarinesPerConquered`, `military.interceptEtaMax`, `military.keep`, `military.keep.den`, `military.keep.num`, `military.missionStale`, `military.overwhelm`, `military.scoreClamp`, `military.sightingWindow`, `military.strengthWindow`, `military.worthy`, `military.worthy.den`, `military.worthy.num`, `needs`, `needs.allocation`, `needs.allocation.deferPeace`, `needs.allocation.deferWarBase`, `needs.allocation.deferWarStep`, `needs.allocation.freighterBase`, `needs.allocation.freighterMaxAssigned`, `needs.allocation.freighterPerGroup`, `needs.allocation.spyBase`, `needs.allocation.spyPerNeed`, `needs.allocation.spyScale`, `needs.allocation.transportBase`, `needs.allocation.transportPerNeed`, `needs.allocation.transportScale`, `needs.allocation.warshipScale`, `needs.bump`, `needs.bump.die`, `needs.bump.dieMilitarist`, `needs.bump.militarist`, `needs.colonyShip`, `needs.colonyShip.deficitBase`, `needs.colonyShip.deficitDie`, `needs.colonyShip.secondDie`, `needs.emergencyOrder`, `needs.expand`, `needs.expand.base`, `needs.expand.deficitMult`, `needs.expand.die`, `needs.expand.needMax`, `needs.expand.notExpansionist`, `needs.expand.treasuryAdd`, `needs.expand.treasuryMin`, `needs.expand.warDiv`, `needs.extendedRange`, `needs.extendedRange.den`, `needs.extendedRange.num`, `needs.freighterGroupsPerTurn`, `needs.frigateDie`, `needs.hullMix`, `needs.hullMix.battleship`, `needs.hullMix.colossus`, `needs.hullMix.cruiser`, `needs.hullMix.cruiserDemoted`, `needs.hullMix.destroyer`, `needs.hullMix.destroyerDemoteDiv`, `needs.hullMix.frigate`, `needs.hullMix.frigateDemoted`, `needs.hullMix.titan`, `needs.hullWeight`, `needs.incomeCpDiv`, `needs.incomeDiv`, `needs.incomeHigh`, `needs.minBc`, `needs.minIncome`, `needs.peaceDiv`, `needs.sightingWindow`, `needs.smallNeed`, `needs.specialWorth`, `needs.specialWorth.ancient_artifacts`, `needs.specialWorth.carina`, `needs.specialWorth.gem_deposits`, `needs.specialWorth.gold_deposits`, `needs.specialWorth.natives`, `needs.specialWorth.splinter_colony`, `needs.spy`, `needs.spy.contactMult`, `needs.spy.homeMax`, `needs.spy.margin`, `needs.strengthWindow`, `needs.transport`, `needs.transport.colonyAdd`, `needs.transport.colonyDiv`, `needs.transport.farShift`, `needs.transport.ownMax`, `needs.warpInterdictor`, `needs.warpInterdictor.bcMin`, `needs.warpInterdictor.incomeMin`, `needs.worth`, `needs.worth.colonyBaseMin`, `needs.worth.colonyShipMin`, `needs.worth.food`, `needs.worth.foodCybernetic`, `needs.worth.freighterMin`, `needs.worth.spyMin`, `needs.worth.transportMin`
-- `append`, `insertAfter`, `removeValue`: `leaders.hireSkills`, `needs.emergencyOrder`, `needs.hullWeight`
-
-## assimilation-rules
-
-- `set`: `buildingPoints`, `instantFromGovernments`, `pointsPerUnit`
-- `append`, `insertAfter`, `removeValue`: `buildingPoints`, `instantFromGovernments`
-
-## audience-rules
-
-- `set`: `acceptance`, `acceptance.allianceMinRel`, `acceptance.appBonuses`, `acceptance.askPct`, `acceptance.askPct.alliance`, `acceptance.askPct.nap`, `acceptance.askPct.peace`, `acceptance.askPct.research`, `acceptance.askPct.trade`, `acceptance.bands`, `acceptance.bands.largeBelow`, `acceptance.bands.rejectBelow`, `acceptance.bands.smallBelow`, `acceptance.bases`, `acceptance.bases.alliance`, `acceptance.bases.nap`, `acceptance.bases.research`, `acceptance.bases.trade`, `acceptance.honorableTrustTimes`, `acceptance.peace`, `acceptance.peace.minTurns`, `acceptance.peace.ratioDiv`, `acceptance.peace.turnsK`, `acceptance.peace.warUnit`, `acceptance.rollDie`, `acceptance.severity`, `acceptance.severity.large`, `acceptance.severity.max`, `acceptance.severity.small`, `acceptance.testedModifier`, `aiDemand`, `aiDemand.acceptRelBase`, `aiDemand.acceptRelDie`, `aiDemand.refusedPlainRel`, `breach`, `breach.agreementBaseDie`, `breach.agreementRelDie`, `breach.allianceBaseDrop`, `breach.brokenAlliance`, `breach.brokenNap`, `breach.brokenPeace`, `breach.honorableTimes`, `breach.honorableTrust`, `breach.threatAdd`, `breach.tributeRelDie`, `breach.tributeWarAbove`, `breach.tributeWarDie`, `breach.trust`, `breach.warAbove`, `breach.warOtherWars`, `breach.warPctDie`, `breach.warScoreDie`, `demand`, `demand.baseDrop`, `demand.bond`, `demand.bond.acceptAtLeast`, `demand.bond.breakBelow`, `demand.bond.threatBelow`, `demand.bond.warBelow`, `demand.cmpMax`, `demand.cmpMin`, `demand.extras`, `demand.extras.breakAllianceRelTimes`, `demand.extras.peaceWithAdd`, `demand.extras.removeFleet`, `demand.extras.stopSpying`, `demand.extras.systemCap`, `demand.extras.systemScale`, `demand.extras.techCostDiv`, `demand.extras.techScale`, `demand.extras.tribute10`, `demand.extras.tribute5`, `demand.extras.warOn`, `demand.extras.warOn.aiTarget`, `demand.extras.warOn.alliance`, `demand.extras.warOn.base`, `demand.extras.warOn.fleetDiv`, `demand.extras.warOn.nap`, `demand.extras.warOn.relDiv`, `demand.free`, `demand.free.acceptAbove`, `demand.free.threatBelow`, `demand.free.warBelow`, `demand.periodBase`, `demand.periodDie`, `demand.personalityTimes`, `demand.rollDie`, `demand.threatAdd`, `dishonor`, `dishonor.personality`, `exchange`, `exchange.appBonuses`, `exchange.difficultyBase`, `exchange.difficultyTimes`, `exchange.factorBase`, `exchange.governmentApps`, `exchange.minus`, `exchange.moodTimes`, `exchange.negScale`, `exchange.pickBonuses`, `exchange.relGain`, `exchange.rollDie`, `gift`, `gift.bcDiv`, `gift.bcMaxValue`, `gift.bcMinMaint`, `gift.minTreasury`, `gift.moneyCap`, `gift.moneyParts`, `gift.moneyRound`, `gift.moodBcPerTurn`, `gift.relBase`, `gift.relDie`, `gift.techScale`, `gift.tributeValue`, `greeting`, `greeting.coldBelow`, `limits`, `limits.brokenMax`, `limits.brokenMin`, `limits.moodMax`, `limits.moodMin`, `limits.sinceMax`, `limits.threatsMax`, `limits.trustMax`, `limits.trustMin`, `messages`, `messages.repulsiveSuppressed`, `messages.totalWarSilentAfter`, `npc`, `npc.aiAi`, `npc.aiAi.allianceScore`, `npc.aiAi.calculatedAgreement`, `npc.aiAi.calculatedBase`, `npc.aiAi.calculatedNap`, `npc.aiAi.calculatedPersonalityMult`, `npc.aiAi.calculatedRelBelow`, `npc.aiAi.commonEnemy`, `npc.aiAi.expansion`, `npc.aiAi.expansion.aiDiv`, `npc.aiAi.expansion.base`, `npc.aiAi.expansion.dOffset`, `npc.aiAi.expansion.den`, `npc.aiAi.expansion.die`, `npc.aiAi.expansion.everyTurns`, `npc.aiAi.expansion.num`, `npc.aiAi.expansion.pct`, `npc.aiAi.expansion.perSize`, `npc.aiAi.minPatience`, `npc.aiAi.napBonus`, `npc.aiAi.napScore`, `npc.aiAi.negotiateBase`, `npc.aiAi.negotiatePerD`, `npc.aiAi.opportunismRatio`, `npc.aiAi.opportunismRel`, `npc.aiAi.opportunismThreatStep`, `npc.aiAi.peaceBase`, `npc.aiAi.peaceHumanWar`, `npc.aiAi.peaceMult`, `npc.aiAi.relOffset`, `npc.aiAi.researchScore`, `npc.aiAi.resultOrder`, `npc.aiAi.swapDie`, `npc.aiAi.swapRel`, `npc.aiAi.swapRelAdd`, `npc.aiAi.tradeOffset`, `npc.aiAi.tradeScore`, `npc.aiAi.tributeLevel`, `npc.aiAi.tributeRelAdd`, `npc.aiAi.tributeRelDie`, `npc.aiAi.weakRatio`, `npc.alliance`, `npc.alliance.callToArmsPct`, `npc.alliance.onBehalfPct`, `npc.byDifficulty`, `npc.charismaticPick`, `npc.hostility`, `npc.hostility.allianceSigned`, `npc.hostility.attackDemandRatio`, `npc.hostility.attackSeverity`, `npc.hostility.base`, `npc.hostility.buildupBase`, `npc.hostility.buildupDie`, `npc.hostility.bullyDiv`, `npc.hostility.bullyRatio`, `npc.hostility.charismatic`, `npc.hostility.demandBase`, `npc.hostility.demandDen`, `npc.hostility.erraticWhimDen`, `npc.hostility.growthAfterTurn`, `npc.hostility.growthDiv`, `npc.hostility.growthWindow`, `npc.hostility.hostilitySeverity`, `npc.hostility.lastAiPenalty`, `npc.hostility.minGap`, `npc.hostility.napSigned`, `npc.hostility.peaceFirstDie`, `npc.hostility.relDiv`, `npc.hostility.relHigh`, `npc.hostility.relHighDiv`, `npc.hostility.ruthlessRatio`, `npc.hostility.sinceStart`, `npc.hostility.threatMult`, `npc.hostility.trigger`, `npc.hostility.trustDen`, `npc.hostility.trustNum`, `npc.hostility.xenoPsychology`, `npc.hostility.xenophobicDie`, `npc.hostility.xenophobicNearPc`, `npc.hostility.xenophobicPctPerColony`, `npc.hostility.zeroFleetRatio`, `npc.incidents`, `npc.incidents.amendsSeverity`, `npc.incidents.div2`, `npc.incidents.div3`, `npc.incidents.expansionCode`, `npc.incidents.militaryCode`, `npc.incidents.sevMult`, `npc.incidents.severeCodes`, `npc.incidents.warFleetDen`, `npc.incidents.warFleetNum`, `npc.incidents.warThreats`, `npc.incidents.warThreatsNoBond`, `npc.jealousy`, `npc.jealousy.alliance`, `npc.jealousy.nap`, `npc.jealousy.research`, `npc.jealousy.trade`, `npc.jealousy.unit`, `npc.jealousy.xenoDen`, `npc.jealousy.xenoNum`, `npc.military`, `npc.military.divisor`, `npc.military.minPop`, `npc.military.minThreat`, `npc.military.nearPc`, `npc.peace`, `npc.peace.attackMult`, `npc.peace.brokenDiv`, `npc.peace.demandAbove`, `npc.peace.fleetDiv`, `npc.peace.giftBelow`, `npc.peace.lossDiv`, `npc.peace.minQuiet`, `npc.peace.mult`, `npc.peace.offset`, `npc.peace.personalityDiv`, `npc.peace.scoreMult`, `npc.peace.sevAdd`, `npc.peace.sevDiv`, `npc.peace.thirdAttack`, `npc.personalities`, `npc.personalities.erratic`, `npc.personalities.pacifist`, `npc.personalities.ruthless`, `npc.personalities.xenophobic`, `npc.proposals`, `npc.proposals.agreementChance`, `npc.proposals.agreementChance.alliance`, `npc.proposals.agreementChance.die`, `npc.proposals.agreementChance.mult`, `npc.proposals.agreementChance.nap`, `npc.proposals.agreementChance.perD`, `npc.proposals.askWarMinTurns`, `npc.proposals.bands`, `npc.proposals.die`, `npc.proposals.minRelAgreement`, `npc.proposals.reluctance`, `npc.proposals.reluctance.alliance`, `npc.proposals.reluctance.base`, `npc.proposals.reluctance.brokenDiv`, `npc.proposals.reluctance.diplomatDiv`, `npc.proposals.reluctance.max`, `npc.proposals.reluctance.min`, `npc.proposals.reluctance.moodMult`, `npc.proposals.reluctance.nap`, `npc.proposals.reluctance.patienceDiv`, `npc.proposals.reluctance.perD`, `npc.proposals.reluctance.personalityDiv`, `npc.proposals.reluctance.relDiv`, `npc.proposals.reluctance.sqDiv`, `npc.proposals.reluctance.xenoPsychology`, `npc.proposals.rolls`, `npc.proposals.treatyChance`, `npc.proposals.treatyChance.allianceBase`, `npc.proposals.treatyChance.mult`, `npc.proposals.treatyChance.napBase`, `npc.proposals.treatyChance.perD`, `npc.trade`, `npc.trade.base`, `npc.trade.bigGroups`, `npc.trade.bigMult`, `npc.trade.mult`, `npc.trade.perD2`, `npc.xenoPsychologyApp`, `rejection`, `rejection.moodStep`, `rejection.reasonDie`, `rejection.stopAtOrBelow`, `sweetener`, `sweetener.bcCap`, `sweetener.bcMinMaint`, `sweetener.bcRound`, `sweetener.bcRoundSmall`, `sweetener.bcUnit`, `sweetener.systemAboveSeverity`, `sweetener.systemDie`, `sweetener.systemLargeAbove`, `sweetener.techDie`, `sweetener.tributeDie`, `sweetener.tributeLowBelow`, `sweetener.tributeMaxSeverity`
-- `append`, `insertAfter`, `removeValue`: `acceptance.appBonuses`, `exchange.appBonuses`, `exchange.governmentApps`, `exchange.pickBonuses`, `messages.repulsiveSuppressed`, `npc.aiAi.resultOrder`, `npc.byDifficulty`, `npc.incidents.severeCodes`, `npc.proposals.bands`, `npc.trade.bigGroups`
-
-## build-lists
-
-- `set`: `entries`, `slot`
-- `append`, `insertAfter`, `removeValue`: `entries`
-
-## cheat-codes
-
-- `set`: `menloRp`, `moolaBc`, `words`
-- `append`, `insertAfter`, `removeValue`: `words`
-
-## colonize-rules
-
-- `set`: `baseScrapRefundPct`, `colonyCap`, `newColonyUnits`, `outpostBuildings`, `specials`, `specials.artifacts`, `specials.artifacts.die`, `specials.artifacts.special`, `specials.artifacts.twoOn`, `specials.bc`, `specials.splinter`, `specials.splinter.special`, `specials.splinter.units`
-- `append`, `insertAfter`, `removeValue`: `outpostBuildings`, `specials.bc`
-
-## colony-economy
-
-- `set`: `blockadePenaltyPct`, `floorQ`, `leaderPctPerLevel`, `leaderPctPerLevel.improved`, `leaderPctPerLevel.normal`, `mixedRaceMoralePct`, `moraleUnitPct`, `researchPerScientist`, `sources`, `spiritualPctPerLevel`, `spiritualPctPerLevel.improvedDen`, `spiritualPctPerLevel.improvedNum`, `spiritualPctPerLevel.normal`, `tolerancePerSizeClass`, `unassimilatedPenaltyPct`
-- `append`, `insertAfter`, `removeValue`: `sources`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`sources.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `sources` by `key` (any element key): `catalog`, `effects`
-
-## combat-rules
-
-- `set`: `arcs`, `beams`, `beams.achilles`, `beams.analyzer`, `beams.autoFire`, `beams.autoFire.penalty`, `beams.autoFire.shots`, `beams.bits`, `beams.bits.co`, `beams.bits.dr`, `beams.bits.env`, `beams.bits.esd`, `beams.bits.hit`, `beams.bits.ion`, `beams.bits.mar`, `beams.bits.nr`, `beams.bits.sp`, `beams.cap`, `beams.co`, `beams.dissipation`, `beams.drMult`, `beams.hef`, `beams.hef.flat`, `beams.hef.pctOfMount`, `beams.hef.special`, `beams.longsight`, `beams.lucky`, `beams.maxEr`, `beams.mods`, `beams.mods.af`, `beams.mods.ap`, `beams.mods.co`, `beams.mods.env`, `beams.mods.heavy`, `beams.mods.nr`, `beams.mods.pd`, `beams.mods.sp`, `beams.pdBonus`, `beams.regularPct`, `beams.roll`, `beams.threshold`, `beams.toHit`, `boarding`, `boarding.adjacentSquares`, `boarding.crewInCapture`, `boarding.damperSurvive`, `boarding.damperSurvive.den`, `boarding.damperSurvive.num`, `boarding.detonator`, `boarding.detonator.den`, `boarding.detonator.num`, `boarding.raid`, `boarding.raid.damage`, `boarding.raid.exempt`, `boarding.raid.hitDiff`, `boarding.raid.items`, `boarding.raid.killDiff`, `boarding.raid.weightBase`, `boarding.securityStations`, `boarding.securityStations.points`, `boarding.securityStations.special`, `boarding.transporterSquares`, `boarding.transporters`, `damage`, `damage.crewKillPct`, `damage.envFacings`, `damage.heavyArmor`, `damage.marineKillDiv`, `damage.monsterInternalCap`, `damage.roll`, `damage.troopPods`, `damage.troopPods.mult`, `damage.troopPods.special`, `deploy`, `deploy.centerRow`, `deploy.columns`, `deploy.headings`, `deploy.rowMax`, `deploy.rowMin`, `deploy.step`, `explosion`, `explosion.detonator`, `explosion.detonator.mult`, `explosion.detonator.special`, `explosion.driveMult`, `explosion.min`, `explosion.radius`, `explosion.unitsPerSquare`, `fliers`, `fliers.amr`, `fliers.amr.base`, `fliers.amr.den`, `fliers.amr.num`, `fliers.amr.plus`, `fliers.amr.rangeSquares`, `fliers.amr.step`, `fliers.amr.weapon`, `fliers.dauntless`, `fliers.defensiveFire`, `fliers.defensiveFire.maxRu`, `fliers.defensiveFire.span`, `fliers.defensiveFire.underInitiative`, `fliers.fighter`, `fliers.fighter.bdPerSpeed`, `fliers.fighter.beamMod`, `fliers.fighter.bombs`, `fliers.fighter.craftPerBay`, `fliers.fighter.evadePct`, `fliers.fighter.fallbackBeam`, `fliers.fighter.helmsman`, `fliers.fighter.lucky`, `fliers.fighter.npcBeam`, `fliers.fighter.offense`, `fliers.fighter.ordnance`, `fliers.fighter.overshoot`, `fliers.fighter.perLevel`, `fliers.fighter.span`, `fliers.fighter.threshold`, `fliers.fighter.types`, `fliers.fmr`, `fliers.fmr.special`, `fliers.fmr.volleys`, `fliers.impact`, `fliers.impact.cloakPct`, `fliers.impact.displacement`, `fliers.impact.displacement.pct`, `fliers.impact.displacement.special`, `fliers.impact.eccmDiv`, `fliers.impact.lightning`, `fliers.impact.lightning.pct`, `fliers.impact.lightning.special`, `fliers.missile`, `fliers.missile.armMult`, `fliers.missile.bdPerSpeed`, `fliers.missile.fast`, `fliers.missile.fastInBd`, `fliers.missile.mirvWarheads`, `fliers.missile.perLevel`, `fliers.missile.speedBase`, `fliers.missile.types`, `fliers.mods`, `fliers.mods.arm`, `fliers.mods.eccm`, `fliers.mods.emg`, `fliers.mods.env`, `fliers.mods.fst`, `fliers.mods.mirv`, `fliers.mods.nr`, `fliers.mods.ovr`, `fliers.npc`, `fliers.npc.armorMult`, `fliers.npc.driveLevel`, `fliers.npc.scanner`, `fliers.poolCap`, `fliers.pps`, `fliers.reachPad`, `fliers.roll`, `fliers.scanners`, `fliers.torpedo`, `fliers.torpedo.reload`, `fliers.torpedo.types`, `grid`, `grid.h`, `grid.w`, `initiative`, `initiative.formula`, `initiative.ties`, `move`, `move.freeTurnMinMp`, `move.headings`, `move.turnCost`, `move.turnSpecials`, `planets`, `planets.anchor`, `planets.anchor.x`, `planets.anchor.y`, `planets.artemis`, `planets.artemis.building`, `planets.artemis.chancePct`, `planets.artemis.hit`, `planets.artemis.total`, `planets.baseAnchor`, `planets.baseAnchor.x`, `planets.baseAnchor.y`, `planets.bases`, `planets.bases.allocPermille`, `planets.bases.allocPermille.heavy`, `planets.bases.allocPermille.missile`, `planets.bases.allocPermille.pd`, `planets.bases.allocPermille.regular`, `planets.bases.arcPremiumPct`, `planets.bases.crewLevel`, `planets.bases.freeMissileMods`, `planets.bases.maxSpecials`, `planets.bases.missileSlots`, `planets.bases.missileSpread`, `planets.bases.mountMods`, `planets.bases.mountMods.heavy`, `planets.bases.mountMods.pd`, `planets.bases.perSlotMax`, `planets.bases.rack`, `planets.bases.rotateSteps`, `planets.bases.specials`, `planets.bomb`, `planets.bomb.range`, `planets.bomb.transporterRange`, `planets.bomb.transporters`, `planets.crewLevel`, `planets.footprint`, `planets.footprint.huge`, `planets.footprint.large`, `planets.footprint.medium`, `planets.footprint.small`, `planets.footprint.tiny`, `planets.halfPct`, `planets.hull`, `planets.installation`, `planets.installation.civilianHp`, `planets.installation.hpPerArmorMult`, `planets.installation.strict`, `planets.weaponBuildings`, `range`, `range.heavyDiv`, `range.longsightDiv`, `range.pdMult`, `range.squaresPerRu`, `repair`, `repair.aru`, `repair.aru.pct`, `repair.aru.special`, `repair.fullRepairApp`, `repair.survivalPodsApp`, `repair.systemsPct`, `retreat`, `retreat.blockSpecial`, `roundLimit`, `selection`, `selection.aiNoTreatyAttack`, `selection.aiNoTreatyChance`, `selection.wake`, `selection.wake.classic`, `selection.wake.classic.complete`, `selection.wake.classic.destroy`, `selection.wake.rule`, `selection.wake.standard`, `selection.wake.standard.complete`, `selection.wake.standard.destroy`, `shields`, `shields.capacitor`, `shields.capacitor.special`, `shields.capacitor.tenths`, `shields.hard`, `shields.hard.extra`, `shields.hard.special`, `shields.rechargeTenths`, `ships`, `ships.maxPerSide`, `specialSystems`, `specialSystems.absorber`, `specialSystems.absorber.cap`, `specialSystems.absorber.keepOn`, `specialSystems.absorber.min`, `specialSystems.absorber.pct`, `specialSystems.absorber.range`, `specialSystems.absorber.special`, `specialSystems.cloak`, `specialSystems.cloak.bd`, `specialSystems.cloak.special`, `specialSystems.damper`, `specialSystems.damper.pct`, `specialSystems.damper.special`, `specialSystems.displacement`, `specialSystems.displacement.absorberPct`, `specialSystems.displacement.beamPct`, `specialSystems.displacement.special`, `specialSystems.overcharge`, `specialSystems.overcharge.mult`, `specialSystems.overcharge.special`, `specialSystems.phase`, `specialSystems.phase.rounds`, `specialSystems.phase.special`, `specialSystems.reflection`, `specialSystems.reflection.base`, `specialSystems.reflection.special`, `specialSystems.scoutLab`, `specialSystems.scoutLab.ba`, `specialSystems.scoutLab.special`, `specialSystems.teleport`, `specialSystems.teleport.breaksTractors`, `specialSystems.teleport.growsWithSpeed`, `specialSystems.teleport.range`, `specialSystems.teleport.special`, `specialSystems.twf`, `specialSystems.twf.special`, `specialSystems.wideArea`, `specialSystems.wideArea.fleetMe`, `specialSystems.wideArea.jammers`, `specialSystems.wideArea.special`, `specialWeapons`, `specialWeapons.bhg`, `specialWeapons.bhg.rounds`, `specialWeapons.bhg.wholeSlot`, `specialWeapons.burst`, `specialWeapons.burst.craftMult`, `specialWeapons.gyro`, `specialWeapons.gyro.maxSteps`, `specialWeapons.gyro.minSteps`, `specialWeapons.gyro.spinDie`, `specialWeapons.gyro.spinDraws`, `specialWeapons.gyro.tries`, `specialWeapons.stasis`, `specialWeapons.stasis.releaseActs`, `specialWeapons.tractor`, `specialWeapons.tractor.modeCuts`, `specialWeapons.tractor.needed`, `specialWeapons.tractor.otherRetargets`, `specialWeapons.weapons`, `specialWeapons.web`, `specialWeapons.web.decay`, `stats`, `stats.racialMePct`, `strategic`, `strategic.armorHp`, `strategic.artemis`, `strategic.artemis.building`, `strategic.artemis.chancePct`, `strategic.artemis.damage`, `strategic.base`, `strategic.base.schedule`, `strategic.base.schedule.beam`, `strategic.base.schedule.beam.from`, `strategic.base.schedule.beam.to`, `strategic.base.schedule.bomb`, `strategic.base.schedule.bomb.from`, `strategic.base.schedule.bomb.to`, `strategic.base.schedule.missile`, `strategic.base.schedule.missile.from`, `strategic.base.schedule.missile.to`, `strategic.base.schedule.special`, `strategic.base.schedule.special.from`, `strategic.base.schedule.special.to`, `strategic.beamHit`, `strategic.beamHit.base`, `strategic.beamHit.cap`, `strategic.damage`, `strategic.damage.beam`, `strategic.damage.bomb`, `strategic.damage.fighter`, `strategic.damage.missile`, `strategic.damage.special`, `strategic.damage.torpedo`, `strategic.denseConduits`, `strategic.denseConduits.app`, `strategic.denseConduits.den`, `strategic.denseConduits.num`, `strategic.deviceBonuses`, `strategic.drive`, `strategic.drive.none`, `strategic.drive.perLevel`, `strategic.limits`, `strategic.missileHit`, `strategic.missileHit.autoAbove`, `strategic.missileHit.cap`, `strategic.pick`, `strategic.pick.beam`, `strategic.pick.bomb`, `strategic.pick.fighter`, `strategic.pick.missile`, `strategic.pick.special`, `strategic.pick.torpedo`, `strategic.planet`, `strategic.planet.buildingHp`, `strategic.planet.compositionHull`, `strategic.planet.order`, `strategic.planet.schedule`, `strategic.planet.schedule.beam`, `strategic.planet.schedule.beam.from`, `strategic.planet.schedule.beam.to`, `strategic.planet.schedule.bomb`, `strategic.planet.schedule.bomb.from`, `strategic.planet.schedule.bomb.to`, `strategic.planet.schedule.missile`, `strategic.planet.schedule.missile.from`, `strategic.planet.schedule.missile.to`, `strategic.planet.schedule.special`, `strategic.planet.schedule.special.from`, `strategic.planet.schedule.special.to`, `strategic.planet.stellar`, `strategic.planet.stellar.shots`, `strategic.planet.stellar.weapon`, `strategic.scanners`, `strategic.schedule`, `strategic.schedule.beam`, `strategic.schedule.beam.from`, `strategic.schedule.beam.to`, `strategic.schedule.bomb`, `strategic.schedule.bomb.from`, `strategic.schedule.bomb.to`, `strategic.schedule.missile`, `strategic.schedule.missile.from`, `strategic.schedule.missile.to`, `strategic.schedule.special`, `strategic.schedule.special.from`, `strategic.schedule.special.to`, `strategic.shipCost`, `strategic.shipCost.den`, `strategic.shipCost.num`, `strategic.turnLimit`, `systems`, `systems.achillesWeight`, `systems.driveHpMult`, `systems.specialHpBonus`, `systems.specialHpDiv`, `systems.weaponHpDiv`, `turn`, `turn.autoDone`
-- `append`, `insertAfter`, `removeValue`: `arcs`, `beams.dissipation`, `beams.toHit`, `boarding.raid.exempt`, `fliers.fighter.bombs`, `fliers.fighter.types`, `fliers.missile.types`, `fliers.scanners`, `fliers.torpedo.types`, `move.turnSpecials`, `planets.artemis.chancePct`, `planets.bases.freeMissileMods`, `planets.bases.specials`, `planets.weaponBuildings`, `selection.aiNoTreatyAttack`, `selection.aiNoTreatyChance`, `selection.wake.classic.complete`, `selection.wake.classic.destroy`, `selection.wake.standard.complete`, `selection.wake.standard.destroy`, `specialSystems.wideArea.jammers`, `specialWeapons.tractor.needed`, `specialWeapons.weapons`, `strategic.artemis.chancePct`, `strategic.deviceBonuses`, `strategic.limits`, `strategic.planet.order`, `strategic.scanners`, `systems.driveHpMult`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`arcs.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `arcs` by `key` (any element key): `dir`, `half`
-
-## council-rules
-
-- `set`: `acclaimLines`, `ai`, `ai.atWarOther`, `ai.carina`, `ai.charismatic`, `ai.humanScaleDenAdd`, `ai.humanScaleFrom`, `ai.humanScaleNum`, `ai.moodMul`, `ai.nap`, `ai.repulsive`, `ai.research`, `ai.roll`, `ai.trade`, `ai.trustMul`, `ai.votedLast`, `ai.xenoPsychology`, `charismaticPick`, `defiedRel`, `firstTurn`, `interval`, `minEmpires`, `ownerSet`, `popPerVote`, `relations`, `relations.abstain`, `relations.againstOther`, `relations.forChosen`, `relations.incidentAgainst`, `relations.incidentFor`, `repulsivePick`, `starShareDen`, `thresholdDen`, `thresholdNum`, `xenoPsychologyApp`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## difficulty
-
-- `set`: `aiBcPerPopQ`, `aiCpDeficitBc`, `aiFoodPerFarmerQ`, `aiGrowthPoints`, `aiProdPerWorkerQ`, `aiRpPerScientistQ`, `aiSpy`, `aiTroops`, `humanVictimWeight`, `humanVictimWeight.den`, `humanVictimWeight.num`, `monsterChancePct`, `nameKey`, `vaeloriMarines`, `vaeloriStrengthPct`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## diplomacy-rules
-
-- `set`: `blockadeDie`, `drift`, `drift.chanceDen`, `drift.die`, `drift.stepDie`, `goodwill`, `goodwill.allianceDie`, `goodwill.napDie`, `goodwill.peaceLowBelow`, `goodwill.peaceLowGain`, `goodwill.peaceLowPct`, `goodwill.researchDie`, `goodwill.tradeDie`, `goodwill.tribute10Die`, `goodwill.tribute5Die`, `incidents`, `incidents.askedAttack`, `incidents.askedAttackAmount`, `incidents.bio`, `incidents.bioDie`, `incidents.blockade`, `incidents.colonyAttack`, `incidents.hostileMax`, `incidents.hostileMin`, `incidents.militaryThreat`, `incidents.research`, `incidents.severeAmount`, `incidents.shipCombat`, `incidents.shipLossPerSize`, `incidents.trade`, `incidents.tribute`, `levels`, `patience`, `patience.action`, `patience.breakTreaty`, `patience.demand`, `patience.endCap`, `patience.endGain`, `patience.evaluate`, `patience.proposalOwn`, `patience.refuseAt`, `patience.startBelow`, `patience.startDie`, `patience.techExchange`, `patience.testBase`, `patience.testDie`, `peace`, `peace.max`, `peace.relCap`, `peace.relGain`, `peace.treatyTurns`, `peaceUnits`, `peaceUnits.alliance`, `peaceUnits.alliance.den`, `peaceUnits.alliance.num`, `peaceUnits.firstContact`, `peaceUnits.firstContact.den`, `peaceUnits.firstContact.num`, `peaceUnits.nap`, `peaceUnits.nap.den`, `peaceUnits.nap.num`, `peaceUnits.research`, `peaceUnits.research.den`, `peaceUnits.research.num`, `peaceUnits.trade`, `peaceUnits.trade.den`, `peaceUnits.trade.num`, `peaceUnits.tribute`, `peaceUnits.tribute.den`, `peaceUnits.tribute.num`, `personalities`, `relation`, `relation.gainStepCap`, `relation.lateTurn`, `relation.max`, `relation.min`, `relation.nonAllyCap`, `relation.scaleDiv`, `relation.warCeiling`, `treatyIncome`, `treatyIncome.aiAiStartZero`, `treatyIncome.govBasePct`, `treatyIncome.pirateDiv`, `treatyIncome.popsDiv`, `treatyIncome.stepDiv`, `tribute`, `tribute.den`, `tribute.levels`, `war`, `war.baseDrop`, `war.delayedRel`, `war.patience`, `war.peacePatience`, `war.relBase`, `war.relDie`, `war.totalWarDifficulties`
-- `append`, `insertAfter`, `removeValue`: `levels`, `personalities`, `tribute.levels`, `war.totalWarDifficulties`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`personalities.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `personalities` by `key` (any element key): `breakPeacePct`, `breakWarPct`, `demandPct`, `diplomacyMod`, `gainScale`, `gainScale.den`, `gainScale.num`, `initialMood`, `lossScale`, `lossScale.den`, `lossScale.num`, `maxThreats`, `peaceUnit`, `sneakMod`, `threatInc`
-
-## drives
-
-- `set`: `app`, `combatSpeedMax`, `combatSpeedMin`, `nameKey`, `pc`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## espionage-rules
-
-- `set`: `count`, `count.firstPer`, `count.firstUpTo`, `count.pairSize`, `count.secondPer`, `count.secondUpTo`, `die`, `framePriority`, `incidentCodes`, `incidentCodes.sabotage`, `incidentCodes.sabotageFramed`, `incidentCodes.theft`, `incidentCodes.theftFramed`, `kill`, `kill.defenderBonus`, `kill.hideBonus`, `kill.margin`, `overflowRefundPct`, `relationDice`, `sabotageImmune`, `spyApp`, `spyPp`, `techBonuses`, `thresholds`, `thresholds.sabotage`, `thresholds.sabotageFrame`, `thresholds.steal`, `thresholds.stealFrame`
-- `append`, `insertAfter`, `removeValue`: `framePriority`, `relationDice`, `sabotageImmune`, `techBonuses`
-
-## event-rules
-
-- `set`: `allEventsDelay`, `attempts`, `betweenEventsDelay`, `boom`, `boom.growthPct`, `climateChange`, `climateChange.to`, `comet`, `comet.destroyedAtOnce`, `comet.hitDiv`, `comet.hitRolls`, `comet.minHits`, `comet.sizeBase`, `comet.sizeMul`, `comet.sizeRoll`, `comet.timeBase`, `comet.timeRoll`, `derelict`, `derelict.beamClass`, `derelict.beamWindow`, `derelict.xenonBeamAs`, `diplomacy`, `diplomacy.blunder`, `diplomacy.marriage`, `donation`, `donation.base`, `donation.perTurns`, `donation.step`, `duration`, `duration.endChance`, `duration.maxTurns`, `duration.minTurns`, `earthquake`, `earthquake.hitDiv`, `earthquake.hitRolls`, `earthquake.minHits`, `eventRoll`, `factor`, `goodOnlyDifficulties`, `industrial`, `industrial.bioDiv`, `industrial.bioRolls`, `industrial.bombHits`, `industrial.excludedClimates`, `lucky`, `lucky.divisor`, `lucky.divisor.offOff`, `lucky.divisor.offOn`, `lucky.divisor.onOff`, `lucky.divisor.onOn`, `lucky.roll`, `mineralDepletion`, `mineralDepletion.from`, `mineralDepletion.levels`, `mineralDeposit`, `mineralDeposit.cap`, `mineralDeposit.levels`, `news`, `news.destroyedVariants`, `news.grownNearHalf`, `news.grownStages`, `news.kinds`, `news.kinds.carina`, `news.kinds.destroyed`, `news.kinds.grown`, `news.kinds.rankings`, `news.kinds.surrender`, `news.openers`, `news.rankingCategories`, `news.rankingChance`, `news.rankingTop`, `news.rankingsFrom`, `news.surrenderVariants`, `news.transitions`, `orbitPoints`, `pirateActivity`, `pirateActivity.factor`, `pirateActivity.minFreighters`, `pirateActivity.minStrength`, `pirateRaid`, `pirateRaid.minBc`, `pirateRaid.pctBase`, `pirateRaid.pctRoll`, `plague`, `plague.growthPct`, `plague.perDifficulty`, `plague.roll`, `plague.selfCure`, `progressChance`, `resetEvery`, `supernova`, `supernova.climate`, `supernova.minResearchPerTurn`, `supernova.timeBase`, `supernova.timeRoll`, `virus`, `virus.base`, `virus.minPool`, `virus.roll`, `wormhole`, `wormhole.minEta`
-- `append`, `insertAfter`, `removeValue`: `factor`, `goodOnlyDifficulties`, `industrial.excludedClimates`, `news.grownStages`, `orbitPoints`, `pirateActivity.factor`
-
-## events
-
-- `set`: `duration`, `fluxBlocked`, `functional`, `good`, `minTurn`, `monster`, `role`, `silent`, `victim`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## finance-rules
-
-- `set`: `bankruptcy`, `bankruptcy.aiBonusBc`, `bankruptcy.buildingRefund`, `bankruptcy.buildingRefund.den`, `bankruptcy.buildingRefund.num`, `bankruptcy.protectedAiGroups`, `bankruptcy.shipPassRatio`, `bankruptcy.shipPassRatio.den`, `bankruptcy.shipPassRatio.num`, `bankruptcy.shipRefund`, `bankruptcy.shipRefund.den`, `bankruptcy.shipRefund.num`, `bankruptcy.worth`, `cpDeficitBc`, `foodSaleHalfBc`, `freighterFleet`, `freighterFleet.application`, `freighterFleet.freighters`, `freighterFleet.pp`, `freighterUpkeep`, `freighterUpkeep.den`, `freighterUpkeep.num`, `freightersPerColonist`, `lowTreasuryBc`, `supportShipCp`, `taxRates`
-- `append`, `insertAfter`, `removeValue`: `bankruptcy.aiBonusBc`, `bankruptcy.protectedAiGroups`, `bankruptcy.worth`, `taxRates`
-
-## fuel-cells
-
-- `set`: `app`, `nameKey`, `pc`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## galaxy-gen
-
-- `set`: `blackHoles`, `blackHoles.blockRadius`, `blackHoles.nebulaProbe`, `carina`, `carina.fallbackBelow`, `carina.minCandidates`, `carina.orbit4Den`, `carina.orbit5Den`, `carina.orbitBase`, `carina.orbitSpan`, `carina.planet`, `carina.planet.climate`, `carina.planet.env`, `carina.planet.gravity`, `carina.planet.minerals`, `carina.planet.size`, `carina.radii`, `carina.researchPerScientist`, `carina.targetNumX`, `carina.targetNumY`, `carina.targetOffset`, `companionNothingPct`, `connectivity`, `connectivity.linkPc`, `connectivity.replacementsMax`, `gravityByMineralsSize`, `gravityPenaltyPct`, `gravityPenaltyPct.heavy`, `gravityPenaltyPct.low`, `gravityPenaltyPct.normal`, `heroes`, `heroes.candidates`, `heroes.tries`, `homes`, `homes.allowedGroups`, `homes.allowedGroups.ocean`, `homes.allowedGroups.terran`, `homes.candidateListMax`, `homes.classRerollTries`, `homes.foodPc`, `homes.listSwaps`, `homes.minPlanets`, `homes.moveMaxSteps`, `homes.moveStep`, `homes.nearbyMinPlanets`, `homes.nearbyPc`, `homes.orbitTries`, `homes.picks`, `homes.picks.lithovore`, `homes.picks.poorHomeworld`, `homes.playerSwaps`, `homes.relaxSteps`, `homes.separationFloor`, `homes.sizeAdjAbovePlayers`, `monsters`, `monsters.counterCap`, `monsters.guardianNameKey`, `monsters.picksPerMonster`, `monsters.spacingBase`, `monsters.types`, `nebulae`, `nebulae.gridMin`, `nebulae.keepMax`, `nebulae.listMax`, `nebulae.maxAttempts`, `nebulae.pStep`, `nebulae.pictureH`, `nebulae.pictureW`, `nebulae.shrinkEvery`, `nebulae.startP`, `nebulae.types`, `nebulae.unitsPerPixel`, `orbitWeights`, `orbitWeights.average`, `orbitWeights.mineralRich`, `orbitWeights.organicRich`, `placement`, `placement.blackHoleMinPc`, `placement.fallbackTriesMin`, `placement.fallbackTriesPerStar`, `placement.fixedBoxDxUnits`, `placement.fixedBoxDy`, `placement.jitterCells`, `placement.jitterTries`, `placement.labelBase`, `placement.labelDiceCount`, `placement.labelDiceSides`, `placement.labelEdgeDen`, `placement.labelEdgeNum`, `placement.mapPxH`, `placement.mapPxW`, `placement.maxPxX`, `placement.minPxX`, `placement.minPxY`, `placement.minSpacingPx2`, `planetSizeThresholds`, `popCapacityBySize`, `prodPerWorkerByMinerals`, `restarts`, `restarts.universeMax`, `satelliteCap`, `satellitePictures`, `satelliteTypeByD10`, `sizes`, `specialRoll`, `specialRoll.gateAbove`, `specialRoll.heroCapOffset`, `specialRoll.largeMinSize`, `specialRoll.rerollTries`, `specialRoll.wormholeCapPerSizeStep`, `specials`, `starNamePoolSize`, `starPictures`, `starVisualSizeWeights`, `wormholes`, `wormholes.initiatorTries`, `wormholes.minPcOffset`, `wormholes.partnerMax`, `wormholes.swapDen`, `wormholes.swapNum`
-- `append`, `insertAfter`, `removeValue`: `blackHoles.nebulaProbe`, `carina.radii`, `gravityByMineralsSize`, `gravityPenaltyPct.heavy`, `gravityPenaltyPct.low`, `gravityPenaltyPct.normal`, `homes.allowedGroups.ocean`, `homes.allowedGroups.terran`, `monsters.types`, `nebulae.types`, `orbitWeights.average`, `orbitWeights.mineralRich`, `orbitWeights.organicRich`, `planetSizeThresholds`, `popCapacityBySize`, `prodPerWorkerByMinerals`, `satelliteTypeByD10`, `sizes`, `specials`, `starVisualSizeWeights`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`monsters.types.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `monsters.types` by `key` (elements `amoeba`, `crystal`, `dragon`, `eel`, `hydra`): `climates`, `excluded`, `minerals`, `nameKey`, `sizes`
-- `sizes` by `key` (elements `cluster`, `huge`, `large`, `medium`, `small`): `height`, `labelBoxH`, `maxPxY`, `nebulaLimitX`, `nebulaLimitY`, `nebulaMax`, `nebulaMin`, `scale`, `sizeIndex`, `stars`, `stepsX`, `stepsY`, `width`, `zoomLevels`
-- `specials` by `key` (elements `ancient_artifacts`, `carina`, `gem_deposits`, `gold_deposits`, `marooned_hero`, `natives`, `pirate_cache`, `space_debris`, `space_monster`, `splinter_colony`, `stable_wormhole`): `eligibility`, `nameKey`, `placement`, `weight`
-
-## governments
-
-- `set`: `advanced`, `advancedForm`, `assimilationPoints`, `barracksMoralePct`, `basicForm`, `canExterminate`, `commandPoints`, `commandPoints.den`, `commandPoints.num`, `defensiveSpies`, `effects`, `foodProdPct`, `hasCapitol`, `hasMorale`, `incomePct`, `moralePenaltyPct`, `moraleTechsRemoved`, `nameKey`, `noCapitolMoralePct`, `pick`, `psionicsMorale`, `researchPct`, `researchTreaty`, `researchTreaty.den`, `researchTreaty.num`, `shipCost`, `shipCost.den`, `shipCost.num`, `treatyBonusPct`
-- `append`, `insertAfter`, `removeValue`: `effects`
-
-## governor-policies
-
-- `set`: `default`, `defence`, `defenceAlways`, `fallback`, `food`, `newColony`, `newColony.jobs`, `newColony.jobs.foodReserve`, `newColony.jobs.minWorkersPct`, `newColony.jobs.scientistPct`, `newColony.maxUnits`, `newColony.priorities`, `stages`, `threat`, `threat.colonyPc`, `threat.fleetPc`, `threat.minShips`, `threat.seenTurns`
-- `append`, `insertAfter`, `removeValue`: `defence`, `fallback`, `food`, `newColony.priorities`, `stages`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`stages.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `stages` by `key` (any element key): `jobs`, `jobs.foodReserve`, `jobs.minWorkersPct`, `jobs.scientistPct`, `maxFillPct`, `maxUnits`, `priorities`
-
-## history-rules
-
-- `set`: `axisStepTenths`, `capacity`, `fleetPoints`, `keepEliminated`, `popIncludesTransit`, `yEmpty`, `yRound`, `yUnits`
-- `append`, `insertAfter`, `removeValue`: `axisStepTenths`, `fleetPoints`, `yUnits`
-
-## hulls
-
-- `set`: `armor`, `battlePods`, `battlePods.cost`, `battlePods.space`, `commandPoints`, `computerHp`, `cost`, `driveHp`, `footprint`, `marines`, `minRefit`, `nameKey`, `orbital`, `shieldHp`, `shieldMult`, `size`, `space`, `strategic`, `strategic.beams`, `strategic.bombs`, `strategic.defenseBonus`, `strategic.hits`, `strategic.missiles`, `strategic.specialWeapons`, `structure`, `systemsRowOf`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## leader-rules
-
-- `set`: `advancedStart`, `advancedStart.level`, `advancedStart.normal`, `advancedStart.normal.count`, `advancedStart.normal.poolSize`, `advancedStart.repulsive`, `advancedStart.repulsive.count`, `advancedStart.repulsive.poolSize`, `candidatePool`, `candidatePool.base`, `candidatePool.charismaticBonus`, `candidatePool.perPlayer`, `candidatePool.repulsiveDivisor`, `candidatePool.turnsPerStep`, `combatXp`, `combatXp.divisor`, `combatXp.min`, `famousChanceX2`, `levels`, `levels.thresholds`, `levels.warlordThreshold`, `levels.xpCap`, `limits`, `limits.colony`, `limits.ship`, `limits.total`, `offers`, `offers.attempts`, `offers.charismaticPoints`, `offers.die`, `offers.firstTurn`, `offers.forHireTurns`, `offers.repulsivePoints`, `picks`, `picks.charismatic`, `picks.repulsive`, `picks.warlord`, `price`, `price.megawealthDoubles`, `price.salaryDivisor`, `price.salaryMin`, `price.techUnits`, `price.unitBc`, `randomSkills`, `randomSkills.die`, `randomSkills.generalBelow`, `randomSkills.improvedDie`, `randomSkills.picks`, `roster`, `roster.size`, `skillRoles`, `skillRoles.commando`, `skillRoles.famous`, `skillRoles.megawealth`, `skills`, `travel`, `travel.turns`
-- `append`, `insertAfter`, `removeValue`: `levels.thresholds`, `price.techUnits`, `skills`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`skills.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `skills` by `key` (any element key): `category`, `effects`, `frozenInactive`, `inert`, `pool`, `shipUnits`, `stacking`, `units`, `value`
-
-## leaders
-
-- `set`: `loknar`, `nameKey`, `noSalary`, `noWarlordLevel`, `offered`, `ownAdvancedGovernment`, `portrait`, `randomSkills`, `randomTechs`, `skills`, `startXp`, `techs`, `titleKey`, `type`, `vaeloriCommander`
-- `append`, `insertAfter`, `removeValue`: `randomTechs`, `skills`, `techs`
-
-## message-rules
-
-- `set`: `pool`, `rows`, `sortSeriousFirst`
-- `append`, `insertAfter`, `removeValue`: `rows`
-
-## monster-rules
-
-- `set`: `amoeba`, `amoeba.climate`, `bribe`, `bribe.bc`, `eel`, `eel.breedTurns`, `eel.maxWandering`, `regenerationPct`, `search`, `search.bandPc`, `search.candidates`, `search.rangePc`, `spawn`, `spawn.offsetPc`, `species`, `stay`, `stay.die`, `stay.rolls`, `strategic`, `strategic.computer`, `strategic.scanner`, `strength`, `strength.colonyWeight`, `strength.researchDiv`
-- `append`, `insertAfter`, `removeValue`: `species`
-
-## monsters
-
-- `set`: `combatSpeed`, `computer`, `drive`, `hull`, `specials`, `species`, `structure`, `travelPc`, `variant`, `weapons`
-- `append`, `insertAfter`, `removeValue`: `specials`, `weapons`
-
-## movement
-
-- `set`: `contact`, `contact.add`, `contact.den`, `contact.num`, `drives`, `eft`, `eft.add`, `eft.den`, `eft.num`, `eft.specials`, `fuel`, `gates`, `gates.jump`, `gates.jump.app`, `gates.jump.bonusPc`, `gates.jump.passNebula`, `gates.star`, `gates.star.app`, `interdictor`, `interdictor.building`, `interdictor.radiusPc`, `relay`, `relay.bases`, `scan`, `scan.basePc`, `scan.orbital`, `scan.ships`, `scan.sizeClassOffset`, `scan.tiers`, `stealth`, `stealth.concealPc`, `stealth.raceLanders`, `stealth.sizePenalty`, `stealth.specials`
-- `append`, `insertAfter`, `removeValue`: `drives`, `eft.specials`, `fuel`, `relay.bases`, `scan.orbital`, `scan.ships`, `scan.tiers`, `stealth.specials`
-
-## planet-mod-rules
-
-- `set`: `artificial`, `artificial.building`, `artificial.climate`, `artificial.gravity`, `artificial.minerals`, `artificial.sources`, `gaia`, `gaia.building`, `gaia.from`, `gaia.to`, `shieldedClimate`, `shieldedClimate.as`, `shieldedClimate.buildings`, `shieldedClimate.from`, `terraform`, `terraform.building`, `terraform.stepPp`, `terraform.steps`
-- `append`, `insertAfter`, `removeValue`: `artificial.sources`, `shieldedClimate.buildings`, `terraform.steps`
-
-## planet-types
-
-- `set`: `aquaticFoodPerFarmer`, `foodPerFarmer`, `habitabilityPct`, `habitable`, `maintenancePenaltyPct`, `nameKey`, `tolerantHabitabilityPct`, `weights`, `weights.average`, `weights.mineralRich`, `weights.organicRich`
-- `append`, `insertAfter`, `removeValue`: `weights.average`, `weights.mineralRich`, `weights.organicRich`
-
-## population-rules
-
-- `set`: `capacity`, `capacity.acpApp`, `capacity.acpBonus`, `capacity.aquaticRemap`, `capacity.biospheresBonus`, `capacity.biospheresBuilding`, `capacity.perSizeClass`, `capacity.roundAdd`, `growth`, `growth.basePct`, `growth.cloningBuilding`, `growth.cloningK`, `growth.factor`, `growth.housingFactor`, `growth.techs`, `heldK`, `maxUnits`, `starvation`, `starvation.androidPenaltyK`, `starvation.penaltyK`, `unitK`, `upkeepHalf`, `upkeepHalf.android`, `upkeepHalf.android.foodHalf`, `upkeepHalf.android.prodHalf`, `upkeepHalf.native`, `upkeepHalf.native.foodHalf`, `upkeepHalf.native.prodHalf`, `upkeepHalf.normal`, `upkeepHalf.normal.foodHalf`, `upkeepHalf.normal.prodHalf`
-- `append`, `insertAfter`, `removeValue`: `capacity.aquaticRemap`, `growth.techs`
-
-## production-rules
-
-- `set`: `autoDeleteSetting`, `autobuildHumanCutoff`, `buyBands`, `capitol`, `climates`, `colonyBase`, `fullRefund`, `ladders`, `needsFarming`, `needsGravityMismatch`, `needsMixedRaces`, `needsMixedRaces.buildings`, `needsMixedRaces.excludedGovernments`, `notSellable`, `oneShot`, `perSystemOwner`, `queueSlots`, `repeatable`, `revertBuy`, `saleDiv`, `shipListing`, `shipListing.driveApps`, `shipListing.fuelApps`
-- `append`, `insertAfter`, `removeValue`: `buyBands`, `climates`, `fullRefund`, `ladders`, `needsFarming`, `needsGravityMismatch`, `needsMixedRaces.buildings`, `needsMixedRaces.excludedGovernments`, `notSellable`, `oneShot`, `perSystemOwner`, `repeatable`, `shipListing.driveApps`, `shipListing.fuelApps`
-
-## race-rules
-
-- `set`: `aiMutationOrder`, `baseScorePct`, `budget`, `clearGovernment`, `homeworld`, `homeworld.climate`, `homeworld.gravity`, `homeworld.minerals`, `homeworld.size`, `mutationSwaps`, `negativeFloor`, `scorePctPerPick`, `tableVersion`
-- `append`, `insertAfter`, `removeValue`: `aiMutationOrder`, `mutationSwaps`
-
-## relations-matrix
-
-- `set`: `$schema`, `race`, `toward`
-- `append`, `insertAfter`, `removeValue`: `toward`
-
-## research
-
-- `set`: `grantsAlso`, `hyperAdvanced`, `hyperAdvanced.extraRp`, `hyperAdvanced.stepRp`, `hyperAdvanced.valueTerm`, `mini`, `mini.costPct`, `mini.group2`, `mini.group3`, `mini.maxLevel`, `mini.spacePct`, `mini.spacePct.group1`, `mini.spacePct.group2`, `mini.unchanged`, `perTurnRpCap`, `selectPrompt`
-- `append`, `insertAfter`, `removeValue`: `grantsAlso`, `mini.costPct`, `mini.group2`, `mini.group3`, `mini.spacePct.group1`, `mini.spacePct.group2`, `mini.unchanged`
-
-## score
-
-- `set`: `aiSurrender`, `aiSurrender.afterTurn`, `aiSurrender.basePct`, `aiSurrender.lenientMaxDifficulty`, `aiSurrender.lossMult`, `aiSurrender.popDen`, `aiSurrender.popNum`, `aiSurrender.strDen`, `aiSurrender.weakPct`, `basePct`, `capturedNum`, `carina`, `council`, `mutationApp`, `mutationPicks`, `pctPerPick`, `perElimination`, `perField`, `perHaField`, `perPop`, `roundAdd`, `roundDen`, `timeBase`, `vaelor`
-- `append`, `insertAfter`, `removeValue`: `timeBase`
-
-## settings
-
-- `set`: `defaultOn`, `defaultValue`, `kind`, `labelKey`
-- `append`, `insertAfter`, `removeValue`: none (no list fields)
-
-## ship-design
-
-- `set`: `aiRegenSkipApps`, `arcClasses`, `arcs`, `auto`, `auto.autoMods`, `auto.classRows`, `auto.classRows.balanced`, `auto.classRows.carrier`, `auto.classRows.missile`, `auto.classRows.special`, `auto.defaultBeam`, `auto.defaultWith`, `auto.defaultWithout`, `auto.excludedBombs`, `auto.fallThrough`, `auto.fallThrough.into`, `auto.fallThrough.theme`, `auto.fighters`, `auto.forcedSpecialWeapon`, `auto.forcedSpecialWeapon.below`, `auto.forcedSpecialWeapon.draw`, `auto.forcedSpecialWeapon.weapons`, `auto.lists`, `auto.lists.BS`, `auto.lists.DS`, `auto.lists.MS`, `auto.lists.SD`, `auto.lists.TS`, `auto.lists.TS.balanced`, `auto.lists.TS.carrier`, `auto.lists.TS.missile`, `auto.lists.TS.special`, `auto.profiles`, `auto.roundHalfUp`, `auto.scout`, `auto.scout.class`, `auto.scout.profile`, `auto.scout.reserve`, `auto.specialWeapons`, `auto.themeMods`, `auto.themes`, `battlePods`, `defaultRack`, `denseConduits`, `denseConduits.app`, `denseConduits.pct`, `fixedArc`, `hiddenMods`, `hullApps`, `maxCount`, `maxSpecials`, `maxWeaponSlots`, `modules`, `orbitalBaseMinSize`, `pictures`, `rackClasses`, `racks`, `readouts`, `readouts.armorMult`, `readouts.bdPerSpeed`, `readouts.beamAttack`, `readouts.beamDefense`, `readouts.freeSpeedMax`, `readouts.immobileBd`, `readouts.missileEvasion`, `readouts.shieldPct`, `readouts.speed`, `readouts.structureMult`, `regenFields`, `stockShips`, `storedSlots`, `usableSlots`
-- `append`, `insertAfter`, `removeValue`: `aiRegenSkipApps`, `arcClasses`, `arcs`, `auto.autoMods`, `auto.classRows.balanced`, `auto.classRows.carrier`, `auto.classRows.missile`, `auto.classRows.special`, `auto.excludedBombs`, `auto.fighters`, `auto.forcedSpecialWeapon.weapons`, `auto.lists.BS`, `auto.lists.DS`, `auto.lists.MS`, `auto.lists.SD`, `auto.lists.TS.balanced`, `auto.lists.TS.carrier`, `auto.lists.TS.missile`, `auto.lists.TS.special`, `auto.profiles`, `auto.roundHalfUp`, `auto.specialWeapons`, `auto.themeMods`, `auto.themes`, `hiddenMods`, `hullApps`, `modules`, `rackClasses`, `racks`, `readouts.armorMult`, `readouts.beamAttack`, `readouts.beamDefense`, `readouts.missileEvasion`, `readouts.shieldPct`, `readouts.speed`, `readouts.structureMult`, `regenFields`, `stockShips`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`arcs.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `arcs` by `key` (any element key): `pct`
-- `auto.themes` by `key` (any element key): `weight`
-
-## ship-lifecycle
-
-- `set`: `crew`, `crew.academyBuilding`, `crew.academyStartLevel`, `crew.battleXp`, `crew.battleXp.div`, `crew.battleXp.min`, `crew.levels`, `crew.normalMaxLevel`, `crew.xpPerAcademy`, `crew.xpPerTurn`, `refit`, `refit.deltaMult`, `roster`, `roster.humanCapSingle`, `roster.maxPerSide`, `roster.maxShips`, `roster.vaeloriCap`, `roster.vaeloriExtra`, `scrap`, `scrap.techBase`, `scrap.techMax`, `scrap.techShields`, `scrap.techStepPct`
-- `append`, `insertAfter`, `removeValue`: `crew.levels`
-
-## star-types
-
-- `set`: `ageWeights`, `ageWeights.average`, `ageWeights.mineralRich`, `ageWeights.organicRich`, `blackHole`, `envGroupByOrbit`, `mineralsByD10`, `nameKey`, `satellitesByD10`
-- `append`, `insertAfter`, `removeValue`: `envGroupByOrbit`, `mineralsByD10`, `satellitesByD10`
-
-## start-state
-
-- `set`: `baseFields`, `buildings`, `buildings.capitol`, `buildings.orbital`, `buildings.popRuleDen`, `buildings.popRuleNum`, `buildings.priority`, `buildings.skipAtPopLimit`, `buildings.skips`, `buildings.soilEnrichment`, `buildings.soilEnrichment.building`, `buildings.soilEnrichment.forbiddenClimates`, `chooser`, `chooser.appMultipliers`, `chooser.categories`, `chooser.earlyCategory`, `chooser.earlyMul`, `chooser.fieldMultipliers`, `chooser.filterDen`, `chooser.filterNum`, `chooser.levelValues`, `chooser.noFilterDifficulties`, `chooser.objectiveOverrides`, `chooser.raceOverrides`, `chooser.thresholdDen`, `chooser.thresholdNum`, `chooser.thresholdStart`, `chooser.zeroApps`, `colonies`, `colonies.balance`, `colonies.balance.climateCap`, `colonies.balance.specials`, `colonies.balance.targetDen`, `colonies.balance.targetNum`, `colonies.balance.upgradesPerColony`, `colonies.capDen`, `colonies.capNum`, `colonies.capSizeAdd`, `colonies.count`, `colonies.count.minus`, `colonies.count.round`, `colonies.count.scale`, `colonies.count.starsDiv`, `colonies.proximity`, `colonies.reachPc`, `colonies.sameStarDen`, `colonies.sameStarNum`, `colonies.worth`, `colonies.worth.cyberneticFoodWeight`, `colonies.worth.den`, `colonies.worth.finalDen`, `colonies.worth.foodWeight`, `colonies.worth.growth`, `colonies.worth.heavyDen`, `colonies.worth.heavyNum`, `colonies.worth.maintDiv`, `colonies.worth.mildDen`, `colonies.worth.mildNum`, `colonies.worth.mineralsAdd`, `colonies.worth.popPerSizeClass`, `colonies.worth.specials`, `colonies.worth.wetClimates`, `colonies.worth.wetDen`, `colonies.worth.wetNum`, `commandPoints`, `commandPoints.base`, `commandPoints.comms`, `commandPoints.orbital`, `commandPoints.warlordPerColony`, `designs`, `designs.colonyDesignSlotted`, `designs.colonyShipHull`, `designs.colonySlot`, `designs.layouts`, `designs.layouts.advanced`, `designs.layouts.ai`, `designs.layouts.early`, `designs.layouts.strategic`, `designs.pictures`, `designs.scoutSlot`, `explore`, `explore.colonyStarRemove`, `explore.colonyStarRemove.planet`, `explore.colonyStarRemove.star`, `explore.excludedPlanetSpecials`, `explore.excludedStarSpecials`, `explore.fuel`, `explore.revealedRemove`, `fleet`, `fleet.advanced`, `fleet.advanced.div`, `fleet.advanced.maxSlot`, `fleet.advanced.minus`, `fleet.advanced.noTitanSlot`, `fleet.advanced.titanApp`, `fleet.average`, `fleet.average.colonyShip`, `fleet.average.count`, `fleet.average.slot`, `freighters`, `freighters.base`, `freighters.multiple`, `generalFields`, `levels`, `output`, `output.artifactsResearch`, `output.baseResearch`, `output.carinaResearch`, `output.farmerBonus`, `output.flatFood`, `output.flatIndustry`, `output.flatResearch`, `output.floorQ`, `output.gravityGenerator`, `output.gravityPenalty`, `output.gravityPenalty.heavy`, `output.gravityPenalty.low`, `output.gravityPenalty.normal`, `output.mineralsPerWorker`, `output.morale`, `output.morale.barracks`, `output.morale.bonuses`, `output.pollution`, `output.pollution.doubleToleranceApp`, `output.pollution.dump`, `output.pollution.processor`, `output.pollution.renewer`, `output.pollution.tolerancePerSizeClass`, `output.roboticFactory`, `output.roboticFactory.building`, `output.roboticFactory.byMinerals`, `output.salvageWorksPerPop`, `output.salvageWorksPerPop.building`, `output.salvageWorksPerPop.pp`, `output.scientistBonus`, `output.workerBonus`, `picks`, `picks.aquatic`, `picks.artifactsHome`, `picks.creative`, `picks.cybernetic`, `picks.highG`, `picks.largeHome`, `picks.lithovore`, `picks.lowG`, `picks.poorHome`, `picks.richHome`, `picks.subterranean`, `picks.tolerant`, `picks.uncreative`, `picks.warlord`, `population`, `population.advanced`, `population.advanced.base`, `population.advanced.den`, `population.advanced.homeworldMin`, `population.advanced.min`, `population.advanced.mul`, `population.advanced.smallBelow`, `population.capacity`, `population.capacity.acpApp`, `population.capacity.acpBonus`, `population.capacity.aquaticRemap`, `population.capacity.max`, `population.capacity.perSizeClass`, `population.capacity.roundAdd`, `population.capacity.subterraneanPerSizeClass`, `population.homeworldPop`, `population.marines`, `stardate`, `startingFields`, `tree`, `tree.advancedGovernmentsField`, `tree.removals`, `tree.strategicRemovesNotInStrategic`, `tree.uncreativeBarsKinds`
-- `append`, `insertAfter`, `removeValue`: `baseFields`, `buildings.orbital`, `buildings.priority`, `buildings.skipAtPopLimit`, `buildings.skips`, `buildings.soilEnrichment.forbiddenClimates`, `chooser.appMultipliers`, `chooser.categories`, `chooser.fieldMultipliers`, `chooser.levelValues`, `chooser.noFilterDifficulties`, `chooser.objectiveOverrides`, `chooser.raceOverrides`, `chooser.zeroApps`, `colonies.balance.specials`, `colonies.proximity`, `colonies.worth.growth`, `colonies.worth.specials`, `colonies.worth.wetClimates`, `commandPoints.comms`, `commandPoints.orbital`, `designs.layouts.advanced`, `designs.layouts.ai`, `designs.layouts.early`, `designs.layouts.strategic`, `explore.colonyStarRemove.planet`, `explore.colonyStarRemove.star`, `explore.excludedPlanetSpecials`, `explore.excludedStarSpecials`, `explore.fuel`, `explore.revealedRemove`, `generalFields`, `levels`, `output.farmerBonus`, `output.flatFood`, `output.flatIndustry`, `output.flatResearch`, `output.gravityPenalty.heavy`, `output.gravityPenalty.low`, `output.gravityPenalty.normal`, `output.mineralsPerWorker`, `output.morale.barracks`, `output.morale.bonuses`, `output.roboticFactory.byMinerals`, `output.scientistBonus`, `output.workerBonus`, `population.capacity.aquaticRemap`, `startingFields`, `tree.removals`, `tree.uncreativeBarsKinds`
-
-Keyed arrays: the path segment after the array names an element by its key field, then the element's field (`levels.<key>.<field>`). Rows on an element never conflict with rows on another element; a row on the whole array conflicts with both.
-
-- `levels` by `key` (elements `advanced`, `average`, `postWarp`, `preWarp`): `advancedPopulation`, `aiRerollsSlots`, `allAppsExcluded`, `allAppsMaxCost`, `allAppsUnbarred`, `alsoKnown`, `baseLevel`, `buildingCap`, `chosenFields`, `explore`, `extraColonies`, `freighters`, `humanSlots`, `ships`, `startingFields`, `treasuryBase`, `treasuryPerMoneyLevel`
-
-## transport-rules
-
-- `set`: `androids`, `androids.apps`, `androids.apps.farmer`, `androids.apps.scientist`, `androids.apps.worker`, `androids.bonus`, `androids.capacityPick`, `androids.moraleJobs`, `androids.pp`, `ghost`, `ghost.collapsePct`, `natives`, `natives.foodBonusHalf`, `natives.gravityPenalty`, `natives.special`, `natives.units`, `transit`, `transit.maxEtaTurns`, `transit.maxInTransit`, `transit.minSpeedPc`
-- `append`, `insertAfter`, `removeValue`: `androids.moraleJobs`
-
-## troop-units
-
-- `set`: `bombard`, `bombard.accCap`, `bombard.antidote`, `bombard.bio`, `bombard.bioBlockedBy`, `bombard.civilianArmor`, `bombard.exempt`, `bombard.growthPerHit`, `bombard.invasionTries`, `bombard.invasionWins`, `bombard.microbiotics`, `bombard.noSpare`, `bombard.planetMe`, `bombard.roundsStrategic`, `bombard.roundsTactical`, `bombard.strategicDivisor`, `byDifficulty`, `capture`, `capture.lossPerColony`, `capture.lossPerColonyDestroyed`, `capture.lossPerUnitKilled`, `capture.removeBuildings`, `capture.removeOrbitalBases`, `garrison`, `garrison.decayWithoutBarracks`, `garrison.marineBuilding`, `garrison.marinePopDen`, `garrison.marineSizeDen`, `garrison.minLimit`, `garrison.onCompletion`, `garrison.onCompletion.marines`, `garrison.onCompletion.tanks`, `garrison.tankBuilding`, `garrison.tankPopDen`, `garrison.tankSizeDen`, `garrison.turnsPerUnit`, `gear`, `invasion`, `invasion.keepFirst`, `militiaPer`, `rebellion`, `rebellion.exterminateMul`, `rebellion.halvedBy`, `rebellion.keepMax`, `rebellion.perUnitPerMille`, `rebellion.roll`, `rifles`, `starBreakerApp`, `techCapture`, `techCapture.human`, `techCapture.human.building`, `techCapture.human.pop`, `techCapture.max`, `techCapture.roll`, `unitTechs`, `units`, `units.marine`, `units.marine.hits`, `units.marine.strength`, `units.militia`, `units.militia.hits`, `units.militia.strength`, `units.rebel`, `units.rebel.hits`, `units.rebel.strength`, `units.tank`, `units.tank.hits`, `units.tank.strength`
-- `append`, `insertAfter`, `removeValue`: `bombard.bio`, `bombard.bioBlockedBy`, `bombard.exempt`, `bombard.noSpare`, `byDifficulty`, `capture.removeBuildings`, `gear`, `rebellion.halvedBy`, `rifles`, `unitTechs`
-
-## vaelori-designs
-
-- `set`: `armor`, `art`, `cls`, `computer`, `hull`, `jammer`, `role`, `shield`, `specials`, `weapons`
-- `append`, `insertAfter`, `removeValue`: `jammer`, `specials`, `weapons`
-
-## vaelori-rules
-
-- `set`: `alert`, `alert.lines`, `alert.roomPct`, `alert.sets`, `attack`, `attack.die`, `attack.forceMult`, `classes`, `crew`, `crew.defense`, `crew.offense`, `cycleTurns`, `delay`, `delay.advanced`, `delay.average`, `delay.postWarp`, `delay.preWarp`, `guardian`, `guardian.drive`, `guardian.rewardApp`, `guardian.xenon`, `guardian.xenonCount`, `home`, `home.freeHarbingerCls`, `minBuy`, `owners`, `owners.guardian`, `owners.vaelori`, `portal`, `portal.building`, `raid`, `raid.holdLaunchTurn`, `raid.maxShips`, `raid.offsetPc`, `raid.speedPc`, `vaelori`, `vaelori.drive`, `victim`, `victim.luckyDiv`
-- `append`, `insertAfter`, `removeValue`: `classes`, `guardian.xenon`
-
-## weapon-mods
-
-- `set`: `abbrKey`, `appliesTo`, `damagePct`, `minLevel`, `mountPct`, `nameKey`, `premiumPct`, `requiresApplication`
-- `append`, `insertAfter`, `removeValue`: `appliesTo`

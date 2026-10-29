@@ -4,7 +4,7 @@
 
 A research field: one step of one of the eight research areas. A new field is linked into its area's chain with a `splice` patch row after the field it follows.
 
-A mod adds records in `records/tech-fields/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "tech-fields", "records": [...] }`) and changes base records with patch rows on catalog `tech-fields`. Schema: `schemas/records/tech-fields.schema.json`.
+A mod adds records in `records/tech-fields/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "tech-fields", "records": [...] }`) and changes base records with patch rows on catalog `tech-fields`. Schema: [tech-fields records schema](../schemas/records/tech-fields.schema.json).
 
 ## Fields
 

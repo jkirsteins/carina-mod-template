@@ -1,6 +1,78 @@
 {
   "json.schemas": [
     {
+      "url": "./mods/balance-tweaks/carina-mod/1",
+      "schema": {
+        "$ref": "../../../schemas/mod.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/patches/carina-patch/1",
+      "schema": {
+        "$ref": "../../../../schemas/patch.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/applications/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/applications.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/armor/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/armor.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/buildings/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/buildings.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/computers/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/computers.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/race-picks/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/race-picks.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/races/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/races.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/shields/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/shields.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/specials/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/specials.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/tech-fields/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/tech-fields.schema.json"
+      }
+    },
+    {
+      "url": "./mods/balance-tweaks/records/weapons/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/weapons.schema.json"
+      }
+    },
+    {
       "url": "./mods/choir-prisms/carina-mod/1",
       "schema": {
         "$ref": "../../../schemas/mod.schema.json"
@@ -289,21 +361,171 @@
       }
     },
     {
+      "url": "./mods/pulse-lance/carina-mod/1",
+      "schema": {
+        "$ref": "../../../schemas/mod.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/patches/carina-patch/1",
+      "schema": {
+        "$ref": "../../../../schemas/patch.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/applications/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/applications.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/armor/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/armor.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/buildings/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/buildings.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/computers/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/computers.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/race-picks/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/race-picks.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/races/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/races.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/shields/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/shields.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/specials/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/specials.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/tech-fields/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/tech-fields.schema.json"
+      }
+    },
+    {
+      "url": "./mods/pulse-lance/records/weapons/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/weapons.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/carina-mod/1",
+      "schema": {
+        "$ref": "../../../schemas/mod.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/patches/carina-patch/1",
+      "schema": {
+        "$ref": "../../../../schemas/patch.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/applications/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/applications.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/armor/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/armor.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/buildings/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/buildings.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/computers/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/computers.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/race-picks/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/race-picks.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/races/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/races.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/shields/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/shields.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/specials/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/specials.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/tech-fields/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/tech-fields.schema.json"
+      }
+    },
+    {
+      "url": "./mods/ship-class-names/records/weapons/carina-records/1",
+      "schema": {
+        "$ref": "../../../../../schemas/records/weapons.schema.json"
+      }
+    },
+    {
       "url": "./schemas/i18n.schema.json",
       "fileMatch": [
+        "mods/balance-tweaks/i18n/*/*.json",
         "mods/choir-prisms/i18n/*/*.json",
         "mods/deep-field/i18n/*/*.json",
         "mods/hollow-choir/i18n/*/*.json",
-        "mods/prism-optics/i18n/*/*.json"
+        "mods/prism-optics/i18n/*/*.json",
+        "mods/pulse-lance/i18n/*/*.json",
+        "mods/ship-class-names/i18n/*/*.json"
       ]
     },
     {
       "url": "./schemas/roles.schema.json",
       "fileMatch": [
+        "mods/balance-tweaks/assets/roles.json",
         "mods/choir-prisms/assets/roles.json",
         "mods/deep-field/assets/roles.json",
         "mods/hollow-choir/assets/roles.json",
-        "mods/prism-optics/assets/roles.json"
+        "mods/prism-optics/assets/roles.json",
+        "mods/pulse-lance/assets/roles.json",
+        "mods/ship-class-names/assets/roles.json"
       ]
     }
   ]

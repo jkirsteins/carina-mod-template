@@ -1,0 +1,18 @@
+{
+  "$schema": "carina-mod-migration/1",
+  "from": 1,
+  "to": 2,
+  "renames": [
+    {
+      "catalog": "applications",
+      "from": "carina_team.pulse_lance.pulse_cannon",
+      "to": "carina_team.pulse_lance.pulse_lance"
+    },
+    {
+      "catalog": "weapons",
+      "from": "carina_team.pulse_lance.pulse_cannon",
+      "to": "carina_team.pulse_lance.pulse_lance"
+    }
+  ],
+  "removals": []
+}

@@ -6,7 +6,7 @@ A role is a place in the game that draws a picture or plays a sound. `assets/rol
 
 Placeholders in a role id: `<race>` is a race key (the 13 stock races, or a race your package adds), `<banner>` one of the eight banner colours (`red`, `yellow`, `green`, `silver`, `blue`, `brown`, `purple`, `orange`), `<n>` a number. A pair such as `{a, b}` lists the last segment of several roles in one row.
 
-Besides the roles below, a package may add a new picture role `<your namespace>.<name>` (any size), and its own building and race roles as described in the sections for them. Sound is Ogg (Opus or Vorbis) with an `.m4a` twin that has the same role with `.m4a` added.
+Besides the roles below, a package may add a new picture role `<your namespace>.<name>` (any size), and its own building and race roles as described in the sections for them. Sound is Ogg (Opus or Vorbis). An optional `.m4a` twin has the same role with `.m4a` added.
 
 ## Title, galaxy and screen pictures
 
@@ -42,10 +42,10 @@ Backdrops of the title and setup screens, the galaxy map's lines, fleets and sta
 | `galaxy.fleet.{<banner>, monster, vaelori}` | picture | 12x10 | - | 10 |
 | `galaxy.line.route.{outofrange, reachable}` | picture | 8x1 | - | 2 |
 | `galaxy.line.wormhole` | picture | 8x1 | - | 1 |
-| `galaxy.nebula.<n>.<n>` | picture | 185x174 | - | 12 |
-| `galaxy.nebula.<n>.<n>` | picture | 123x116 | - | 12 |
-| `galaxy.nebula.<n>.<n>` | picture | 93x87 | - | 12 |
-| `galaxy.nebula.<n>.<n>` | picture | 62x58 | - | 12 |
+| `galaxy.nebula.<0-11>.0` | picture | 185x174 | - | 12 |
+| `galaxy.nebula.<0-11>.1` | picture | 123x116 | - | 12 |
+| `galaxy.nebula.<0-11>.2` | picture | 93x87 | - | 12 |
+| `galaxy.nebula.<0-11>.3` | picture | 62x58 | - | 12 |
 | `galaxy.star.<banner>.l.<n>` | picture | 27x27 | - | 15 |
 | `galaxy.star.<banner>.m.<n>` | picture | 19x19 | - | 15 |
 | `galaxy.star.<banner>.s.<n>` | picture | 15x15 | - | 15 |
@@ -60,11 +60,11 @@ Backdrops of the title and setup screens, the galaxy map's lines, fleets and sta
 | `galaxy.system.backdrop.<n>` | picture | 322x183 | - | 4 |
 | `galaxy.system.mark.colony.<banner>` | picture | 11x9 | - | 8 |
 | `galaxy.system.mark.outpost.<banner>` | picture | 11x9 | - | 8 |
-| `galaxy.system.orbit.<n>` | picture | 99x55 | - | 1 |
-| `galaxy.system.orbit.<n>` | picture | 147x81 | - | 1 |
-| `galaxy.system.orbit.<n>` | picture | 195x107 | - | 1 |
-| `galaxy.system.orbit.<n>` | picture | 245x133 | - | 1 |
-| `galaxy.system.orbit.<n>` | picture | 291x157 | - | 1 |
+| `galaxy.system.orbit.1` | picture | 99x55 | - | 1 |
+| `galaxy.system.orbit.2` | picture | 147x81 | - | 1 |
+| `galaxy.system.orbit.3` | picture | 195x107 | - | 1 |
+| `galaxy.system.orbit.4` | picture | 245x133 | - | 1 |
+| `galaxy.system.orbit.5` | picture | 291x157 | - | 1 |
 | `galaxy.system.star.<banner>.<n>` | picture | 31x31 | - | 15 |
 | `galaxy.system.star.white.<n>` | picture | 31x31 | - | 3 |
 | `gnn.newsroom.alt` | picture | 44x48 | - | 1 |
@@ -99,18 +99,18 @@ The pictures that depend on a race. A race you add either names an art base (`{ 
 | `council.medallion.<race>.l.{grey, lit}` | picture | 84x95 | - | required | 16 |
 | `council.medallion.<race>.m.{grey, lit}` | picture | 62x65 | - | required | 16 |
 | `council.medallion.<race>.s.{grey, lit}` | picture | 54x59 | - | required | 16 |
-| `races.ambassador.<race>-female.<n>` | picture | 192x288 | - | optional (extra variant) | 3 |
-| `races.ambassador.<race>.<n>` | picture | 192x288 | - | optional (extra variant) | 3 |
+| `races.ambassador.<race>-female.<n>` | picture | 192x288 | - | stock Humans only; refused for a race you add (`role-namespace`) | 3 |
+| `races.ambassador.<race>.<n>` | picture | 192x288 | - | stock Humans only; refused for a race you add (`role-namespace`) | 3 |
 | `races.ambassador.<race>` | picture | 192x288 | - | required | 8 |
 | `races.ambassador.{<race>-female, <race>-male}` | picture | 192x288 | - | optional (other sex) | 8 |
 | `races.emblem.banner.<race>` | picture | 40x48 | - | required | 8 |
 | `races.emblem.large.<race>` | picture | 73x80 | - | required | 8 |
-| `races.portrait.diplomacy.<race>-female.<n>` | picture | 72x84 | - | optional (extra variant) | 3 |
-| `races.portrait.diplomacy.<race>.<n>` | picture | 72x84 | - | optional (extra variant) | 3 |
+| `races.portrait.diplomacy.<race>-female.<n>` | picture | 72x84 | - | stock Humans only; refused for a race you add (`role-namespace`) | 3 |
+| `races.portrait.diplomacy.<race>.<n>` | picture | 72x84 | - | stock Humans only; refused for a race you add (`role-namespace`) | 3 |
 | `races.portrait.diplomacy.<race>` | picture | 72x84 | - | required | 8 |
 | `races.portrait.diplomacy.{<race>-female, <race>-male}` | picture | 72x84 | - | optional (other sex) | 8 |
-| `races.portrait.select.<race>-female.<n>` | picture | 313x350 | - | optional (extra variant) | 3 |
-| `races.portrait.select.<race>.<n>` | picture | 313x350 | - | optional (extra variant) | 3 |
+| `races.portrait.select.<race>-female.<n>` | picture | 313x350 | - | stock Humans only; refused for a race you add (`role-namespace`) | 3 |
+| `races.portrait.select.<race>.<n>` | picture | 313x350 | - | stock Humans only; refused for a race you add (`role-namespace`) | 3 |
 | `races.portrait.select.<race>` | picture | 313x350 | - | required | 8 |
 | `races.portrait.select.{<race>-female, <race>-male}` | picture | 313x350 | - | optional (other sex) | 8 |
 | `races.selectbg.<race>` | picture | 313x350 | - | required | 8 |
@@ -179,7 +179,7 @@ The ground troop picture of a race.
 
 ## Music and effects
 
-Music is at most 300 seconds long, an effect at most 10; each role is an `.ogg` file and its `.m4a` twin. A race that names no art base also supplies its theme as `music.race.<race key>` (and the twin); the stock races' themes are `music.cue.101` and up, in race order. The rows list the roles of the base.
+Music is at most 300 seconds long, an effect at most 10; each role is an `.ogg` file with an optional `.m4a` twin. A race that names no art base also supplies its theme as `music.race.<race key>` (the twin is required there); the stock races' themes are `music.cue.101` and up, in race order. The rows list the roles of the base.
 
 | Role | Kind | Size | Frames | Stock roles |
 |---|---|---|---|---|

@@ -4,7 +4,7 @@
 
 One application of a research field: what the player picks when the field completes. Weapons, buildings, armour and other items name the application that unlocks them.
 
-A mod adds records in `records/applications/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "applications", "records": [...] }`) and changes base records with patch rows on catalog `applications`. Schema: `schemas/records/applications.schema.json`.
+A mod adds records in `records/applications/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "applications", "records": [...] }`) and changes base records with patch rows on catalog `applications`. Schema: [applications records schema](../schemas/records/applications.schema.json).
 
 ## Fields
 

@@ -2,7 +2,7 @@
 
 # Mod reference
 
-What a Phase 1 mod can change, generated from the game's own catalog definitions so it matches the game version it came with. The getting-started guide is the template's README.
+What a mod can change, generated from the game's own catalog definitions so it matches the game version it came with. The getting-started guide is the [Guide](https://jkirsteins.github.io/carina-mod-template/).
 
 ## Things a mod can add
 
@@ -21,8 +21,61 @@ What a Phase 1 mod can change, generated from the game's own catalog definitions
 
 ## More
 
-- [Rules catalogs](rules.md): every number the rules use, changed with patch rows.
+- [Rules catalogs](rules.md): every number the rules use, changed with patch rows; one page per catalog below.
 - [Patch operations](patch-ops.md): set, append, insertAfter, removeValue, remove, splice; `expect` and `optional`.
 - [Effects](effects.md): the effect kinds buildings, governments, race picks and colony rules combine.
 - [Limits](limits.md): text, ids, package size.
 - [Roles](roles.md): every picture and sound role a mod may supply, with its kind, exact size and frame grammar.
+- [mod.json](manifest.md): every manifest field, with its type and whether it is required.
+- [Base text](text.md): every key of the game's English text with its message and arguments, for text overrides.
+
+## Rules catalogs
+
+- [ai-objectives](rules-ai-objectives.md)
+- [ai-personality](rules-ai-personality.md)
+- [ai-tuning](rules-ai-tuning.md)
+- [assimilation-rules](rules-assimilation-rules.md)
+- [audience-rules](rules-audience-rules.md)
+- [build-lists](rules-build-lists.md)
+- [cheat-codes](rules-cheat-codes.md)
+- [colonize-rules](rules-colonize-rules.md)
+- [colony-economy](rules-colony-economy.md)
+- [combat-rules](rules-combat-rules.md)
+- [council-rules](rules-council-rules.md)
+- [difficulty](rules-difficulty.md)
+- [diplomacy-rules](rules-diplomacy-rules.md)
+- [drives](rules-drives.md)
+- [espionage-rules](rules-espionage-rules.md)
+- [event-rules](rules-event-rules.md)
+- [events](rules-events.md)
+- [finance-rules](rules-finance-rules.md)
+- [fuel-cells](rules-fuel-cells.md)
+- [galaxy-gen](rules-galaxy-gen.md)
+- [governments](rules-governments.md)
+- [governor-policies](rules-governor-policies.md)
+- [history-rules](rules-history-rules.md)
+- [hulls](rules-hulls.md)
+- [leader-rules](rules-leader-rules.md)
+- [leaders](rules-leaders.md)
+- [message-rules](rules-message-rules.md)
+- [monster-rules](rules-monster-rules.md)
+- [monsters](rules-monsters.md)
+- [movement](rules-movement.md)
+- [planet-mod-rules](rules-planet-mod-rules.md)
+- [planet-types](rules-planet-types.md)
+- [population-rules](rules-population-rules.md)
+- [production-rules](rules-production-rules.md)
+- [race-rules](rules-race-rules.md)
+- [relations-matrix](rules-relations-matrix.md)
+- [research](rules-research.md)
+- [score](rules-score.md)
+- [settings](rules-settings.md)
+- [ship-design](rules-ship-design.md)
+- [ship-lifecycle](rules-ship-lifecycle.md)
+- [star-types](rules-star-types.md)
+- [start-state](rules-start-state.md)
+- [transport-rules](rules-transport-rules.md)
+- [troop-units](rules-troop-units.md)
+- [vaelori-designs](rules-vaelori-designs.md)
+- [vaelori-rules](rules-vaelori-rules.md)
+- [weapon-mods](rules-weapon-mods.md)

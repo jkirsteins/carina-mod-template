@@ -4,7 +4,7 @@
 
 A shield tier, unlocked by an application (`app`). `space` and `cost` list one value per hull size.
 
-A mod adds records in `records/shields/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "shields", "records": [...] }`) and changes base records with patch rows on catalog `shields`. Schema: `schemas/records/shields.schema.json`.
+A mod adds records in `records/shields/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "shields", "records": [...] }`) and changes base records with patch rows on catalog `shields`. Schema: [shields records schema](../schemas/records/shields.schema.json).
 
 ## Fields
 
@@ -15,8 +15,8 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `key` | `<namespace>.<snake_case>`: your package id with `-` read as `_`, then a name | yes |  |
 | `app` | snake_case key | yes |  |
 | `reduction` | integer >= 1 | yes |  |
-| `space` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes |  |
-| `cost` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes |  |
+| `space` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes | one per hull size, in order: `frigate`, `destroyer`, `cruiser`, `battleship`, `titan`, `colossus` |
+| `cost` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes | one per hull size, in order: `frigate`, `destroyer`, `cruiser`, `battleship`, `titan`, `colossus` |
 | `nameKey` | text key | yes |  |
 
 ## Also register it in
@@ -26,10 +26,6 @@ Nothing else: the record works on its own.
 ## Computer players
 
 The ship designer, starting designs and refits take the strongest known shield by its stats: `reduction`, then the later record on a full tie. A weaker mod tier is never picked over a stronger one the empire knows.
-
-## Limits
-
-- Six entries in `space` and `cost`, one per hull size.
 
 ## Patch paths
 

@@ -1,0 +1,20 @@
+{
+  "$schema": "carina-records/1",
+  "catalog": "weapons",
+  "records": [
+    {
+      "key": "carina_team.pulse_lance.pulse_lance",
+      "application": "carina_team.pulse_lance.pulse_lance",
+      "class": "beam",
+      "ammo": null,
+      "space": 8,
+      "cost": 6,
+      "damage": [3, 8],
+      "strategicDamage": [3, 8],
+      "mods": ["hv", "pd", "ap"],
+      "inherentBits": 0,
+      "monster": false,
+      "nameKey": "wpn.carina_team.pulse_lance.pulse_lance.name"
+    }
+  ]
+}

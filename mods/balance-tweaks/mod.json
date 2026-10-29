@@ -1,0 +1,14 @@
+{
+  "$schema": "carina-mod/1",
+  "id": "carina-team.balance-tweaks",
+  "version": "1.0.0",
+  "format": 1,
+  "rulesVersion": 1,
+  "phase": "patch",
+  "title": "Balance Tweaks",
+  "summary": "Three rule changes and nothing else: longer battles, a cheaper colony base and a bigger starting treasury.",
+  "authors": [{ "name": "Throne of Carina team" }],
+  "license": "CC-BY-4.0",
+  "allowEmbed": true,
+  "allowFeature": true
+}

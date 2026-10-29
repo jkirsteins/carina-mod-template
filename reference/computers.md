@@ -4,7 +4,7 @@
 
 A battle computer tier, unlocked by an application (`app`).
 
-A mod adds records in `records/computers/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "computers", "records": [...] }`) and changes base records with patch rows on catalog `computers`. Schema: `schemas/records/computers.schema.json`.
+A mod adds records in `records/computers/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "computers", "records": [...] }`) and changes base records with patch rows on catalog `computers`. Schema: [computers records schema](../schemas/records/computers.schema.json).
 
 ## Fields
 
@@ -15,7 +15,7 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `key` | `<namespace>.<snake_case>`: your package id with `-` read as `_`, then a name | yes |  |
 | `app` | snake_case key | yes |  |
 | `beamAttack` | integer >= 0 | yes |  |
-| `cost` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes |  |
+| `cost` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes | one per hull size, in order: `frigate`, `destroyer`, `cruiser`, `battleship`, `titan`, `colossus` |
 | `nameKey` | text key | yes |  |
 
 ## Also register it in
@@ -25,10 +25,6 @@ Nothing else: the record works on its own.
 ## Computer players
 
 The ship designer, starting designs and refits take the strongest known computer by its stats: `beamAttack`, then the later record on a full tie. A weaker mod tier is never picked over a stronger one the empire knows.
-
-## Limits
-
-- Six entries in `cost`, one per hull size.
 
 ## Patch paths
 

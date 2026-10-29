@@ -4,7 +4,7 @@
 
 A colony building. Its behaviour comes from its `effects` (economy, research and defence effects); a building without effects does nothing unless a rule names it. Its `autobuild` block says how the computer players weigh it.
 
-A mod adds records in `records/buildings/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "buildings", "records": [...] }`) and changes base records with patch rows on catalog `buildings`. Schema: `schemas/records/buildings.schema.json`.
+A mod adds records in `records/buildings/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "buildings", "records": [...] }`) and changes base records with patch rows on catalog `buildings`. Schema: [buildings records schema](../schemas/records/buildings.schema.json).
 
 ## Fields
 
@@ -13,7 +13,7 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | Field | Type | Required | Notes |
 |---|---|---|---|
 | `key` | `<namespace>.<snake_case>`: your package id with `-` read as `_`, then a name | yes |  |
-| `application` | key of a record in `applications` | yes | the key of the application that unlocks it (null: never unlocked by research) |
+| `application` | key of a record in `applications` | yes | the key of the application that unlocks it |
 | `cost` | integer >= 0 | yes |  |
 | `upkeep` | integer >= 0 | yes | BC per turn |
 | `buildable` | true or false | yes | players can put it in the build queue |
@@ -21,39 +21,51 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 | `nameKey` | text key | yes |  |
 | `autobuild` | one of 17 forms told apart by `kind` (fields below) | yes | how the empire AI and Auto Build weigh it |
 | `autobuild.kind` | one of `flat`, `capitol`, `research`, `industry`, `pollution`, `cloning`, `ecology`, `foodBoost`, `farm`, `city`, `gravity`, `trade`, `salvage`, `academy`, `terraform`, `garrison`, `defence` | yes | picks the form; the other fields follow it |
-| `autobuild.w` | integer 0..1000 | no | in `flat`, `capitol`, `city` |
-| `autobuild.base` | integer >= 0 | no | in `research`, `industry`, `ecology` |
-| `autobuild.tech` | integer >= 0 | no | in `research` |
-| `autobuild.pop` | integer >= 0 | no | in `industry`, `salvage` |
-| `autobuild.ind` | integer >= 0 | no | in `industry` |
-| `autobuild.skipFocus` | true or false | no | in `pollution`, `ecology`, `foodBoost`, `farm` |
-| `autobuild.treasuryDiv` | integer >= 1 | no | in `cloning`, `ecology`, `garrison`, `defence` |
-| `autobuild.eco` | integer >= 0 | no | in `ecology`, `foodBoost`, `farm`, `gravity`, `terraform` |
-| `autobuild.surplus` | integer >= 0 | no | in `foodBoost` |
-| `autobuild.deficit` | integer >= 0 | no | in `foodBoost` |
-| `autobuild.needsFarming` | true or false | no | in `foodBoost` |
-| `autobuild.byFood` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0] | no | in `farm` |
-| `autobuild.rows` | list of object (fields below) | no | in `gravity` |
-| `autobuild.popAbove` | integer >= 0 | no | in `trade`, `academy`, `garrison` |
-| `autobuild.div` | integer >= 1 | no | in `trade`, `salvage` |
-| `autobuild.bonus` | integer >= 0 | no | in `salvage` |
-| `autobuild.prodAbove` | integer >= 0 | no | in `academy` |
-| `autobuild.offset` | integer >= 0 | no | in `academy` |
-| `autobuild.climates` | list of object (fields below) | no | in `terraform` |
-| `autobuild.neighbours` | object (fields below) | no | in `garrison`, `defence` |
-| `autobuild.unlessHas` | snake_case key | no | in `garrison` |
-| `autobuild.govBonus` | integer >= 0 | no | in `garrison` |
-| `autobuild.conqueredBonus` | integer >= 0 | no | in `garrison` |
-| `autobuild.interdictorBlocks` | true or false | no | in `defence` |
-| `autobuild.radiatedEco` | integer >= 0 | no | in `defence` |
-| `effects` | list of effects (see effects.md) | no |  |
+| `autobuild.w` | integer 0..1000 | in `flat`, `capitol`, `city` |  |
+| `autobuild.base` | integer >= 0 | in `research`, `industry`, `ecology` |  |
+| `autobuild.tech` | integer >= 0 | in `research` |  |
+| `autobuild.pop` | integer >= 0 | in `industry`, `salvage` |  |
+| `autobuild.ind` | integer >= 0 | in `industry` |  |
+| `autobuild.skipFocus` | true or false | in `pollution`, `ecology`, `foodBoost`, `farm` |  |
+| `autobuild.treasuryDiv` | integer >= 1 | in `cloning`, `ecology`, `garrison`, `defence` |  |
+| `autobuild.eco` | integer >= 0 | in `ecology`, `foodBoost`, `farm`, `gravity`, `terraform` |  |
+| `autobuild.surplus` | integer >= 0 | in `foodBoost` |  |
+| `autobuild.deficit` | integer >= 0 | in `foodBoost` |  |
+| `autobuild.needsFarming` | true or false | in `foodBoost` |  |
+| `autobuild.byFood` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0] | in `farm` |  |
+| `autobuild.rows` | list of objects (fields below) | in `gravity` |  |
+| `autobuild.rows[].race` | one of `low`, `normal`, `heavy` | yes (when `autobuild.rows` is given) |  |
+| `autobuild.rows[].planet` | one of `low`, `normal`, `heavy` | yes (when `autobuild.rows` is given) |  |
+| `autobuild.rows[].w` | integer >= 0 | yes (when `autobuild.rows` is given) |  |
+| `autobuild.popAbove` | integer >= 0 | in `trade`, `academy`, `garrison` |  |
+| `autobuild.div` | integer >= 1 | in `trade`, `salvage` |  |
+| `autobuild.bonus` | integer >= 0 | in `salvage` |  |
+| `autobuild.prodAbove` | integer >= 0 | in `academy` |  |
+| `autobuild.offset` | integer >= 0 | in `academy` |  |
+| `autobuild.climates` | list of objects (fields below) | in `terraform` |  |
+| `autobuild.climates[].climate` | snake_case key | yes (when `autobuild.climates` is given) |  |
+| `autobuild.climates[].w` | integer >= 0 | yes (when `autobuild.climates` is given) |  |
+| `autobuild.climates[].aquaticW` | integer >= 0 | yes (when `autobuild.climates` is given) |  |
+| `autobuild.neighbours` | object (fields below) | in `garrison`, `defence` |  |
+| `autobuild.neighbours.w` | integer >= 0 | yes (when `autobuild.neighbours` is given) |  |
+| `autobuild.neighbours.p` | integer >= 0 | yes (when `autobuild.neighbours` is given) |  |
+| `autobuild.neighbours.n` | integer >= 0 | yes (when `autobuild.neighbours` is given) |  |
+| `autobuild.neighbours.x` | integer >= 0 | yes (when `autobuild.neighbours` is given) |  |
+| `autobuild.neighbours.th` | integer >= 0 | yes (when `autobuild.neighbours` is given) |  |
+| `autobuild.neighbours.cp` | true or false | in `defence` |  |
+| `autobuild.unlessHas` | snake_case key | in `garrison` |  |
+| `autobuild.govBonus` | integer >= 0 | in `garrison` |  |
+| `autobuild.conqueredBonus` | integer >= 0 | in `garrison` |  |
+| `autobuild.interdictorBlocks` | true or false | in `defence` |  |
+| `autobuild.radiatedEco` | integer >= 0 | in `defence` |  |
+| `effects` | list of effects ([Effects](effects.md)) | no |  |
 
 References to other records are written as keys; the game turns them into ids.
 
 ## Also register it in
 
-- governor-policies `defence` and `food` lists, if the colony governor should build it (`stages` is a keyed array: `stages.<key>.defence`)
-- start-state `buildings.priority` (the build order the start rules use)
+- [governor-policies](rules-governor-policies.md) `defence` and `food` lists, if the colony governor should build it (`stages` is a keyed array: `stages.<key>.defence`)
+- [start-state](rules-start-state.md) `buildings.priority` (the build order the start rules use)
 
 ## Computer players
 
@@ -61,7 +73,7 @@ The empire AI and Auto Build weigh every building by its `autobuild` block: one 
 
 ## Limits
 
-- Effects come from the closed effect list (see effects.md).
+- Effects come from the closed effect list ([Effects](effects.md)).
 - `autobuild` takes one of the existing formulas; a new formula needs code.
 - A role that one building holds (for example the cloning building) has one holder; a mod can move the role, not add a second holder.
 

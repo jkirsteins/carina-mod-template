@@ -1,0 +1,11 @@
+{
+  "hull.0.name": "Corvette",
+  "hull.0.plural": "Corvettes",
+  "hull.1.name": "Escort",
+  "hull.1.plural": "Escorts",
+  "ui.galaxy.strip.count.frigate": "{n, plural, one {# Corvette} other {# Corvettes}}",
+  "ui.galaxy.strip.count.destroyer": "{n, plural, one {# Escort} other {# Escorts}}",
+  "tech.app.15.desc": "A web of mines around the system. The chance that a ship is hit depends on its hull class: {colossus, number}% for a colossus, {titan, number}% for a titan, {battleship, number}% for a battleship, {cruiser, number}% for a cruiser, {destroyer, number}% for an escort and {frigate, number}% for a corvette. A hit deals {min, number} to {max, number} damage, less shields.",
+  "tech.app.158.desc": "A lab run by computers. Research by hull class, corvette to colossus: {frigate, number}, {destroyer, number}, {cruiser, number}, {battleship, number}, {titan, number}, {colossus, number}. In fights against space monsters or the Vaelori, every ship of the fleet gains +{bonus, number} beam attack.",
+  "tech.app.168.desc": "A fortified station for supporting warships. It carries heavy weapons, the best scanner you have (+{scan, number} scan range) and a star dock that builds anything larger than an escort."
+}

@@ -4,7 +4,7 @@
 
 A ship special system, unlocked by an application (`app`). Several base specials have behaviour bound to their key in the combat rules.
 
-A mod adds records in `records/specials/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "specials", "records": [...] }`) and changes base records with patch rows on catalog `specials`. Schema: `schemas/records/specials.schema.json`.
+A mod adds records in `records/specials/<file>.json` (`{ "$schema": "carina-records/1", "catalog": "specials", "records": [...] }`) and changes base records with patch rows on catalog `specials`. Schema: [specials records schema](../schemas/records/specials.schema.json).
 
 ## Fields
 
@@ -14,9 +14,9 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 |---|---|---|---|
 | `key` | `<namespace>.<snake_case>`: your package id with `-` read as `_`, then a name | yes |  |
 | `app` | snake_case key | yes |  |
-| `space` | [integer, integer, integer, integer, integer, integer] | yes |  |
-| `cost` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes |  |
-| `excludes` | list of snake_case key (no repeats) | yes |  |
+| `space` | [integer, integer, integer, integer, integer, integer] | yes | one per hull size, in order: `frigate`, `destroyer`, `cruiser`, `battleship`, `titan`, `colossus`; a negative value adds space (Battle Pods) |
+| `cost` | [integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0, integer >= 0] | yes | one per hull size, in order: `frigate`, `destroyer`, `cruiser`, `battleship`, `titan`, `colossus` |
+| `excludes` | list of snake_case keys (no repeats) | yes |  |
 | `indestructible` | true or false | yes |  |
 | `playerAvailable` | true or false | yes |  |
 | `strategic` | object (fields below) or null | yes |  |
@@ -26,7 +26,7 @@ A mod record leaves out `id` and `prov`: the game assigns ids, and `prov` is the
 
 ## Also register it in
 
-- ship-design `auto.lists.<class>` lists, if the ship designer should fit it
+- [ship-design](rules-ship-design.md) `auto.lists.<class>` lists, if the ship designer should fit it
 
 ## Computer players
 

@@ -1,0 +1,14 @@
+{
+  "$schema": "carina-mod/1",
+  "id": "carina-team.ship-class-names",
+  "version": "1.0.0",
+  "format": 1,
+  "rulesVersion": 1,
+  "phase": "content",
+  "title": "Ship Class Names",
+  "summary": "A text-only pack: the Frigate and Destroyer hull classes are called Corvette and Escort.",
+  "authors": [{ "name": "Throne of Carina team" }],
+  "license": "CC-BY-4.0",
+  "allowEmbed": true,
+  "allowFeature": true
+}

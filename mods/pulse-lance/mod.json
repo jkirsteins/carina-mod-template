@@ -1,0 +1,18 @@
+{
+  "$schema": "carina-mod/1",
+  "id": "carina-team.pulse-lance",
+  "version": "1.1.0",
+  "format": 1,
+  "rulesVersion": 2,
+  "phase": "content",
+  "title": "Pulse Lance",
+  "summary": "One research result and one beam weapon, released twice: version 1.1.0 renames the weapon's keys and carries a save migration.",
+  "authors": [
+    {
+      "name": "Throne of Carina team"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "allowEmbed": true,
+  "allowFeature": true
+}
